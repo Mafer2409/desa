@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Okt 2022 pada 11.03
+-- Waktu pembuatan: 26 Okt 2022 pada 09.44
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -52,11 +52,20 @@ CREATE TABLE `administrasi` (
   `administrasi_user` int(11) NOT NULL,
   `administrasi_rt` int(11) NOT NULL,
   `administrasi_tanggal` date NOT NULL,
+  `administrasi_ket` varchar(255) NOT NULL,
   `administrasi_ktp` text NOT NULL,
   `administrasi_kk` text NOT NULL,
   `administrasi_sk_pindah` text NOT NULL,
-  `administrasi_status` varchar(255) NOT NULL
+  `administrasi_status` varchar(255) NOT NULL,
+  `administrasi_tanggal_verifikasi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `administrasi`
+--
+
+INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`) VALUES
+(2, 5, 2, '2022-10-24', 'Masuk', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24');
 
 -- --------------------------------------------------------
 
@@ -108,7 +117,9 @@ CREATE TABLE `kelahiran` (
 --
 
 INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_nama_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`) VALUES
-(1, 5, 2, '2022-10-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', 'Tes 3', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Telah Dikonfirmasi RT', '2022-10-24');
+(1, 5, 2, '2022-10-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', 'Tes 3', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24'),
+(2, 5, 2, '2022-10-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', 'Tesasalsk', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24'),
+(3, 5, 2, '2022-10-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', 'Tes 3', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -136,7 +147,26 @@ CREATE TABLE `kematian` (
 --
 
 INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`) VALUES
-(1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Telah Dikonfirmasi RT', '2022-10-24');
+(1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Selesai', '2022-10-24');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kepala_desa`
+--
+
+CREATE TABLE `kepala_desa` (
+  `kepala_desa_id` int(11) NOT NULL,
+  `kepala_desa_nama` varchar(255) NOT NULL,
+  `kepala_desa_ttd` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kepala_desa`
+--
+
+INSERT INTO `kepala_desa` (`kepala_desa_id`, `kepala_desa_nama`, `kepala_desa_ttd`) VALUES
+(1, 'Mafer Leite', 'Mafer Leitex1666673690.jpeg');
 
 -- --------------------------------------------------------
 
@@ -156,7 +186,8 @@ CREATE TABLE `rt` (
 
 INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
 (1, '001', 0),
-(2, '002', 2);
+(2, '002', 2),
+(5, '003', 0);
 
 -- --------------------------------------------------------
 
@@ -184,7 +215,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir`, `user_rt_id`, `user_jk`, `user_telepon`, `user_email`, `user_password`, `user_status`) VALUES
 (1, 'Tes 1', 'tes1', '2002-09-10', 1, 'Laki-laki', '081234567890', 'tes1@gmail.com', 'fa3fb6e0dccc657b57251c97db271b05', 'Aktif'),
 (2, 'Tes 2', 'tes2', '1993-08-04', 2, 'Perempuan', '089876543210', 'tes2@gmail.com', '7a8a80e50f6ff558f552079cefe2715d', 'Aktif'),
-(5, 'Tes3', 'Tes Tiga', '1999-09-09', 2, 'Laki-laki', '098754273927', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed', 'Aktif');
+(5, 'Tes3', 'Tes Tiga', '1999-09-09', 2, 'Laki-laki', '098754273927', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed', 'Aktif'),
+(6, 'Tes4', '4tes', '1996-03-03', 5, 'Perempuan', '09474738372', 'tes4@gmail.com', '27069e6baf4eba0ad33686287d582c97', 'Menunggu Verifikasi');
 
 --
 -- Indexes for dumped tables
@@ -221,6 +253,12 @@ ALTER TABLE `kematian`
   ADD PRIMARY KEY (`kematian_id`);
 
 --
+-- Indeks untuk tabel `kepala_desa`
+--
+ALTER TABLE `kepala_desa`
+  ADD PRIMARY KEY (`kepala_desa_id`);
+
+--
 -- Indeks untuk tabel `rt`
 --
 ALTER TABLE `rt`
@@ -246,7 +284,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `administrasi`
 --
 ALTER TABLE `administrasi`
-  MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis`
@@ -258,7 +296,7 @@ ALTER TABLE `jenis`
 -- AUTO_INCREMENT untuk tabel `kelahiran`
 --
 ALTER TABLE `kelahiran`
-  MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kematian`
@@ -267,16 +305,22 @@ ALTER TABLE `kematian`
   MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `kepala_desa`
+--
+ALTER TABLE `kepala_desa`
+  MODIFY `kepala_desa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `rt`
 --
 ALTER TABLE `rt`
-  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
