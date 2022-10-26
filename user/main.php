@@ -58,7 +58,7 @@ if (!isset($_SESSION['id_user'])) {
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+        <a href="page=home" class="navbar-brand ms-4 ms-lg-0">
             <h1 class="text-primary m-0">DESA</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -66,12 +66,13 @@ if (!isset($_SESSION['id_user'])) {
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="?page=home" class="nav-item nav-link">Home</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Administrasi</a>
                     <div class="dropdown-menu m-0">
                         <a href="?page=kelahiran" class="dropdown-item">Kelahiran</a>
                         <a href="?page=kematian" class="dropdown-item">Kematian</a>
+                        <a href="?page=pindah" class="dropdown-item">Pindah</a>
                     </div>
                 </div>
                 <a href="../index.php" class="nav-item nav-link text-danger" onclick="return confirm('Yakin ingin keluar ?')">Logout</a>
@@ -101,6 +102,8 @@ if (!isset($_SESSION['id_user'])) {
             include "views/kelahiran.php";
         } else if (@$_GET['page'] == 'kematian') {
             include "views/kematian.php";
+        } else if (@$_GET['page'] == 'pindah') {
+            include "views/pindah.php";
         }
         ?>
     </div>

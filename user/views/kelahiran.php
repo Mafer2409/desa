@@ -51,9 +51,9 @@
                         <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
-                            if ($data['kelahiran_status'] == 'Berhasil Verifikasi') {
+                            if ($data['kelahiran_status'] == 'Selesai') {
                             ?>
-                                <a href="" class="text-success"><i class="fas fa-print fa-md"></i></a>
+                                <a href="../assets/report/report-kelahiran/report-kelahiran-user.php?id=<?= $data['kelahiran_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a>
                             <?php
                             }
                             ?>

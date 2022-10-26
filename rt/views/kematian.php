@@ -42,8 +42,14 @@
                         <td><?= $data['kematian_status']; ?></td>
                         <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
                         <td>
-                            <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                            <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                            <?php
+                            if ($data['kelahiran_status'] == 'Menunggu Verifikasi RT') {
+                            ?>
+                                <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
+                                <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                            <?php
+                            }
+                            ?>
                         </td>
                     </tr>
                 <?php

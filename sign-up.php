@@ -111,7 +111,15 @@ session_destroy();
                                 $telepon = $_POST['telepon'];
                                 $email = $_POST['email'];
                                 $password = md5($_POST['password']);
-                                $status = 'Menunggu Verifikasi';
+
+                                $sqlcekrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$rt'");
+                                $datacekrt = mysqli_fetch_assoc($sqlcekrt);
+
+                                if ($datacekrt['rt_ketua'] == '0') {
+                                    $status = 'Aktif';
+                                } else {
+                                    $status = 'Menunggu Verifikasi';
+                                }
 
                                 $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$nama', '$tempatlahir', '$tanggallahir', '$rt', '$jk', '$telepon', '$email', '$password', '$status')");
 

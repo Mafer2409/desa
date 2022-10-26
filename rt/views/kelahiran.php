@@ -114,7 +114,7 @@
                         <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
-                            if ($data['kelahiran_status'] == 'Menunggu Verifikasi') {
+                            if ($data['kelahiran_status'] == 'Menunggu Verifikasi RT') {
                             ?>
                                 <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
                                 <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>

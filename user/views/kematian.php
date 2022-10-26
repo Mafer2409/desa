@@ -48,9 +48,9 @@
                         <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
-                            if ($data['kematian_status'] == 'Berhasil Verifikasi') {
+                            if ($data['kematian_status'] == 'Selesai') {
                             ?>
-                                <a href="" class="text-success"><i class="fas fa-print fa-md"></i></a>
+                                <a href="../assets/report/report-kematian/report-kematian-user.php?id=<?= $data['kematian_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a>
                             <?php
                             }
                             ?>

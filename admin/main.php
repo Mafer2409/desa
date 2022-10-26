@@ -25,6 +25,10 @@ if (!isset($_SESSION['id_admin'])) {
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="images/favicon.png" />
 
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Data Table -->
     <link rel="stylesheet" href="datatables/css/lib/datatable/dataTables.bootstrap.min.css">
 </head>
@@ -80,35 +84,45 @@ if (!isset($_SESSION['id_admin'])) {
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=jenis">
                             <i class="icon-layout menu-icon"></i>
                             <span class="menu-title">Jenis</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="?page=user">
                             <i class="icon-head menu-icon"></i>
                             <span class="menu-title">User</span>
                         </a>
                     </li>
-
-
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=rt">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">RT</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">UI Elements</span>
+                            <span class="menu-title">Administrasi</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=kelahiran">Kelahiran</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=kematian">Kematian</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=pindah">Pindah</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="?page=kepala_desa">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">Kepala Desa</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Form elements</span>
@@ -208,6 +222,30 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/edit_jenis.php";
                     } else if (@$_GET['page'] == 'user') {
                         include "views/user.php";
+                    } else if (@$_GET['page'] == 'rt') {
+                        include "views/rt.php";
+                    } else if (@$_GET['page'] == 'edit_rt') {
+                        include "views/edit_rt.php";
+                    } else if (@$_GET['page'] == 'hapus_rt') {
+                        include "views/hapus_rt.php";
+                    } else if (@$_GET['page'] == 'kelahiran') {
+                        include "views/kelahiran.php";
+                    } else if (@$_GET['page'] == 'aksikelahiran') {
+                        include "views/aksikelahiran.php";
+                    } else if (@$_GET['page'] == 'kematian') {
+                        include "views/kematian.php";
+                    } else if (@$_GET['page'] == 'aksikematian') {
+                        include "views/aksikematian.php";
+                    } else if (@$_GET['page'] == 'pindah') {
+                        include "views/pindah.php";
+                    } else if (@$_GET['page'] == 'aksipindah') {
+                        include "views/aksipindah.php";
+                    } else if (@$_GET['page'] == 'kepala_desa') {
+                        include "views/kepala_desa.php";
+                    } else if (@$_GET['page'] == 'edit_kepala_desa') {
+                        include "views/edit_kepala_desa.php";
+                    } else if (@$_GET['page'] == 'cari-user') {
+                        include "views/cari-user.php";
                     }
                     ?>
                 </div>
