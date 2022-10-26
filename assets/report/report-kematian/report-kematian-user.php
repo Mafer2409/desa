@@ -10,7 +10,8 @@ $tglnow = date('d - m - Y');
 $id = $_GET['id'];
 
 $sql = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND kematian.kematian_id = '$id'");
-
+$sql2 = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND kematian.kematian_id = '$id'");
+$datakematian = mysqli_fetch_assoc($sql2);
 // ===============================================================================================
 
 require('../../fpdf16/fpdf.php');
@@ -31,8 +32,8 @@ $pdf->Cell(60, 0);
 $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
 
 $pdf->SetFont('Arial', 'I', 12, 'C');
-$pdf->Cell(50, 0);
-$pdf->Cell(45, 10, 'Jl. Oeleta Raya, Alak, Kec. Alak, Kota Kupang', 0, 1);
+$pdf->Cell(30, 0);
+$pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
 
 // $pdf->SetFont('Arial', 'B', 12, 'C');
 // $pdf->Cell(60, 0);
@@ -79,7 +80,7 @@ $pdf->Cell(189, 10, '', 0, 1);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(115, 0);
-$pdf->Cell(115, 5, 'Desa Nelelamadike, ' . $data['kematian_tanggal_verifikasi'], 0, 1);
+$pdf->Cell(115, 5, 'Desa Nelelamadike, ' . $datakematian['kematian_tanggal_verifikasi'], 0, 1);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(120, 0);

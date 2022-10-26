@@ -29,8 +29,8 @@ if ($data['administrasi_ket'] == 'Masuk') {
     $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
 
     $pdf->SetFont('Arial', 'I', 12, 'C');
-    $pdf->Cell(50, 0);
-    $pdf->Cell(45, 10, 'Jl. Oeleta Raya, Alak, Kec. Alak, Kota Kupang', 0, 1);
+    $pdf->Cell(30, 0);
+    $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
 
     $pdf->Cell(189, 10, '', 0, 1);
 
@@ -87,8 +87,8 @@ if ($data['administrasi_ket'] == 'Masuk') {
     $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
 
     $pdf->SetFont('Arial', 'I', 12, 'C');
-    $pdf->Cell(50, 0);
-    $pdf->Cell(45, 10, 'Jl. Oeleta Raya, Alak, Kec. Alak, Kota Kupang', 0, 1);
+    $pdf->Cell(30, 0);
+    $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
 
     $pdf->Cell(189, 10, '', 0, 1);
 

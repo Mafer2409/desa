@@ -48,7 +48,7 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <a href="">
+                <a href="?page=kematian">
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <div class="fact-item bg-light rounded text-center h-100 p-5">
                             <i class="fa fa-users fa-4x text-primary mb-4"></i>
@@ -58,7 +58,7 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <a href="">
+                <a href="?page=pindah">
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <div class="fact-item bg-light rounded text-center h-100 p-5">
                             <i class="fa fa-users fa-4x text-primary mb-4"></i>
@@ -68,7 +68,7 @@
                 </a>
             </div>
             <div class="col-lg-3">
-                <a href="">
+                <a href="?page=pindah">
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <div class="fact-item bg-light rounded text-center h-100 p-5">
                             <i class="fa fa-users fa-4x text-primary mb-4"></i>
