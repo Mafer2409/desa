@@ -52,7 +52,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto p-4 p-lg-0">
                 <a href="?page=home" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">Profil</a>
+                <a href="?page=profile" class="nav-item nav-link">Profil</a>
                 <!-- <a href="service.html" class="nav-item nav-link">Berita</a> -->
                 <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -84,6 +84,8 @@
             include "views/home.php";
         } else if (@$_GET['page'] == 'jenis') {
             include "views/jenis.php";
+        } else if (@$_GET['page'] == 'profile') {
+            include "views/profile.php";
         }
         ?>
     </div>
