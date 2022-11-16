@@ -31,6 +31,9 @@ if (!isset($_SESSION['id_admin'])) {
 
     <!-- Data Table -->
     <link rel="stylesheet" href="datatables/css/lib/datatable/dataTables.bootstrap.min.css">
+
+    <!-- Chart -->
+    <script type="text/javascript" src="chart/Chart.js"></script>
 </head>
 
 <body>

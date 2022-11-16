@@ -10,6 +10,8 @@
                                 <th>No.</th>
                                 <th>Nama</th>
                                 <th>Ket</th>
+                                <th>Dari</th>
+                                <th>Tujuan</th>
                                 <th>KTP</th>
                                 <th>KK</th>
                                 <th>Surat Ket.</th>
@@ -28,6 +30,8 @@
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td><?= $data['administrasi_ket']; ?></td>
+                                    <td><?= $data['administrasi_dari']; ?></td>
+                                    <td><?= $data['administrasi_tujuan']; ?></td>
                                     <td>
                                         <a href="../assets/files/files-pindah/<?= $data['administrasi_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>

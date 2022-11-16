@@ -12,6 +12,8 @@
                     <th>No.</th>
                     <th>Nama</th>
                     <th>Ket</th>
+                    <th>Dari</th>
+                    <th>Tujuan</th>
                     <th>KTP</th>
                     <th>KK</th>
                     <th>Surat Ket.</th>
@@ -30,6 +32,8 @@
                         <td><?= $no++; ?>.</td>
                         <td><?= $data['user_nama']; ?></td>
                         <td><?= $data['administrasi_ket']; ?></td>
+                        <td><?= $data['administrasi_dari']; ?></td>
+                        <td><?= $data['administrasi_tujuan']; ?></td>
                         <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
@@ -82,6 +86,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Dari</label>
+                        <input type="text" name="administrasi_dari" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tujuan</label>
+                        <input type="text" name="administrasi_tujuan" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label>KTP</label>
                         <input type="file" name="administrasi_ktp" class="form-control">
                     </div>
@@ -109,6 +121,8 @@ if (isset($_POST['simpan'])) {
     $administrasi_rt = $idrt;
     $administrasi_tanggal = date('Y-m-d');
     $administrasi_ket = $_POST['administrasi_ket'];
+    $administrasi_dari = $_POST['administrasi_dari'];
+    $administrasi_tujuan = $_POST['administrasi_tujuan'];
 
     $extensi = explode(".", $_FILES['administrasi_ktp']['name']);
     $administrasi_ktp = "$namauser - KTP - " . round(microtime(true)) . "." . end($extensi);
@@ -128,7 +142,7 @@ if (isset($_POST['simpan'])) {
     $administrasi_status = 'Menunggu Verifikasi RT';
     $administrasi_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi')");
+    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=pindah';</script>";

@@ -8,7 +8,7 @@
                     <div class="row justify-content-start">
                         <div class="col-lg-8">
                             <p class="text-primary text-uppercase fw-bold mb-2">Desa Nelelamadike</p>
-                            <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Administrasi Desa</h1>
+                            <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa</h1>
                             <p class="text-light fs-5 mb-4 pb-3">Desa Nelelamadike</p>
                         </div>
                     </div>

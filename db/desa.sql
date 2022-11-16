@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Okt 2022 pada 16.35
+-- Waktu pembuatan: 16 Nov 2022 pada 15.13
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -53,6 +53,8 @@ CREATE TABLE `administrasi` (
   `administrasi_rt` int(11) NOT NULL,
   `administrasi_tanggal` date NOT NULL,
   `administrasi_ket` varchar(255) NOT NULL,
+  `administrasi_dari` text NOT NULL,
+  `administrasi_tujuan` text NOT NULL,
   `administrasi_ktp` text NOT NULL,
   `administrasi_kk` text NOT NULL,
   `administrasi_sk_pindah` text NOT NULL,
@@ -64,9 +66,9 @@ CREATE TABLE `administrasi` (
 -- Dumping data untuk tabel `administrasi`
 --
 
-INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`) VALUES
-(2, 5, 2, '2022-10-24', 'Masuk', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24'),
-(3, 5, 2, '2022-10-26', 'Masuk', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00');
+INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_dari`, `administrasi_tujuan`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`) VALUES
+(2, 5, 2, '2022-10-24', 'Masuk', '', '', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24'),
+(3, 5, 2, '2022-10-26', 'Masuk', '', '', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00');
 
 -- --------------------------------------------------------
 

@@ -45,25 +45,43 @@ if ($data['administrasi_ket'] == 'Masuk') {
 
     $pdf->SetFont('Times', '', 11);
 
+    // ------------------------------------------------------------------------------------------------------------
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Nama', 0, 0);
+    $pdf->Cell(40, 8, 'Yang bertanda tangan dibawah ini kepala desa Nelelamadike, Kecamatan Ile Boleng,  ', 0, 1);
+    $pdf->Cell(10, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Kabupaten Flores Timur, Provinsi Nusa Tenggara Timur, menerangkan dengan sebenarnya bahwa :  ', 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Nama lengkap', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['user_nama'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'TTL', 0, 0);
+    $pdf->Cell(40, 8, 'Tempat, Tanggal lahir', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Jenis Kelamin', 0, 0);
+    $pdf->Cell(40, 8, 'Telepon', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
-    $pdf->Cell(10, 8, $data['user_jk'], 0, 1);
+    $pdf->Cell(10, 8, $data['user_telepon'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Ket.', 0, 0);
+    $pdf->Cell(40, 8, 'Domisili asal', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
-    $pdf->Cell(10, 8, $data['administrasi_ket'], 0, 1);
+    $pdf->Cell(10, 8, $data['administrasi_dari'], 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Alamat', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $data['administrasi_tujuan'], 0, 1);
+
+    $pdf->Cell(189, 10, '', 0, 1);
+
+    $pdf->Cell(10, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Demikian surat keterangan ini dibuat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.', 0, 1);
+    // ------------------------------------------------------------------------------------------------------------------------------
+
 
     // ================================================================================================
 
@@ -103,25 +121,42 @@ if ($data['administrasi_ket'] == 'Masuk') {
 
     $pdf->SetFont('Times', '', 11);
 
+    // ------------------------------------------------------------------------------------------------------------
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Nama', 0, 0);
+    $pdf->Cell(40, 8, 'Yang bertanda tangan dibawah ini kepala desa Nelelamadike, Kecamatan Ile Boleng,  ', 0, 1);
+    $pdf->Cell(10, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Kabupaten Flores Timur, Provinsi Nusa Tenggara Timur, menerangkan dengan sebenarnya bahwa :  ', 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Nama lengkap', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['user_nama'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'TTL', 0, 0);
+    $pdf->Cell(40, 8, 'Tempat, Tanggal lahir', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Jenis Kelamin', 0, 0);
+    $pdf->Cell(40, 8, 'Telepon', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
-    $pdf->Cell(10, 8, $data['user_jk'], 0, 1);
+    $pdf->Cell(10, 8, $data['user_telepon'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Ket.', 0, 0);
+    $pdf->Cell(40, 8, 'Alamat', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
-    $pdf->Cell(10, 8, $data['administrasi_ket'], 0, 1);
+    $pdf->Cell(10, 8, $data['administrasi_tujuan'], 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Pindah ke', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $data['administrasi_dari'], 0, 1);
+
+    $pdf->Cell(189, 10, '', 0, 1);
+
+    $pdf->Cell(10, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Demikian surat keterangan ini dibuat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.', 0, 1);
+    // ------------------------------------------------------------------------------------------------------------------------------
 }
 // ================================================================================================
 
@@ -142,7 +177,7 @@ $pdf->Cell(120, 0);
 $pdf->Cell(110, 5, 'Kepala Desa Nelelamadike', 0, 1);
 
 $pdf->Cell(189, 20, '', 0, 1);
-$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 140, 40, 20);
+$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 175, 40, 20);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(120, 0);

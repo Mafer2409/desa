@@ -51,31 +51,60 @@ $pdf->SetFont('Arial', '', 8);
 $no = 0;
 
 $pdf->SetFont('Times', '', 11);
+// ------------------------------------------------------------------------------------------------------------
+$pdf->Cell(30, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Yang bertanda tangan dibawah ini kepala desa Nelelamadike, Kecamatan Ile Boleng,  ', 0, 1);
+$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Kabupaten Flores Timur, Provinsi Nusa Tenggara Timur, menerangkan dengan sebenarnya bahwa pada :  ', 0, 1);
 
 $pdf->Cell(30, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'Nama Anak', 0, 0);
+$pdf->Cell(40, 8, 'Tanggal', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
-$pdf->Cell(10, 8, $data['kelahiran_nama_anak'], 0, 1);
+$pdf->Cell(10, 8, $data['kelahiran_tanggal_lahir'], 0, 1);
 
 $pdf->Cell(30, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'TTL', 0, 0);
+$pdf->Cell(40, 8, 'Tempat', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
-$pdf->Cell(10, 8, $data['kelahiran_tempat_lahir'] . ', ' . $data['kelahiran_tanggal_lahir'], 0, 1);
+$pdf->Cell(10, 8, $data['kelahiran_tempat_lahir'], 0, 1);
 
 $pdf->Cell(30, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'Jenis Kelamin', 0, 0);
+$pdf->Cell(40, 8, 'Terlahir seorang anak', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
-$pdf->Cell(10, 8, $data['kelahiran_jk'], 0, 1);
+$pdf->Cell(10, 8, $data['kelahiran_jk'] . ' bernama ' . $data['kelahiran_nama_anak'], 0, 1);
+
+$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Dari seorang ibu bernama ' . $data['kelahiran_nama_ibu'], 0, 1);
+
+$pdf->Cell(189, 10, '', 0, 1);
+
+$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Surat keterangan ini dibuat berdasarkan keterangan pelapor :', 0, 1);
 
 $pdf->Cell(30, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'Nama Ayah', 0, 0);
+$pdf->Cell(40, 8, 'Nama lengkap', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
-$pdf->Cell(10, 8, $data['kelahiran_nama_ayah'], 0, 1);
+$pdf->Cell(10, 8, $data['user_nama'], 0, 1);
 
 $pdf->Cell(30, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'Nama Ibu', 0, 0);
+$pdf->Cell(40, 8, 'Tempat, Tanggal Lahir', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
-$pdf->Cell(10, 8, $data['kelahiran_nama_ibu'], 0, 1);
+$pdf->Cell(10, 8, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 0, 1);
+
+$pdf->Cell(30, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Jenis kelamin', 0, 0);
+$pdf->Cell(10, 8, ':', 0, 0);
+$pdf->Cell(10, 8, $data['user_jk'], 0, 1);
+
+$pdf->Cell(30, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Telepon', 0, 0);
+$pdf->Cell(10, 8, ':', 0, 0);
+$pdf->Cell(10, 8, $data['user_telepon'], 0, 1);
+
+$pdf->Cell(189, 10, '', 0, 1);
+
+$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(40, 8, 'Demikian surat keterangan ini dibuat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.', 0, 1);
+// ------------------------------------------------------------------------------------------------------------------------------
 
 
 $sqlkades = mysqli_query($con, "SELECT * FROM kepala_desa LIMIT 1");
@@ -95,7 +124,7 @@ $pdf->Cell(120, 0);
 $pdf->Cell(110, 5, 'Kepala Desa Nelelamadike', 0, 1);
 
 $pdf->Cell(189, 20, '', 0, 1);
-$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 140, 40, 20);
+$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 215, 40, 20);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(120, 0);
