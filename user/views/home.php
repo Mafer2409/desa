@@ -1,4 +1,11 @@
 <!-- Carousel Start -->
+<?php
+$idrt = $_SESSION['id_rt'];
+$sqlrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$idrt'");
+$datart = mysqli_fetch_assoc($sqlrt);
+$namart = $datart['rt'];
+?>
+
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
@@ -7,9 +14,9 @@
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-lg-8">
-                            <p class="text-primary text-uppercase fw-bold mb-2">Desa Nelelamadike</p>
-                            <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa</h1>
-                            <p class="text-light fs-5 mb-4 pb-3">Desa Nelelamadike</p>
+                            <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
+                            <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
+                            <p class="text-light fs-5 mb-4 pb-3">RT : <?= $namart ?></p>
                         </div>
                     </div>
                 </div>
@@ -21,10 +28,9 @@
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-lg-8">
-                            <p class="text-primary text-uppercase fw-bold mb-2">// The Best Bakery</p>
-                            <h1 class="display-1 text-light mb-4 animated slideInDown">We Bake With Passion</h1>
-                            <p class="text-light fs-5 mb-4 pb-3">Vero elitr justo clita lorem. Ipsum dolor sed stet sit diam rebum ipsum.</p>
-                            <a href="" class="btn btn-primary rounded-pill py-3 px-5">Read More</a>
+                            <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
+                            <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
+                            <p class="text-light fs-5 mb-4 pb-3">RT : <?= $namart ?></p>
                         </div>
                     </div>
                 </div>

@@ -39,6 +39,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Telepon</th>
                                 <th>E-Mail</th>
+                                <th>Ket.</th>
                                 <!-- <th>Opsi</th> -->
                             </tr>
                         </thead>
@@ -56,6 +57,7 @@
                                     <td><?= $data['user_jk']; ?></td>
                                     <td><?= $data['user_telepon']; ?></td>
                                     <td><?= $data['user_email']; ?></td>
+                                    <td><?= $data['user_ket']; ?></td>
                                     <!-- <td>
                                         <a href="?page=edit_jenis&id=<?= $data['jenis_id'] ?>" class="btn btn-info">Edit</a>
                                         <a href="?page=hapus_jenis&id=<?= $data['jenis_id'] ?>" onclick="return confirm('Yakin ingin menghapus data ini ???')" class="btn btn-danger">Hapus</a>

@@ -47,7 +47,7 @@
                                         <?php
                                         if ($data['administrasi_status'] == 'Telah Dikonfirmasi RT') {
                                         ?>
-                                            <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
+                                            <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Konfirmasi&ket=<?= $data['administrasi_ket'] ?>&uid=<?= $data['user_id'] ?>" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
                                             <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
                                         <?php
                                         }

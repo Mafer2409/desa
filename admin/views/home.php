@@ -1,4 +1,22 @@
+<?php
+$tahun_now = date('Y');
+?>
+
 <div class="content-wrapper">
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Grafik Kependudukan Tahun <?= $tahun_now ?></h6>
+                <div class="dropdown no-arrow">
+                </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <canvas id="kependudukan"></canvas>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="col-xl-6 col-lg-6">
@@ -62,6 +80,89 @@
         </div>
     </div>
 </div>
+
+
+
+
+<script>
+    var ctx = document.getElementById("kependudukan").getContext('2d');
+    var kependudukan = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Kelahiran", "Kematian", "Pindah (Keluar)", "Pindah (Masuk)", "Penduduk Tetap", "Penduduk Tidak Tetap"],
+            datasets: [{
+                label: '',
+                data: [
+                    <?php
+                    $kep_kelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE YEAR(kelahiran_tanggal) = '$tahun_now'");
+                    echo mysqli_num_rows($kep_kelahiran);
+                    ?>,
+                    <?php
+                    $kep_kematian = mysqli_query($con, "SELECT * FROM kematian WHERE YEAR(kematian_tanggal_meninggal) = '$tahun_now'");
+                    echo mysqli_num_rows($kep_kematian);
+                    ?>,
+                    <?php
+                    $kep_keluar = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_ket = 'Keluar' AND YEAR(administrasi_tanggal_verifikasi) = '$tahun_now'");
+                    echo mysqli_num_rows($kep_keluar);
+                    ?>,
+                    <?php
+                    $kep_masuk = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_ket = 'Masuk' AND YEAR(administrasi_tanggal_verifikasi) = '$tahun_now'");
+                    echo mysqli_num_rows($kep_masuk);
+                    ?>,
+                    <?php
+                    $kep_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_ket = 'Tetap'");
+                    echo mysqli_num_rows($kep_tetap);
+                    ?>,
+                    <?php
+                    $kep_tidak_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_ket = 'Tidak Tetap'");
+                    echo mysqli_num_rows($kep_tidak_tetap);
+                    ?>,
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(45, 115, 12, 0.2)',
+                    'rgba(124, 37, 133, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(45, 115, 12, 0.2)',
+                    'rgba(124, 37, 133, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php

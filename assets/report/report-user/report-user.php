@@ -38,27 +38,29 @@ if ($idrt == 0) {
     $pdf->Cell(189, 10, '', 0, 1);
 
     $pdf->SetFont('Arial', '', 8);
-    $pdf->Cell(3, 5, '', 0, 0);
+    $pdf->Cell(1, 5, '', 0, 0);
     $pdf->Cell(6, 5, 'No.', 1, 0);
     $pdf->Cell(40, 5, 'Nama', 1, 0);
     $pdf->Cell(35, 5, 'TTL', 1, 0);
-    $pdf->Cell(15, 5, 'RT', 1, 0);
+    $pdf->Cell(10, 5, 'RT', 1, 0);
     $pdf->Cell(20, 5, 'Jenis Kelamin', 1, 0);
-    $pdf->Cell(25, 5, 'Telepon', 1, 0);
-    $pdf->Cell(35, 5, 'E-Mail', 1, 1);
+    $pdf->Cell(23, 5, 'Telepon', 1, 0);
+    $pdf->Cell(30, 5, 'E-Mail', 1, 0);
+    $pdf->Cell(25, 5, 'Ket', 1, 1);
 
     $pdf->SetFont('Arial', '', 8);
     $no = 1;
     $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id");
     while ($data = mysqli_fetch_assoc($sql)) {
-        $pdf->Cell(3, 5, '', 0, 0);
+        $pdf->Cell(1, 5, '', 0, 0);
         $pdf->Cell(6, 5, $no++ . '.', 1, 0);
         $pdf->Cell(40, 5, $data['user_nama'], 1, 0);
         $pdf->Cell(35, 5, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 1, 0);
-        $pdf->Cell(15, 5, $data['rt'], 1, 0);
+        $pdf->Cell(10, 5, $data['rt'], 1, 0);
         $pdf->Cell(20, 5, $data['user_jk'], 1, 0);
-        $pdf->Cell(25, 5, $data['user_telepon'], 1, 0);
-        $pdf->Cell(35, 5, $data['user_email'], 1, 1);
+        $pdf->Cell(23, 5, $data['user_telepon'], 1, 0);
+        $pdf->Cell(30, 5, $data['user_email'], 1, 0);
+        $pdf->Cell(25, 5, $data['user_ket'], 1, 1);
     }
 
 
@@ -123,27 +125,29 @@ if ($idrt == 0) {
     $pdf->Cell(189, 10, '', 0, 1);
 
     $pdf->SetFont('Arial', '', 8);
-    $pdf->Cell(3, 5, '', 0, 0);
+    $pdf->Cell(1, 5, '', 0, 0);
     $pdf->Cell(6, 5, 'No.', 1, 0);
     $pdf->Cell(40, 5, 'Nama', 1, 0);
     $pdf->Cell(35, 5, 'TTL', 1, 0);
-    $pdf->Cell(15, 5, 'RT', 1, 0);
+    $pdf->Cell(10, 5, 'RT', 1, 0);
     $pdf->Cell(20, 5, 'Jenis Kelamin', 1, 0);
-    $pdf->Cell(25, 5, 'Telepon', 1, 0);
-    $pdf->Cell(35, 5, 'E-Mail', 1, 1);
+    $pdf->Cell(23, 5, 'Telepon', 1, 0);
+    $pdf->Cell(30, 5, 'E-Mail', 1, 0);
+    $pdf->Cell(25, 5, 'Ket', 1, 1);
 
     $pdf->SetFont('Arial', '', 8);
     $no = 1;
     $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt'");
     while ($data = mysqli_fetch_assoc($sql)) {
-        $pdf->Cell(3, 5, '', 0, 0);
+        $pdf->Cell(1, 5, '', 0, 0);
         $pdf->Cell(6, 5, $no++ . '.', 1, 0);
         $pdf->Cell(40, 5, $data['user_nama'], 1, 0);
         $pdf->Cell(35, 5, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 1, 0);
-        $pdf->Cell(15, 5, $data['rt'], 1, 0);
+        $pdf->Cell(10, 5, $data['rt'], 1, 0);
         $pdf->Cell(20, 5, $data['user_jk'], 1, 0);
-        $pdf->Cell(25, 5, $data['user_telepon'], 1, 0);
-        $pdf->Cell(35, 5, $data['user_email'], 1, 1);
+        $pdf->Cell(23, 5, $data['user_telepon'], 1, 0);
+        $pdf->Cell(30, 5, $data['user_email'], 1, 0);
+        $pdf->Cell(25, 5, $data['user_ket'], 1, 1);
     }
 
     $sqlkades = mysqli_query($con, "SELECT * FROM kepala_desa LIMIT 1");

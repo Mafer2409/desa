@@ -88,6 +88,13 @@ session_destroy();
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <select class="form-control" name="user_ket" required>
+                                        <option value="">-- Pilih Status --</option>
+                                        <option value="Tetap">Penduduk Tetap</option>
+                                        <option value="Tidak Tetap">Penduduk Tidak Tetap</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <input type="text" name="telepon" class="form-control form-control-lg" placeholder="Telepon" required>
                                 </div>
                                 <div class="form-group">
@@ -111,6 +118,7 @@ session_destroy();
                                 $telepon = $_POST['telepon'];
                                 $email = $_POST['email'];
                                 $password = md5($_POST['password']);
+                                $user_ket = $_POST['user_ket'];
 
                                 $sqlcekrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$rt'");
                                 $datacekrt = mysqli_fetch_assoc($sqlcekrt);
@@ -121,7 +129,7 @@ session_destroy();
                                     $status = 'Menunggu Verifikasi';
                                 }
 
-                                $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$nama', '$tempatlahir', '$tanggallahir', '$rt', '$jk', '$telepon', '$email', '$password', '$status')");
+                                $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$nama', '$tempatlahir', '$tanggallahir', '$rt', '$jk', '$telepon', '$email', '$password', '$status', '$user_ket')");
 
                                 if ($sql) {
                                     echo "<script>alert('Pendaftaran Berhasil !');window.location='index.php';</script>";

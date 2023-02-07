@@ -11,6 +11,7 @@
                     <th>Telepon</th>
                     <th>E-Mail</th>
                     <th>Status</th>
+                    <th>Ket</th>
                     <th>Opsi</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                         <td><?= $data['user_telepon']; ?></td>
                         <td><?= $data['user_email']; ?></td>
                         <td><?= $data['user_status']; ?></td>
+                        <td><?= $data['user_ket']; ?></td>
                         <td>
                             <a href="?page=aksiwarga&id=<?= $data['user_id'] ?>&aksi=Aktif" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
                             <a href="?page=aksiwarga&id=<?= $data['user_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
@@ -57,6 +59,7 @@
                     <th>Telepon</th>
                     <th>E-Mail</th>
                     <th>Status</th>
+                    <th>Ket.</th>
                     <th>Opsi</th>
                 </tr>
             </thead>
@@ -74,6 +77,7 @@
                         <td><?= $data['user_telepon']; ?></td>
                         <td><?= $data['user_email']; ?></td>
                         <td><?= $data['user_status']; ?></td>
+                        <td><?= $data['user_ket']; ?></td>
                         <td>
                             <?php
                             if ($data['user_status'] == 'Menunggu Verifikasi') {
