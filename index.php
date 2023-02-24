@@ -53,6 +53,7 @@
             <div class="navbar-nav mx-auto p-4 p-lg-0">
                 <a href="?page=home" class="nav-item nav-link active">Home</a>
                 <a href="?page=profile" class="nav-item nav-link">Profil</a>
+                <a href="?page=berita" class="nav-item nav-link">Berita</a>
                 <!-- <a href="service.html" class="nav-item nav-link">Berita</a> -->
                 <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -86,6 +87,10 @@
             include "views/jenis.php";
         } else if (@$_GET['page'] == 'profile') {
             include "views/profile.php";
+        } else if (@$_GET['page'] == 'berita') {
+            include "views/berita.php";
+        } else if (@$_GET['page'] == 'detail-berita') {
+            include "views/detail-berita.php";
         }
         ?>
     </div>

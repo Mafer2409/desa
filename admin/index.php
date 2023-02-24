@@ -13,7 +13,7 @@ session_destroy();
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
-    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="shortcut icon" href="../assets/img/logo-flotim.jpg" />
 </head>
 
 <body>
@@ -24,10 +24,10 @@ session_destroy();
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="images/logo.svg" alt="logo">
+                                <img src="../assets/img/logo-flotim.jpg" alt="logo">
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
+                            <!-- <h4>Hello! let's get started</h4> -->
+                            <h6 class="font-weight-light">Login untuk melanjutkan...</h6>
                             <form class="pt-3" action="" method="post">
                                 <div class="form-group">
                                     <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required>

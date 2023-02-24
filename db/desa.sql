@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Feb 2023 pada 15.37
+-- Waktu pembuatan: 15 Feb 2023 pada 14.47
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -69,6 +69,27 @@ CREATE TABLE `administrasi` (
 INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_dari`, `administrasi_tujuan`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`) VALUES
 (2, 5, 2, '2022-10-24', 'Masuk', '', '', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24'),
 (3, 5, 2, '2022-10-26', 'Masuk', '', '', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `berita`
+--
+
+CREATE TABLE `berita` (
+  `berita_id` int(11) NOT NULL,
+  `berita_judul` text NOT NULL,
+  `berita_tanggal` date NOT NULL,
+  `berita_isi` text NOT NULL,
+  `berita_gambar` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `berita`
+--
+
+INSERT INTO `berita` (`berita_id`, `berita_judul`, `berita_tanggal`, `berita_isi`, `berita_gambar`) VALUES
+(2, 'Pengungsi Banjir di Desa Nelelamadike Kesulitan Fasilitas MCK ', '2023-02-15', '<p>PARA pengungsi bencana banjir bandang yang menghantam Desa Nelelamadike, Pulau Adonara, Kabupaten Flores Timur, Nusa Tenggara Timur (NTT) kesulitan buang air karena tidak ada fasilitas MCK yang memadai di posko-posko pengusian. Kepala Desa Nelelamadike Pius Pedang Malai, saat ditemui mediaindonesia.com, Jumat (9/4), mengatakan, sejak bencana banjir bandang melanda warganya, beberapa waktu lalu, ada 645 orang yang berada di lokasi pengusian yang tersebar di beberapa posko.</p>\r\n\r\n<p>Beberapa posko yang banyak ditempati para pengungsi yakni posko SDN Nelelamadike ada 39 orang, posko balai Desa Nelelamadike ada 354 orang, dan posko rumah-rumah warga ada 182 orang. Sisanya mengungsi di desa-desa tetangga.</p>\r\n\r\n<p>&quot;Saat ini, kesulitan mandi cuci kakus (MCK) dihadapi para pengungsi yang menempati posko-posko pengungsian. Soal MCK ini sangat minim sekali. Di posko sekolah itu hanya ada dua MCK. Sementara di balai desa hanya satu saja. Jadi kita sekarang kesulitan MCK,&quot; tandas Pius Ia mengatakan warga terdampak ini bisa saja MCK di rumah mereka masing-masing. Namun, rumah mereka sudah hancur rata tanah dihantam banjir bandang, Minggu (4/4). &quot;Rata-rata para pengungsi rumahnya hancur, sehingga MCK yang ada tidak bisa digunakan lagi karena semua sudah rata dengan tanah,&quot; ujar dia Menurut dia, akibat tidak ada MCK, warga setempat akhirnya buang air di hutan-hutan kalau MCK di posko ada yang menggunakan. Untuk itu, ia berharap pemerintah bisa membantunya alat portabel untuk MCK bagi para pengungsian yang menempati posko tersebut. &quot;Harapan kami, pemerintah bisa membantu menyediakan fasilitas MCK di posko-posko pengungsian,&quot; jelas dia Dia juga akibat banjir bandang itu sebanyak 55 orang meninggal dunia dan seorang lagi belum ditemukan. Untuk warga yang luka-luka ada 34 orang yang terbagi luka berat ada 3 orang. Luka ringan ada 27 orang, dislokasi 1 orang, dan patang tulang ada 3 orang. &quot;Ada 50 rumah warga yang rusak berat berat dan ringan serta tertimbun longsor dari sebelum bencana itu ada 318 rumah,&quot; tutup dia. (OL-1).</p>\r\n', 'Pengungsi Banjir di Desa Nelelamadike Kesulitan Fasilitas MCK -1676466278.jpg');
 
 -- --------------------------------------------------------
 
@@ -192,7 +213,7 @@ CREATE TABLE `rt` (
 --
 
 INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
-(1, '001', 0),
+(1, '001', 1),
 (2, '002', 5),
 (5, '003', 7);
 
@@ -225,7 +246,8 @@ INSERT INTO `user` (`user_id`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir
 (2, 'Tes 2', 'tes2', '1993-08-04', 2, 'Perempuan', '089876543210', 'tes2@gmail.com', '7a8a80e50f6ff558f552079cefe2715d', 'Aktif', 'Tidak Tetap'),
 (5, 'Tes3', 'Tes Tiga', '1999-09-09', 2, 'Laki-laki', '098754273927', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed', 'Aktif', 'Tetap'),
 (6, 'Tes4', '4tes', '1996-03-03', 5, 'Perempuan', '09474738372', 'tes4@gmail.com', '27069e6baf4eba0ad33686287d582c97', 'Aktif', 'Tetap'),
-(7, 'sss', 'sss', '2001-03-10', 5, 'Laki-laki', '121213442', 'rt3@gmail.com', '202cb962ac59075b964b07152d234b70', 'Non-Aktif', 'Meninggal');
+(7, 'sss', 'sss', '2001-03-10', 5, 'Laki-laki', '121213442', 'rt3@gmail.com', '202cb962ac59075b964b07152d234b70', 'Non-Aktif', 'Meninggal'),
+(8, 'Tes 6', 'Tes', '1999-09-23', 1, 'Laki-laki', '0986432', 'tes6@gmail.com', '943acbfcff72a20e5576629c4aad3b5c', 'Aktif', 'Tetap');
 
 --
 -- Indexes for dumped tables
@@ -242,6 +264,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `administrasi`
   ADD PRIMARY KEY (`administrasi_id`);
+
+--
+-- Indeks untuk tabel `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`berita_id`);
 
 --
 -- Indeks untuk tabel `jenis`
@@ -296,6 +324,12 @@ ALTER TABLE `administrasi`
   MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT untuk tabel `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `berita_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
@@ -329,7 +363,7 @@ ALTER TABLE `rt`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

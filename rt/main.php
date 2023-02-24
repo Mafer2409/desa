@@ -77,6 +77,7 @@ if (!isset($_SESSION['id_user'])) {
                         <a href="?page=pindah" class="dropdown-item">Pindah</a>
                     </div>
                 </div>
+                <a href="?page=berita" class="nav-item nav-link">Berita</a>
                 <a href="../index.php" class="nav-item nav-link text-danger" onclick="return confirm('Yakin ingin keluar ?')">Logout</a>
             </div>
             <div class=" d-none d-lg-flex">
@@ -119,6 +120,10 @@ if (!isset($_SESSION['id_user'])) {
             include "views/pindah.php";
         } else if (@$_GET['page'] == 'aksipindah') {
             include "views/aksipindah.php";
+        } else if (@$_GET['page'] == 'berita') {
+            include "views/berita.php";
+        } else if (@$_GET['page'] == 'detail-berita') {
+            include "views/detail-berita.php";
         }
         ?>
     </div>

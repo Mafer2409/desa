@@ -43,7 +43,7 @@ session_destroy();
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth px-0">
                 <div class="row w-100 mx-0">
-                    <div class="col-lg-4 mx-auto">
+                    <div class="col-lg-8 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <!-- <div class="brand-logo">
                                 <img src="images/logo.svg" alt="logo">
@@ -52,22 +52,25 @@ session_destroy();
                             <h6 class="font-weight-light">Silahkan daftar dibawah ini!</h6>
                             <form class="pt-3" action="" method="post">
                                 <div class="form-group">
-                                    <input type="text" name="nama" class="form-control form-control-lg" placeholder="Nama Lengkap" required>
+                                    <input type="text" name="user_nik" class="form-control form-control-lg" placeholder="NIK" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="user_nama" class="form-control form-control-lg" placeholder="Nama Lengkap" required>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" name="tempatlahir" class="form-control form-control-lg" placeholder="Tempat Lahir" required>
+                                            <input type="text" name="user_tempat_lahir" class="form-control form-control-lg" placeholder="Tempat Lahir" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="date" name="tanggallahir" class="form-control form-control-lg" required>
+                                            <input type="date" name="user_tanggal_lahir" class="form-control form-control-lg" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="rt" required>
+                                    <select class="form-control" name="user_rt_id" required>
                                         <option value="">-- Pilih RT --</option>
                                         <?php
                                         include 'system/koneksi.php';
@@ -81,27 +84,73 @@ session_destroy();
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="jk" required>
+                                    <select class="form-control" name="user_agama" required>
+                                        <option value="">-- Pilih Agama --</option>
+                                        <option value="Katolik">Katolik</option>
+                                        <option value="Protestan">Protestan</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Budha">Budha</option>
+                                        <option value="Konghuchu">Konghuchu</option>
+                                        <option value="Lainnya...">Lainnya...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="user_jk" required>
                                         <option value="">-- Pilih Jenis Kelamin --</option>
                                         <option value="Laki-laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" name="user_ket" required>
-                                        <option value="">-- Pilih Status --</option>
+                                    <select class="form-control" name="user_wn" required>
+                                        <option value="">-- Warga Negara --</option>
+                                        <option value="WNI">WNI</option>
+                                        <option value="WNA">WNA</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="user_alamat" class="form-control" cols="30" rows="10" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="user_status_tinggal" required>
+                                        <option value="">-- Pilih Status Tinggal --</option>
                                         <option value="Tetap">Penduduk Tetap</option>
                                         <option value="Tidak Tetap">Penduduk Tidak Tetap</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="telepon" class="form-control form-control-lg" placeholder="Telepon" required>
+                                    <input type="text" name="user_pekerjaan" class="form-control form-control-lg" placeholder="Pekerjaan" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="E-Mail" required>
+                                    <select class="form-control" name="user_status_kawin" required>
+                                        <option value="">-- Pilih Status Kawin --</option>
+                                        <option value="Belum Menikah">Belum Menikah</option>
+                                        <option value="Sudah Menikah">Sudah Menikah</option>
+                                        <option value="Cerai Hidup">Cerai Hidup</option>
+                                        <option value="Cerai Mati">Cerai Mati</option>
+                                        <option value="Tidak Menikah">Tidak Menikah</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
+                                    <select class="form-control" name="user_jenjang_pendidikan" required>
+                                        <option value="">-- Pilih Pendidikan --</option>
+                                        <option value="TK">TK</option>
+                                        <option value="SD">SD</option>
+                                        <option value="SLTP/SMP">SLTP/SMP</option>
+                                        <option value="SLTA/SMA/SMK">SLTA/SMA/SMK</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
+                                        <option value="Profesor">Profesor</option>
+                                        <option value="Tidak Sekolah">Tidak Sekolah</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="user_email" class="form-control form-control-lg" placeholder="E-Mail" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="user_password" class="form-control form-control-lg" placeholder="Password" required>
                                 </div>
                                 <div class="mt-3">
                                     <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" name="daftar" value="Daftar">
@@ -110,26 +159,32 @@ session_destroy();
                             <?php
                             include 'system/koneksi.php';
                             if (isset($_POST['daftar'])) {
-                                $nama = $_POST['nama'];
-                                $tempatlahir = $_POST['tempatlahir'];
-                                $tanggallahir = $_POST['tanggallahir'];
-                                $rt = $_POST['rt'];
-                                $jk = $_POST['jk'];
-                                $telepon = $_POST['telepon'];
-                                $email = $_POST['email'];
-                                $password = md5($_POST['password']);
-                                $user_ket = $_POST['user_ket'];
+                                $user_nik = $_POST['user_nik'];
+                                $user_nama = $_POST['user_nama'];
+                                $user_tempat_lahir = $_POST['user_tempat_lahir'];
+                                $user_tanggal_lahir = $_POST['user_tanggal_lahir'];
+                                $user_rt_id = $_POST['user_rt_id'];
+                                $user_agama = $_POST['user_agama'];
+                                $user_jk = $_POST['user_jk'];
+                                $user_wn = $_POST['user_wn'];
+                                $user_alamat = $_POST['user_alamat'];
+                                $user_status_tinggal = $_POST['user_status_tinggal'];
+                                $user_pekerjaan = $_POST['user_pekerjaan'];
+                                $user_status_kawin = $_POST['user_status_kawin'];
+                                $user_jenjang_pendidikan = $_POST['user_jenjang_pendidikan'];
+                                $user_email = $_POST['user_email'];
+                                $user_password = md5($_POST['user_password']);
 
-                                $sqlcekrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$rt'");
+                                $sqlcekrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$user_rt_id'");
                                 $datacekrt = mysqli_fetch_assoc($sqlcekrt);
 
                                 if ($datacekrt['rt_ketua'] == '0') {
-                                    $status = 'Aktif';
+                                    $user_status = 'Aktif';
                                 } else {
-                                    $status = 'Menunggu Verifikasi';
+                                    $user_status = 'Menunggu Verifikasi';
                                 }
 
-                                $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$nama', '$tempatlahir', '$tanggallahir', '$rt', '$jk', '$telepon', '$email', '$password', '$status', '$user_ket')");
+                                $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$user_nik', '$user_nama', '$user_tempat_lahir', '$user_tanggal_lahir', '$user_rt_id', '$user_agama', '$user_jk', '$user_wn', '$user_alamat', '$user_status', '$user_status_tinggal', '$user_pekerjaan', '$user_status_kawin', '$user_jenjang_pendidikan', '$user_email', '$user_password')");
 
                                 if ($sql) {
                                     echo "<script>alert('Pendaftaran Berhasil !');window.location='index.php';</script>";
