@@ -266,6 +266,8 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/hapus-berita.php";
                     } else if (@$_GET['page'] == 'tambah-berita') {
                         include "views/tambah-berita.php";
+                    } else if (@$_GET['page'] == 'info_user') {
+                        include "views/info_user.php";
                     }
                     ?>
                 </div>

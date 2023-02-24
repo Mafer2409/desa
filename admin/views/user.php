@@ -37,10 +37,9 @@
                                 <th>TTL</th>
                                 <th>RT</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Telepon</th>
-                                <th>E-Mail</th>
-                                <th>Ket.</th>
-                                <!-- <th>Opsi</th> -->
+                                <th>Status Tinggal</th>
+                                <th>Status User</th>
+                                <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,13 +54,13 @@
                                     <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
                                     <td><?= $data['rt']; ?></td>
                                     <td><?= $data['user_jk']; ?></td>
-                                    <td><?= $data['user_telepon']; ?></td>
-                                    <td><?= $data['user_email']; ?></td>
-                                    <td><?= $data['user_ket']; ?></td>
-                                    <!-- <td>
-                                        <a href="?page=edit_jenis&id=<?= $data['jenis_id'] ?>" class="btn btn-info">Edit</a>
-                                        <a href="?page=hapus_jenis&id=<?= $data['jenis_id'] ?>" onclick="return confirm('Yakin ingin menghapus data ini ???')" class="btn btn-danger">Hapus</a>
-                                    </td> -->
+                                    <td><?= $data['user_status_tinggal']; ?></td>
+                                    <td><?= $data['user_status']; ?></td>
+                                    <td>
+                                        <a href="?page=info_user&id=<?= $data['user_id'] ?>" class="text-primary"><i class="fas fa-info-circle"></i></a>
+                                        <a href="?page=edit_user&id=<?= $data['user_id'] ?>" class="text-info"><i class="fas fa-edit"></i></a>
+                                        <a href="?page=hapus_user&id=<?= $data['user_id'] ?>" onclick="return confirm('Yakin ingin menghapus data ini ???')" class="text-danger"><i class="fas fa-trash"></i></a>
+                                    </td>
                                 </tr>
                             <?php
                             }
