@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Feb 2023 pada 14.47
+-- Waktu pembuatan: 24 Feb 2023 pada 01.13
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -225,29 +225,36 @@ INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
+  `user_nik` varchar(255) NOT NULL,
   `user_nama` varchar(255) NOT NULL,
   `user_tempat_lahir` varchar(255) NOT NULL,
   `user_tgl_lahir` date NOT NULL,
   `user_rt_id` int(11) NOT NULL,
+  `user_agama` varchar(255) NOT NULL,
   `user_jk` varchar(255) NOT NULL,
-  `user_telepon` varchar(255) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
+  `user_wn` varchar(255) NOT NULL,
+  `user_alamat` text NOT NULL,
   `user_status` varchar(255) NOT NULL,
-  `user_ket` varchar(255) NOT NULL
+  `user_status_tinggal` varchar(255) NOT NULL,
+  `user_pekerjaan` varchar(255) NOT NULL,
+  `user_status_kawin` varchar(255) NOT NULL,
+  `user_jenjang_pendidikan` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir`, `user_rt_id`, `user_jk`, `user_telepon`, `user_email`, `user_password`, `user_status`, `user_ket`) VALUES
-(1, 'Tes 1', 'tes1', '2002-09-10', 1, 'Laki-laki', '081234567890', 'tes1@gmail.com', 'fa3fb6e0dccc657b57251c97db271b05', 'Aktif', 'Tetap'),
-(2, 'Tes 2', 'tes2', '1993-08-04', 2, 'Perempuan', '089876543210', 'tes2@gmail.com', '7a8a80e50f6ff558f552079cefe2715d', 'Aktif', 'Tidak Tetap'),
-(5, 'Tes3', 'Tes Tiga', '1999-09-09', 2, 'Laki-laki', '098754273927', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed', 'Aktif', 'Tetap'),
-(6, 'Tes4', '4tes', '1996-03-03', 5, 'Perempuan', '09474738372', 'tes4@gmail.com', '27069e6baf4eba0ad33686287d582c97', 'Aktif', 'Tetap'),
-(7, 'sss', 'sss', '2001-03-10', 5, 'Laki-laki', '121213442', 'rt3@gmail.com', '202cb962ac59075b964b07152d234b70', 'Non-Aktif', 'Meninggal'),
-(8, 'Tes 6', 'Tes', '1999-09-23', 1, 'Laki-laki', '0986432', 'tes6@gmail.com', '943acbfcff72a20e5576629c4aad3b5c', 'Aktif', 'Tetap');
+INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir`, `user_rt_id`, `user_agama`, `user_jk`, `user_wn`, `user_alamat`, `user_status`, `user_status_tinggal`, `user_pekerjaan`, `user_status_kawin`, `user_jenjang_pendidikan`, `user_email`, `user_password`) VALUES
+(1, '0', 'Tes 1', 'tes1', '2002-09-10', 1, '', 'Laki-laki', '081234567890', 'tes1@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
+(2, '0', 'Tes 2', 'tes2', '1993-08-04', 2, '', 'Perempuan', '089876543210', 'tes2@gmail.com', 'Aktif', 'Tidak Tetap', '', '', '', '', ''),
+(5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '098754273927', 'tes3@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
+(6, '0', 'Tes4', '4tes', '1996-03-03', 5, '', 'Perempuan', '09474738372', 'tes4@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
+(7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '121213442', 'rt3@gmail.com', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
+(8, '0', 'Tes 6', 'Tes', '1999-09-23', 1, '', 'Laki-laki', '0986432', 'tes6@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
+(9, '23114046', 'Mafer', 'Larantuka', '1996-09-24', 1, 'Katolik', 'Laki-laki', 'WNI', 'Weri', 'Aktif', 'Tidak Tetap', 'Karyawan Swasta', 'Belum Menikah', 'S1', 'manfdz70@gmail.com', '4c08ab9ef09bd1575f65fcd022dd5f83');
 
 --
 -- Indexes for dumped tables
@@ -363,7 +370,7 @@ ALTER TABLE `rt`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
