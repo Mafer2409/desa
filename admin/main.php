@@ -268,6 +268,10 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/tambah-berita.php";
                     } else if (@$_GET['page'] == 'info_user') {
                         include "views/info_user.php";
+                    } else if (@$_GET['page'] == 'cari-kelahiran') {
+                        include "views/cari-kelahiran.php";
+                    } else if (@$_GET['page'] == 'cari-kematian') {
+                        include "views/cari-kematian.php";
                     }
                     ?>
                 </div>

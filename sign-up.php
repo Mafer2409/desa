@@ -71,7 +71,7 @@ session_destroy();
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="user_rt_id" required>
-                                        <option value="">-- Pilih RT --</option>
+                                        <option value="">-- Pilih RW / RT --</option>
                                         <?php
                                         include 'system/koneksi.php';
                                         $sqlrt = mysqli_query($con, "SELECT * FROM rt");

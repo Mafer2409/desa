@@ -110,11 +110,11 @@ $tahun_now = date('Y');
                     echo mysqli_num_rows($kep_masuk);
                     ?>,
                     <?php
-                    $kep_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_ket = 'Tetap'");
+                    $kep_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_status_tinggal = 'Tetap'");
                     echo mysqli_num_rows($kep_tetap);
                     ?>,
                     <?php
-                    $kep_tidak_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_ket = 'Tidak Tetap'");
+                    $kep_tidak_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_status_tinggal = 'Tidak Tetap'");
                     echo mysqli_num_rows($kep_tidak_tetap);
                     ?>,
                 ],

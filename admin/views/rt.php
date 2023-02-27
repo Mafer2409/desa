@@ -52,8 +52,8 @@
                     <h4 class="card-title">Tambah Data RT</h4>
                     <form class="forms-sample" action="" method="post">
                         <div class="form-group">
-                            <label for="exampleInputUsername1">Nama RT</label>
-                            <input type="text" class="form-control" name="rt" placeholder="RT" required>
+                            <label for="exampleInputUsername1">RW / RT</label>
+                            <input type="text" class="form-control" name="rt" placeholder="RT" value="RW:000 / RT:000" required>
                         </div>
                         <input type="submit" name="simpan" class="btn btn-success btn-block" value="Simpan">
                     </form>

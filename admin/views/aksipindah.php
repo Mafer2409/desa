@@ -8,7 +8,7 @@ $administrasi_tanggal_konfirmasi = date('Y-m-d');
 if ($aksi == 'Konfirmasi') {
 
     if ($ket == 'Keluar') {
-        $sqluser = mysqli_query($con, "UPDATE user SET user_ket = 'Pindah' WHERE user_id = '$uid'");
+        $sqluser = mysqli_query($con, "UPDATE user SET user_status_tinggal = 'Pindah' WHERE user_id = '$uid'");
     }
 
     $sql = mysqli_query($con, "UPDATE administrasi SET administrasi_status = 'Selesai', administrasi_tanggal_verifikasi = '$administrasi_tanggal_konfirmasi' WHERE administrasi_id = '$id'");

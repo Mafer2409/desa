@@ -18,7 +18,7 @@ if ($idrt == 0) {
     $pdf->Cell(189, 10, '', 0, 1);
 
     $pdf->SetFont('Arial', 'B', 18, 'C');
-    $pdf->Cell(43, 0);
+    $pdf->Cell(45, 0);
     $pdf->Cell(45, 10, 'LAPORAN DATA SEMUA WARGA', 0, 1);
 
     $pdf->SetFont('Arial', 'B', 15, 'C');
@@ -42,7 +42,7 @@ if ($idrt == 0) {
     $pdf->Cell(6, 5, 'No.', 1, 0);
     $pdf->Cell(40, 5, 'Nama', 1, 0);
     $pdf->Cell(35, 5, 'TTL', 1, 0);
-    $pdf->Cell(25, 5, 'RW / RT', 1, 0);
+    $pdf->Cell(10, 5, 'RT', 1, 0);
     $pdf->Cell(20, 5, 'Jenis Kelamin', 1, 0);
     $pdf->Cell(23, 5, 'Status Tinggal', 1, 0);
     $pdf->Cell(30, 5, 'E-Mail', 1, 1);
@@ -55,7 +55,7 @@ if ($idrt == 0) {
         $pdf->Cell(6, 5, $no++ . '.', 1, 0);
         $pdf->Cell(40, 5, $data['user_nama'], 1, 0);
         $pdf->Cell(35, 5, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 1, 0);
-        $pdf->Cell(25, 5, $data['rt'], 1, 0);
+        $pdf->Cell(10, 5, $data['rt'], 1, 0);
         $pdf->Cell(20, 5, $data['user_jk'], 1, 0);
         $pdf->Cell(23, 5, $data['user_status_tinggal'], 1, 0);
         $pdf->Cell(30, 5, $data['user_email'], 1, 1);
@@ -103,7 +103,7 @@ if ($idrt == 0) {
     $pdf->Cell(189, 10, '', 0, 1);
 
     $pdf->SetFont('Arial', 'B', 18, 'C');
-    $pdf->Cell(25, 0);
+    $pdf->Cell(45, 0);
     $pdf->Cell(45, 10, 'LAPORAN DATA WARGA RT : ' . $datart['rt'], 0, 1);
 
     $pdf->SetFont('Arial', 'B', 15, 'C');
@@ -127,7 +127,7 @@ if ($idrt == 0) {
     $pdf->Cell(6, 5, 'No.', 1, 0);
     $pdf->Cell(40, 5, 'Nama', 1, 0);
     $pdf->Cell(35, 5, 'TTL', 1, 0);
-    $pdf->Cell(25, 5, 'RW / RT', 1, 0);
+    $pdf->Cell(10, 5, 'RT', 1, 0);
     $pdf->Cell(20, 5, 'Jenis Kelamin', 1, 0);
     $pdf->Cell(23, 5, 'Status Tinggal', 1, 0);
     $pdf->Cell(30, 5, 'E-Mail', 1, 1);
@@ -140,7 +140,7 @@ if ($idrt == 0) {
         $pdf->Cell(6, 5, $no++ . '.', 1, 0);
         $pdf->Cell(40, 5, $data['user_nama'], 1, 0);
         $pdf->Cell(35, 5, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 1, 0);
-        $pdf->Cell(25, 5, $data['rt'], 1, 0);
+        $pdf->Cell(10, 5, $data['rt'], 1, 0);
         $pdf->Cell(20, 5, $data['user_jk'], 1, 0);
         $pdf->Cell(23, 5, $data['user_status_tinggal'], 1, 0);
         $pdf->Cell(30, 5, $data['user_email'], 1, 1);

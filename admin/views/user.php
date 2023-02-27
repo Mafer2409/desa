@@ -58,8 +58,8 @@
                                     <td><?= $data['user_status']; ?></td>
                                     <td>
                                         <a href="?page=info_user&id=<?= $data['user_id'] ?>" class="text-primary"><i class="fas fa-info-circle"></i></a>
-                                        <a href="?page=edit_user&id=<?= $data['user_id'] ?>" class="text-info"><i class="fas fa-edit"></i></a>
-                                        <a href="?page=hapus_user&id=<?= $data['user_id'] ?>" onclick="return confirm('Yakin ingin menghapus data ini ???')" class="text-danger"><i class="fas fa-trash"></i></a>
+                                        <!-- <a href="?page=edit_user&id=<?= $data['user_id'] ?>" class="text-info"><i class="fas fa-edit"></i></a>
+                                        <a href="?page=hapus_user&id=<?= $data['user_id'] ?>" onclick="return confirm('Yakin ingin menghapus data ini ???')" class="text-danger"><i class="fas fa-trash"></i></a> -->
                                     </td>
                                 </tr>
                             <?php

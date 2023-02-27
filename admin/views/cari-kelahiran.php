@@ -1,7 +1,12 @@
+<?php
+$bln = $_GET['bln'];
+$thn = $_GET['thn'];
+?>
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="mb-2">Kelahiran</h3>
+            <h3 class="mb-2">Filter Kelahiran</h3>
             <div class="card">
 
                 <div class="card-header">
@@ -78,7 +83,11 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM kelahiran, user WHERE kelahiran.kelahiran_user = user.user_id");
+                            if ($bln == '0') {
+                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user WHERE kelahiran.kelahiran_user = user.user_id AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
+                            } else {
+                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user WHERE kelahiran.kelahiran_user = user.user_id AND MONTH(kelahiran.kelahiran_tanggal_verifikasi) = '$bln' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
+                            }
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
                             ?>

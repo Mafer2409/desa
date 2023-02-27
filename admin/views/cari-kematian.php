@@ -1,7 +1,12 @@
+<?php
+$bln = $_GET['bln'];
+$thn = $_GET['thn'];
+?>
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="mb-2">Kelahiran</h3>
+            <h3 class="mb-2">Kematian</h3>
             <div class="card">
 
                 <div class="card-header">
@@ -62,15 +67,12 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Pelapor</th>
-                                <th>Nama Anak</th>
-                                <th>TTL</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Nama Ayah</th>
-                                <th>KTP Ayah</th>
-                                <th>Nama Ibu</th>
-                                <th>KTP Ibu</th>
-                                <th>Surat Ket.</th>
+                                <th>Nama</th>
+                                <th>Yang Meninggal</th>
+                                <th>TTM</th>
+                                <th>Surat Ket. Meninggal</th>
+                                <th>KTP Almarhum</th>
+                                <th>Akte</th>
                                 <th>Status</th>
                                 <th>Tgl Verifikasi</th>
                                 <th>Opsi</th>
@@ -78,35 +80,39 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM kelahiran, user WHERE kelahiran.kelahiran_user = user.user_id");
+                            if ($bln == '0') {
+                                $sql = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn'");
+                            } else {
+                                $sql = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND MONTH(kematian.kematian_tanggal_verifikasi) = '$bln' AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn'");
+                            }
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $iduserm = $data['kematian_user_meninggal'];
+                                $sqluserm = mysqli_query($con, "SELECT * FROM user WHERE user_id = '$iduserm'");
+                                $datam = mysqli_fetch_assoc($sqluserm);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
-                                    <td><?= $data['kelahiran_nama_anak']; ?></td>
-                                    <td><?= $data['kelahiran_tempat_lahir']; ?>, <?= $data['kelahiran_tanggal_lahir']; ?></td>
-                                    <td><?= $data['kelahiran_jk']; ?></td>
-                                    <td><?= $data['kelahiran_nama_ayah']; ?></td>
+                                    <td><?= $datam['user_nama']; ?></td>
+                                    <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
                                     <td>
-                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ayah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
-                                    </td>
-                                    <td><?= $data['kelahiran_nama_ibu']; ?></td>
-                                    <td>
-                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ibu']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
                                     <td>
-                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        <a href="../assets/files/files-kematian/<?= $data['kematian_ktp_almarhum']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
-                                    <td><?= $data['kelahiran_status']; ?></td>
-                                    <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
+                                    <td>
+                                        <a href="../assets/files/files-kematian/<?= $data['kematian_akte']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td>
+                                    <td><?= $data['kematian_status']; ?></td>
+                                    <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
                                     <td>
                                         <?php
-                                        if ($data['kelahiran_status'] == 'Telah Dikonfirmasi RT') {
+                                        if ($data['kematian_status'] == 'Telah Dikonfirmasi RT') {
                                         ?>
-                                            <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                            <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                            <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Konfirmasi&iduserm=<?= $iduserm ?>" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
+                                            <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
                                         <?php
                                         }
                                         ?>
@@ -130,8 +136,8 @@ if (isset($_POST['cari'])) {
     $thn = $_POST['thn'];
 
     if ($bln == '') {
-        echo "<script>window.location='?page=cari-kelahiran&bln=0&thn=$thn';</script>";
+        echo "<script>window.location='?page=cari-kematian&bln=0&thn=$thn';</script>";
     } else {
-        echo "<script>window.location='?page=cari-kelahiran&bln=$bln&thn=$thn';</script>";
+        echo "<script>window.location='?page=cari-kematian&bln=$bln&thn=$thn';</script>";
     }
 }
