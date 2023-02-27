@@ -55,6 +55,36 @@ $datauser = mysqli_fetch_assoc($sqluser);
                     <td>:</td>
                     <td><?= $datauser['user_alamat'] ?></td>
                 </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>:</td>
+                    <td><?= $datauser['user_status'] ?></td>
+                </tr>
+                <tr>
+                    <td>Status Tinggal</td>
+                    <td>:</td>
+                    <td><?= $datauser['user_status_tinggal'] ?></td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan</td>
+                    <td>:</td>
+                    <td><?= $datauser['user_pekerjaan'] ?></td>
+                </tr>
+                <tr>
+                    <td>Status Kawin</td>
+                    <td>:</td>
+                    <td><?= $datauser['user_status_kawin'] ?></td>
+                </tr>
+                <tr>
+                    <td>Jenjang Pendidikan</td>
+                    <td>:</td>
+                    <td><?= $datauser['user_jenjang_pendidikan'] ?></td>
+                </tr>
+                <tr>
+                    <td>E-Mail</td>
+                    <td>:</td>
+                    <td><?= $datauser['user_email'] ?></td>
+                </tr>
             </table>
         </div>
     </div>
