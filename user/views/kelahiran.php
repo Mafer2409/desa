@@ -108,6 +108,23 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Agama</label>
+                        <select class="form-control" name="kelahiran_agama" required>
+                            <option value="">-- Pilih Agama --</option>
+                            <option value="Katolik">Katolik</option>
+                            <option value="Protestan">Protestan</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Budha">Budha</option>
+                            <option value="Konghuchu">Konghuchu</option>
+                            <option value="Lainnya...">Lainnya...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat</label>
+                        <textarea name="kelahiran_alamat" class="form-control" cols="10" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
                         <label>Nama ayah</label>
                         <input type="text" name="kelahiran_nama_ayah" class="form-control" placeholder="Nama Lengkap Ayah">
                     </div>
@@ -146,6 +163,8 @@ if (isset($_POST['simpan'])) {
     $kelahiran_tempat_lahir = $_POST['kelahiran_tempat_lahir'];
     $kelahiran_tanggal_lahir = $_POST['kelahiran_tanggal_lahir'];
     $kelahiran_jk = $_POST['kelahiran_jk'];
+    $kelahiran_agama = $_POST['kelahiran_agama'];
+    $kelahiran_alamat = $_POST['kelahiran_alamat'];
     $kelahiran_nama_ayah = $_POST['kelahiran_nama_ayah'];
 
     $extensi = explode(".", $_FILES['kelahiran_ktp_ayah']['name']);
@@ -168,7 +187,7 @@ if (isset($_POST['simpan'])) {
     $kelahiran_status = 'Menunggu Verifikasi RT';
     $kelahiran_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_nama_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi')");
+    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kelahiran';</script>";

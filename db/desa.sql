@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Feb 2023 pada 09.13
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.1
+-- Waktu pembuatan: 27 Feb 2023 pada 17.53
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -128,6 +127,8 @@ CREATE TABLE `kelahiran` (
   `kelahiran_tempat_lahir` varchar(255) NOT NULL,
   `kelahiran_tanggal_lahir` date NOT NULL,
   `kelahiran_jk` varchar(255) NOT NULL,
+  `kelahiran_agama` varchar(255) NOT NULL,
+  `kelahiran_alamat` text NOT NULL,
   `kelahiran_nama_ayah` varchar(255) NOT NULL,
   `kelahiran_ktp_ayah` text NOT NULL,
   `kelahiran_nama_ibu` varchar(255) NOT NULL,
@@ -141,12 +142,12 @@ CREATE TABLE `kelahiran` (
 -- Dumping data untuk tabel `kelahiran`
 --
 
-INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_nama_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`) VALUES
-(1, 5, 2, '2023-09-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', 'Tes 3', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24'),
-(2, 5, 2, '2023-06-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', 'Tesasalsk', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24'),
-(3, 5, 2, '2022-06-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', 'Tes 3', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00'),
-(4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', 'Andreas Pandai', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00'),
-(5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', 'andreas', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26');
+INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_agama`, `kelahiran_alamat`, `kelahiran_nama_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`) VALUES
+(1, 5, 2, '2023-09-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', '', '', 'Tes 3', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24'),
+(2, 5, 2, '2023-06-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', '', '', 'Tesasalsk', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24'),
+(3, 5, 2, '2022-06-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', '', '', 'Tes 3', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00'),
+(4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', '', '', 'Andreas Pandai', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00'),
+(5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', '', '', 'andreas', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26');
 
 -- --------------------------------------------------------
 
@@ -214,9 +215,29 @@ CREATE TABLE `rt` (
 --
 
 INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
-(1, '001', 1),
-(2, '002', 5),
-(5, '003', 7);
+(1, 'RW:001 / RT:001', 1),
+(2, 'RW:002 / RT:001', 5),
+(5, 'RW:001 / RT:002', 7),
+(6, 'RW:002 / RT:002', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `rw`
+--
+
+CREATE TABLE `rw` (
+  `rw_id` int(11) NOT NULL,
+  `rw_nama` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `rw`
+--
+
+INSERT INTO `rw` (`rw_id`, `rw_nama`) VALUES
+(1, '001'),
+(2, '002');
 
 -- --------------------------------------------------------
 
@@ -249,12 +270,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir`, `user_rt_id`, `user_agama`, `user_jk`, `user_wn`, `user_alamat`, `user_status`, `user_status_tinggal`, `user_pekerjaan`, `user_status_kawin`, `user_jenjang_pendidikan`, `user_email`, `user_password`) VALUES
-(1, '0', 'Tes 1', 'tes1', '2002-09-10', 1, '', 'Laki-laki', '081234567890', 'tes1@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
-(2, '0', 'Tes 2', 'tes2', '1993-08-04', 2, '', 'Perempuan', '089876543210', 'tes2@gmail.com', 'Aktif', 'Tidak Tetap', '', '', '', '', ''),
-(5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '098754273927', 'tes3@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
-(6, '0', 'Tes4', '4tes', '1996-03-03', 5, '', 'Perempuan', '09474738372', 'tes4@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
-(7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '121213442', 'rt3@gmail.com', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
-(8, '0', 'Tes 6', 'Tes', '1999-09-23', 1, '', 'Laki-laki', '0986432', 'tes6@gmail.com', 'Aktif', 'Tetap', '', '', '', '', ''),
+(1, '0', 'Tes 1', 'tes1', '2002-09-10', 1, '', 'Laki-laki', '', '', 'Aktif', 'Tetap', 'Karyawan Swasta', '', '', '', ''),
+(2, '0', 'Tes 2', 'tes2', '1993-08-04', 2, '', 'Perempuan', '', '', 'Aktif', 'Tidak Tetap', 'Petani', '', '', '', ''),
+(5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '', 'Alamat Coyyy', 'Aktif', 'Tetap', 'Nelayan', '', '', '', ''),
+(6, '0', 'Tes4', '4tes', '1996-03-03', 5, '', 'Perempuan', '', '', 'Aktif', 'Tetap', 'Petani', '', '', '', ''),
+(7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '', '', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
+(8, '0', 'Tes 6', 'Tes', '1999-09-23', 1, '', 'Laki-laki', 'WNA', '', 'Aktif', 'Tetap', '', '', '', '', ''),
 (9, '23114046', 'Mafer', 'Larantuka', '1996-09-24', 1, 'Katolik', 'Laki-laki', 'WNI', 'Weri', 'Aktif', 'Tidak Tetap', 'Karyawan Swasta', 'Belum Menikah', 'S1', 'manfdz70@gmail.com', '4c08ab9ef09bd1575f65fcd022dd5f83');
 
 --
@@ -308,6 +329,12 @@ ALTER TABLE `kepala_desa`
 --
 ALTER TABLE `rt`
   ADD PRIMARY KEY (`rt_id`);
+
+--
+-- Indeks untuk tabel `rw`
+--
+ALTER TABLE `rw`
+  ADD PRIMARY KEY (`rw_id`);
 
 --
 -- Indeks untuk tabel `user`
@@ -365,7 +392,13 @@ ALTER TABLE `kepala_desa`
 -- AUTO_INCREMENT untuk tabel `rt`
 --
 ALTER TABLE `rt`
-  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `rw`
+--
+ALTER TABLE `rw`
+  MODIFY `rw_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

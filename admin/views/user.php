@@ -37,6 +37,7 @@
                                 <th>TTL</th>
                                 <th>RT</th>
                                 <th>Jenis Kelamin</th>
+                                <th>Pekerjaan</th>
                                 <th>Status Tinggal</th>
                                 <th>Status User</th>
                                 <th>Opsi</th>
@@ -54,6 +55,7 @@
                                     <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
                                     <td><?= $data['rt']; ?></td>
                                     <td><?= $data['user_jk']; ?></td>
+                                    <td><?= $data['user_pekerjaan']; ?></td>
                                     <td><?= $data['user_status_tinggal']; ?></td>
                                     <td><?= $data['user_status']; ?></td>
                                     <td>
