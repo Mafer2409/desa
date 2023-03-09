@@ -124,6 +124,10 @@ if (!isset($_SESSION['id_user'])) {
             include "views/berita.php";
         } else if (@$_GET['page'] == 'detail-berita') {
             include "views/detail-berita.php";
+        } else if (@$_GET['page'] == 'info-warga') {
+            include "views/info-warga.php";
+        } else if (@$_GET['page'] == 'cari-kelahiran') {
+            include "views/cari-kelahiran.php";
         }
         ?>
     </div>

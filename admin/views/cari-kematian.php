@@ -55,7 +55,7 @@ $thn = $_GET['thn'];
                             <div class="col-lg-4">
                                 <div class="row">
                                     <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                    <a href="../assets/report/report-admin/report-kelahiran.php?bln=0&thn=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                    <a href="../assets/report/report-admin/report-kematian.php?bln=<?= $bln ?>&thn=<?= $thn ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
                                 </div>
                             </div>
                         </div>
@@ -70,6 +70,7 @@ $thn = $_GET['thn'];
                                 <th>Nama</th>
                                 <th>Yang Meninggal</th>
                                 <th>TTM</th>
+                                <th>Sebab Meninggal</th>
                                 <th>Surat Ket. Meninggal</th>
                                 <th>KTP Almarhum</th>
                                 <th>Akte</th>
@@ -96,6 +97,7 @@ $thn = $_GET['thn'];
                                     <td><?= $data['user_nama']; ?></td>
                                     <td><?= $datam['user_nama']; ?></td>
                                     <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
+                                    <td><?= $data['kematian_sebab_meninggal']; ?></td>
                                     <td>
                                         <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>

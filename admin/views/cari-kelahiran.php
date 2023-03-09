@@ -68,6 +68,7 @@ $thn = $_GET['thn'];
                             <tr>
                                 <th>No.</th>
                                 <th>Pelapor</th>
+                                <th>RW/RT</th>
                                 <th>Nama Anak</th>
                                 <th>TTL</th>
                                 <th>Jenis Kelamin</th>
@@ -84,9 +85,9 @@ $thn = $_GET['thn'];
                         <tbody>
                             <?php
                             if ($bln == '0') {
-                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user WHERE kelahiran.kelahiran_user = user.user_id AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
+                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE kelahiran.kelahiran_user = user.user_id AND kelahiran.kelahiran_rt = rt.rt_id AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
                             } else {
-                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user WHERE kelahiran.kelahiran_user = user.user_id AND MONTH(kelahiran.kelahiran_tanggal_verifikasi) = '$bln' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
+                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE kelahiran.kelahiran_user = user.user_id AND kelahiran.kelahiran_rt = rt.rt_id AND MONTH(kelahiran.kelahiran_tanggal_verifikasi) = '$bln' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
                             }
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
@@ -94,6 +95,7 @@ $thn = $_GET['thn'];
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
+                                    <td><?= $data['rt']; ?></td>
                                     <td><?= $data['kelahiran_nama_anak']; ?></td>
                                     <td><?= $data['kelahiran_tempat_lahir']; ?>, <?= $data['kelahiran_tanggal_lahir']; ?></td>
                                     <td><?= $data['kelahiran_jk']; ?></td>

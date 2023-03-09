@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Feb 2023 pada 17.53
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Waktu pembuatan: 09 Mar 2023 pada 07.35
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -163,6 +164,7 @@ CREATE TABLE `kematian` (
   `kematian_user_meninggal` int(11) NOT NULL,
   `kematian_tempat_meninggal` varchar(255) NOT NULL,
   `kematian_tanggal_meninggal` date NOT NULL,
+  `kematian_sebab_meninggal` text NOT NULL,
   `kematian_sk_dokter` text NOT NULL,
   `kematian_ktp_almarhum` text NOT NULL,
   `kematian_akte` text NOT NULL,
@@ -174,10 +176,10 @@ CREATE TABLE `kematian` (
 -- Dumping data untuk tabel `kematian`
 --
 
-INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`) VALUES
-(1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Selesai', '2022-10-24'),
-(2, 5, 2, '2022-10-26', 1, 'Lamanele', '2001-12-12', 'Tes3 - Surat Ket - 1666786783.png', 'Tes3 - KTP Almarhum - 1666786783.png', 'Tes3 - Akte - 1666786783.png', 'Menunggu Verifikasi RT', '0000-00-00'),
-(3, 2, 2, '2023-02-07', 7, 'Tes', '2022-09-09', 'Tes 2 - Surat Ket - 1675775261.png', 'Tes 2 - KTP Almarhum - 1675775261.png', 'Tes 2 - Akte - 1675775261.png', 'Selesai', '2023-02-07');
+INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sebab_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`) VALUES
+(1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', '', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Selesai', '2022-10-24'),
+(2, 5, 2, '2022-10-26', 1, 'Lamanele', '2001-12-12', '', 'Tes3 - Surat Ket - 1666786783.png', 'Tes3 - KTP Almarhum - 1666786783.png', 'Tes3 - Akte - 1666786783.png', 'Menunggu Verifikasi RT', '0000-00-00'),
+(3, 2, 2, '2023-02-07', 7, 'Tes', '2022-09-09', '', 'Tes 2 - Surat Ket - 1675775261.png', 'Tes 2 - KTP Almarhum - 1675775261.png', 'Tes 2 - Akte - 1675775261.png', 'Selesai', '2023-02-07');
 
 -- --------------------------------------------------------
 
@@ -272,7 +274,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir`, `user_rt_id`, `user_agama`, `user_jk`, `user_wn`, `user_alamat`, `user_status`, `user_status_tinggal`, `user_pekerjaan`, `user_status_kawin`, `user_jenjang_pendidikan`, `user_email`, `user_password`) VALUES
 (1, '0', 'Tes 1', 'tes1', '2002-09-10', 1, '', 'Laki-laki', '', '', 'Aktif', 'Tetap', 'Karyawan Swasta', '', '', '', ''),
 (2, '0', 'Tes 2', 'tes2', '1993-08-04', 2, '', 'Perempuan', '', '', 'Aktif', 'Tidak Tetap', 'Petani', '', '', '', ''),
-(5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '', 'Alamat Coyyy', 'Aktif', 'Tetap', 'Nelayan', '', '', '', ''),
+(5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '', 'Alamat Coyyy', 'Aktif', 'Tetap', 'Nelayan', '', '', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed'),
 (6, '0', 'Tes4', '4tes', '1996-03-03', 5, '', 'Perempuan', '', '', 'Aktif', 'Tetap', 'Petani', '', '', '', ''),
 (7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '', '', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
 (8, '0', 'Tes 6', 'Tes', '1999-09-23', 1, '', 'Laki-laki', 'WNA', '', 'Aktif', 'Tetap', '', '', '', '', ''),

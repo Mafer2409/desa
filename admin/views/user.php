@@ -35,7 +35,7 @@
                                 <th>No.</th>
                                 <th>Nama</th>
                                 <th>TTL</th>
-                                <th>RT</th>
+                                <th>RW/RT</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Pekerjaan</th>
                                 <th>Status Tinggal</th>

@@ -13,6 +13,7 @@
                     <th>Nama</th>
                     <th>Yang Meninggal</th>
                     <th>TTM</th>
+                    <th>Sebab Meninggal</th>
                     <th>Surat Ket. Meninggal</th>
                     <th>KTP Almarhum</th>
                     <th>Akte</th>
@@ -35,6 +36,7 @@
                         <td><?= $data['user_nama']; ?></td>
                         <td><?= $datam['user_nama']; ?></td>
                         <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
+                        <td><?= $data['kematian_sebab_meninggal']; ?></td>
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
@@ -107,6 +109,10 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Sebab Meninggal</label>
+                        <input type="text" name="kematian_sebab_meninggal" class="form-control" placeholder="Sebab Meninggal" required>
+                    </div>
+                    <div class="form-group">
                         <label>Surat Ket. Meninggal</label>
                         <input type="file" name="kematian_sk_dokter" class="form-control">
                     </div>
@@ -136,6 +142,7 @@ if (isset($_POST['simpan'])) {
     $kematian_user_meninggal = $_POST['kematian_user_meninggal'];
     $kematian_tempat_meninggal = $_POST['kematian_tempat_meninggal'];
     $kematian_tanggal_meninggal = $_POST['kematian_tanggal_meninggal'];
+    $kematian_sebab_meninggal = $_POST['kematian_sebab_meninggal'];
 
     $extensi = explode(".", $_FILES['kematian_sk_dokter']['name']);
     $kematian_sk_dokter = "$namauser - Surat Ket - " . round(microtime(true)) . "." . end($extensi);
@@ -155,7 +162,7 @@ if (isset($_POST['simpan'])) {
     $kematian_status = 'Menunggu Verifikasi RT';
     $kematian_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kematian VALUES('', '$kematian_user', '$kematian_rt', '$kematian_tanggal', '$kematian_user_meninggal', '$kematian_tempat_meninggal', '$kematian_tanggal_meninggal', '$kematian_sk_dokter', '$kematian_ktp_almarhum', '$kematian_akte', '$kematian_status', '$kematian_tanggal_verifikasi')");
+    $sql = mysqli_query($con, "INSERT INTO kematian VALUES('', '$kematian_user', '$kematian_rt', '$kematian_tanggal', '$kematian_user_meninggal', '$kematian_tempat_meninggal', '$kematian_tanggal_meninggal', '$kematian_sebab_meninggal', '$kematian_sk_dokter', '$kematian_ktp_almarhum', '$kematian_akte', '$kematian_status', '$kematian_tanggal_verifikasi')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kematian';</script>";

@@ -1,3 +1,10 @@
+<?php
+$pin = $_GET['pin'];
+$bln = $_GET['bln'];
+$thn = $_GET['thn'];
+?>
+
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -60,7 +67,7 @@
                             <div class="col-lg-3">
                                 <div class="row">
                                     <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                    <a href="../assets/report/report-admin/report-pindah.php?bln=0&thn=0&pin=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                    <a href="../assets/report/report-admin/report-pindah.php?bln=<?= $bln ?>&thn=<?= $thn ?>&pin=<?= $pin ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +94,22 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id");
+                            $sql = '';
+                            if ($bln == 0) {
+                                if ($pin == 0) {
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn'");
+                                } else {
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND administrasi.administrasi_ket = '$pin'");
+                                }
+                            } else {
+                                if ($pin == 0) {
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln'");
+                                } else {
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' AND administrasi.administrasi_ket = '$pin'");
+                                }
+                            }
+
+                            //$sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
                             ?>

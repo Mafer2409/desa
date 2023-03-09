@@ -17,14 +17,14 @@ $namart = $datart['rt'];
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
                             <p class="text-light fs-5 mb-4 pb-3">KETUA RT : <?= $namart ?></p>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-lg-3 mx-">
                                     <a href="sign-in.php" class="btn btn-primary rounded-pill py-3 px-5">Sign In!</a>
                                 </div>
                                 <div class="col-lg-6 mx-">
                                     <a href="sign-up.php" class="btn btn-primary rounded-pill py-3 px-5">Sign Up!</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

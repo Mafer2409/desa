@@ -8,6 +8,7 @@
                     <th>Nama</th>
                     <th>Yang Meninggal</th>
                     <th>TTM</th>
+                    <th>Sebab Meninggal</th>
                     <th>Surat Ket. Meninggal</th>
                     <th>KTP Almarhum</th>
                     <th>Akte</th>
@@ -30,6 +31,7 @@
                         <td><?= $data['user_nama']; ?></td>
                         <td><?= $datam['user_nama']; ?></td>
                         <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
+                        <td><?= $data['kematian_sebab_meninggal']; ?></td>
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
@@ -73,6 +75,7 @@
                     <th>Nama</th>
                     <th>Yang Meninggal</th>
                     <th>TTM</th>
+                    <th>Sebab Meninggal</th>
                     <th>Surat Ket. Meninggal</th>
                     <th>KTP Almarhum</th>
                     <th>Akte</th>
@@ -95,6 +98,7 @@
                         <td><?= $data['user_nama']; ?></td>
                         <td><?= $datam['user_nama']; ?></td>
                         <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
+                        <td><?= $data['kematian_sebab_meninggal']; ?></td>
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>

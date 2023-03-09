@@ -128,12 +128,12 @@ if (!isset($_SESSION['id_admin'])) {
                             <span class="menu-title">Berita</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=laporan">
                             <i class="icon-file menu-icon"></i>
                             <span class="menu-title">Laporan</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="?page=kepala_desa">
                             <i class="icon-head menu-icon"></i>
@@ -278,6 +278,8 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/cari-kelahiran.php";
                     } else if (@$_GET['page'] == 'cari-kematian') {
                         include "views/cari-kematian.php";
+                    } else if (@$_GET['page'] == 'cari-pindah') {
+                        include "views/cari-pindah.php";
                     } else if (@$_GET['page'] == 'laporan') {
                         include "views/laporan.php";
                     }
