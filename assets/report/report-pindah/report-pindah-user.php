@@ -18,6 +18,8 @@ if ($data['administrasi_ket'] == 'Masuk') {
     $pdf = new FPDF('P', 'mm', 'A4');
     $pdf->AddPage();
 
+    $pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
+
     $pdf->Cell(189, 10, '', 0, 1);
 
     $pdf->SetFont('Arial', 'B', 18, 'C');
@@ -93,6 +95,8 @@ if ($data['administrasi_ket'] == 'Masuk') {
 } else {
     $pdf = new FPDF('P', 'mm', 'A4');
     $pdf->AddPage();
+
+    $pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
 
     $pdf->Cell(189, 10, '', 0, 1);
 

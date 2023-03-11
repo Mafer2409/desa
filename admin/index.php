@@ -23,8 +23,8 @@ session_destroy();
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                            <div class="brand-logo">
-                                <img src="../assets/img/logo-flotim.jpg" alt="logo">
+                            <div class="brand-logo text-center">
+                                <img src="../assets/img/logo-flotim.jpg" alt="logo" class="ml-6">
                             </div>
                             <!-- <h4>Hello! let's get started</h4> -->
                             <h6 class="font-weight-light">Login untuk melanjutkan...</h6>

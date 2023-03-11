@@ -9,7 +9,7 @@ $namart = $datart['rt'];
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="../img/carousel-1.jpg" alt="">
+            <img class="img-fluid" src="../assets/img/3.jpeg" alt="">
             <div class="owl-carousel-inner">
                 <div class="container">
                     <div class="row justify-content-start">
@@ -23,7 +23,7 @@ $namart = $datart['rt'];
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="../img/carousel-2.jpg" alt="">
+            <img class="img-fluid" src="../assets/img/4.jpeg" alt="">
             <div class="owl-carousel-inner">
                 <div class="container">
                     <div class="row justify-content-start">

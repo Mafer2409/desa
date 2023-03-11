@@ -13,7 +13,7 @@ $tglnow = date('d - m - Y');
 $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->AddPage();
 
-// $pdf->Image('logo-paroki.jpeg', 25, 20, 25, 25);
+$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
 // ======================================================================================
 
 $pdf->Cell(189, 10, '', 0, 1);
@@ -49,21 +49,21 @@ if ($thn == 0) {
     if ($bln == 0) {
         if ($pin == 0) {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk', 0, 1);
         } else {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk ' . $pin, 0, 1);
         }
     } else {
         if ($pin == 0) {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk ' . $bln, 0, 1);
         } else {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk Bulan ' . $bln, 0, 1);
         }
     }
@@ -71,21 +71,21 @@ if ($thn == 0) {
     if ($bln == 0) {
         if ($pin == 0) {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk Tahun ' . $thn, 0, 1);
         } else {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk ' . $pin . ' Tahun ' . $thn, 0, 1);
         }
     } else {
         if ($pin == 0) {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk Bulan ' . $bln . ' Tahun ' . $thn, 0, 1);
         } else {
             $pdf->SetFont('Arial', 'B', 18, 'C');
-            $pdf->Cell(95, 0);
+            $pdf->Cell(80, 0);
             $pdf->Cell(45, 10, 'Laporan Data Pindah Penduduk ' . $pin . ' Bulan ' . $bln . ' Tahun ' . $thn, 0, 1);
         }
     }

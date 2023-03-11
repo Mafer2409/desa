@@ -12,7 +12,7 @@ $datart = mysqli_fetch_assoc($sqlrt);
 $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->AddPage();
 
-// $pdf->Image('logo-paroki.jpeg', 25, 20, 25, 25);
+$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
 // ======================================================================================
 if ($idrt == 0) {
     $pdf->Cell(189, 10, '', 0, 1);
