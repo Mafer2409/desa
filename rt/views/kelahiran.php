@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="row">
-                            <a href="../assets/report/report-rt/report-kelahiran-rt.php?bln=0&thn=0&rtid=<?= $idrt ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                            <a href="../assets/report/report-rt/report-kelahiran-rt.php?bln=0&thn=0&idrt=<?= $idrt ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
                         </div>
                     </div>
                 </div>

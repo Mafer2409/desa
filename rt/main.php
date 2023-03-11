@@ -128,6 +128,10 @@ if (!isset($_SESSION['id_user'])) {
             include "views/info-warga.php";
         } else if (@$_GET['page'] == 'cari-kelahiran') {
             include "views/cari-kelahiran.php";
+        } else if (@$_GET['page'] == 'cari-kematian') {
+            include "views/cari-kematian.php";
+        } else if (@$_GET['page'] == 'cari-pindah') {
+            include "views/cari-pindah.php";
         }
         ?>
     </div>
