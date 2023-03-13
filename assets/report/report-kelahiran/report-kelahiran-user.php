@@ -19,7 +19,7 @@ require('../../fpdf16/fpdf.php');
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
+$pdf->Image('../../img/logo-flotim.jpg', 15, 20, 25, 25);
 
 $pdf->Cell(189, 10, '', 0, 1);
 
@@ -96,9 +96,9 @@ $pdf->Cell(10, 8, ':', 0, 0);
 $pdf->Cell(10, 8, $data['user_jk'], 0, 1);
 
 $pdf->Cell(30, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'Telepon', 0, 0);
+$pdf->Cell(40, 8, 'NIK', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
-$pdf->Cell(10, 8, $data['user_telepon'], 0, 1);
+$pdf->Cell(10, 8, $data['user_nik'], 0, 1);
 
 $pdf->Cell(189, 10, '', 0, 1);
 

@@ -19,7 +19,7 @@ require('../../fpdf16/fpdf.php');
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
+$pdf->Image('../../img/logo-flotim.jpg', 15, 20, 25, 25);
 
 $pdf->Cell(189, 10, '', 0, 1);
 
@@ -92,6 +92,11 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['kematian_tanggal_meninggal'], 0, 1);
 
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Sebab Kematian', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $data['kematian_sebab_meninggal'], 0, 1);
+
     $pdf->Cell(189, 10, '', 0, 1);
 
     $pdf->Cell(10, 8, '', 0, 0);
@@ -113,9 +118,9 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(10, 8, $data['user_jk'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'Telepon', 0, 0);
+    $pdf->Cell(40, 8, 'NIK', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
-    $pdf->Cell(10, 8, $data['user_telepon'], 0, 1);
+    $pdf->Cell(10, 8, $data['user_nik'], 0, 1);
 
     $pdf->Cell(189, 10, '', 0, 1);
 
@@ -144,7 +149,7 @@ $pdf->Cell(120, 0);
 $pdf->Cell(110, 5, 'Kepala Desa Nelelamadike', 0, 1);
 
 $pdf->Cell(189, 20, '', 0, 1);
-$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 232, 40, 20);
+$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 240, 40, 20);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(120, 0);
