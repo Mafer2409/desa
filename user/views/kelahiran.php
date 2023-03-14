@@ -134,7 +134,7 @@
                     </div>
                     <div class="form-group">
                         <label>Nama ibu</label>
-                        <input type="text" name="kelahiran_nama_ibu" class="form-control" placeholder="Nama Lengkap Ayah">
+                        <input type="text" name="kelahiran_nama_ibu" class="form-control" placeholder="Nama Lengkap Ibu">
                     </div>
                     <div class="form-group">
                         <label>KTP ibu</label>
