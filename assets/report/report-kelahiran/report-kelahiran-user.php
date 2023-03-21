@@ -124,7 +124,7 @@ $pdf->Cell(120, 0);
 $pdf->Cell(110, 5, 'Kepala Desa Nelelamadike', 0, 1);
 
 $pdf->Cell(189, 20, '', 0, 1);
-$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 215, 40, 20);
+//$pdf->Image('../../img/' . $datakades['kepala_desa_ttd'], 125, 215, 40, 20);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(120, 0);

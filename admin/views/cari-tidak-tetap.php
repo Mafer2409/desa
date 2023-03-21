@@ -1,7 +1,13 @@
+<?php
+$idrt = $_GET['idrt'];
+//$s = $_GET['s'];
+?>
+
+
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3>Data semua warga</h3>
             <div class="card">
                 <form class="mx-3" action="" method="post">
                     <div class="row">
@@ -24,7 +30,7 @@
                         <div class="col-lg-4">
                             <div class="row">
                                 <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                <a href="../assets/report/report-user/report-user.php?idrt=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                <!-- <a href="../assets/report/report-user/report-user.php?idrt=<?= $idrt ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
                             </div>
                         </div>
                     </div>
@@ -36,9 +42,8 @@
                                 <th>No.</th>
                                 <th>Nama</th>
                                 <th>TTL</th>
-                                <th>RW/RT</th>
+                                <th>RT</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Pekerjaan</th>
                                 <th>Status Tinggal</th>
                                 <th>Status User</th>
                                 <th>Opsi</th>
@@ -47,7 +52,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id");
+                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt' AND user.user_status_tinggal = 'Tidak Tetap'");
                             while ($data = mysqli_fetch_assoc($sql)) {
                             ?>
                                 <tr>
@@ -56,7 +61,6 @@
                                     <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
                                     <td><?= $data['rt']; ?></td>
                                     <td><?= $data['user_jk']; ?></td>
-                                    <td><?= $data['user_pekerjaan']; ?></td>
                                     <td><?= $data['user_status_tinggal']; ?></td>
                                     <td><?= $data['user_status']; ?></td>
                                     <td>
@@ -81,8 +85,8 @@ if (isset($_POST['cari'])) {
     $rt = $_POST['rt_id'];
 
     if ($rt == '') {
-        echo "<script>window.location='?page=user';</script>";
+        echo "<script>window.location='?page=tidak-tetap';</script>";
     } else {
-        echo "<script>window.location='?page=cari-user&idrt=$rt';</script>";
+        echo "<script>window.location='?page=cari-tidak-tetap&idrt=$rt';</script>";
     }
 }

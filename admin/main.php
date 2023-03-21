@@ -96,11 +96,26 @@ if (!isset($_SESSION['id_admin'])) {
                             <span class="menu-title">Jenis</span>
                         </a>
                     </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=user">
                             <i class="icon-head menu-icon"></i>
                             <span class="menu-title">User</span>
                         </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-warga" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">Data Warga</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-warga">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="?page=user">Semua warga</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=tetap">Tetap</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=tidak-tetap">Tidak Tetap</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=meninggal">Meninggal</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?page=rt">
@@ -282,6 +297,18 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/cari-pindah.php";
                     } else if (@$_GET['page'] == 'laporan') {
                         include "views/laporan.php";
+                    } else if (@$_GET['page'] == 'tetap') {
+                        include "views/tetap.php";
+                    } else if (@$_GET['page'] == 'tidak-tetap') {
+                        include "views/tidak-tetap.php";
+                    } else if (@$_GET['page'] == 'meninggal') {
+                        include "views/meninggal.php";
+                    } else if (@$_GET['page'] == 'cari-tetap') {
+                        include "views/cari-tetap.php";
+                    } else if (@$_GET['page'] == 'cari-tidak-tetap') {
+                        include "views/cari-tidak-tetap.php";
+                    } else if (@$_GET['page'] == 'cari-meninggal') {
+                        include "views/cari-meninggal.php";
                     }
                     ?>
                 </div>

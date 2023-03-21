@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3>Data semua warga</h3>
+            <h3>Data warga - Penduduk Meninggal</h3>
             <div class="card">
                 <form class="mx-3" action="" method="post">
                     <div class="row">
@@ -24,7 +24,7 @@
                         <div class="col-lg-4">
                             <div class="row">
                                 <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                <a href="../assets/report/report-user/report-user.php?idrt=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                <!-- <a href="../assets/report/report-user/report-user.php?idrt=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id");
+                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_status_tinggal = 'Meninggal'");
                             while ($data = mysqli_fetch_assoc($sql)) {
                             ?>
                                 <tr>
@@ -81,8 +81,8 @@ if (isset($_POST['cari'])) {
     $rt = $_POST['rt_id'];
 
     if ($rt == '') {
-        echo "<script>window.location='?page=user';</script>";
+        echo "<script>window.location='?page=meninggal';</script>";
     } else {
-        echo "<script>window.location='?page=cari-user&idrt=$rt';</script>";
+        echo "<script>window.location='?page=cari-meninggal&idrt=$rt';</script>";
     }
 }
