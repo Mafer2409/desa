@@ -110,7 +110,7 @@ session_destroy();
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="user_alamat" class="form-control" cols="30" rows="10" required></textarea>
+                                    <textarea name="user_alamat" class="form-control" cols="20" rows="5" required placeholder="Alamat..."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="user_status_tinggal" required>
