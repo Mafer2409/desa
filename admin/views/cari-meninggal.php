@@ -30,7 +30,7 @@ $idrt = $_GET['idrt'];
                         <div class="col-lg-4">
                             <div class="row">
                                 <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                <!-- <a href="../assets/report/report-user/report-user.php?idrt=<?= $idrt ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
+                                <a href="../assets/report/report-user/report-user.php?idrt=<?= $idrt ?>&s=Meninggal" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
                             </div>
                         </div>
                     </div>
