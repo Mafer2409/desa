@@ -174,17 +174,17 @@ if (isset($_POST['simpan'])) {
     $pass = $_POST['user_password'];
 
     if ($pass == '') {
-        $sql = mysqli_query($con, "UPDATE user SET user_nik = '$user_nik', user_nama = '$user_nama', user_tempat_lahir = '$user_tempat_lahir', user_tgl_lahir = '$user_tanggal_lahir', user_rt_id = '$user_rt_id', user_agama = '$user_agama', user_jk = '$user_jk', user_wn = '$user_wn', user_alamat = '$user_alamat', user_status = '$user_status', user_status_tinggal = $user_status_tinggal, user_pekerjaan = $user_pekerjaan, user_status_kawin = '$user_status_kawin', user_jenjang_pendidikan = '$user_jenjang_pendidikan', user_email = '$user_email' WHERE user_id = '$id_user'");
+        $sql = mysqli_query($con, "UPDATE user SET user_nik = '$user_nik', user_nama = '$user_nama', user_tempat_lahir = '$user_tempat_lahir', user_tgl_lahir = '$user_tanggal_lahir', user_rt_id = '$user_rt_id', user_agama = '$user_agama', user_jk = '$user_jk', user_wn = '$user_wn', user_alamat = '$user_alamat', user_status = '$user_status', user_status_tinggal = '$user_status_tinggal', user_pekerjaan = '$user_pekerjaan', user_status_kawin = '$user_status_kawin', user_jenjang_pendidikan = '$user_jenjang_pendidikan', user_email = '$user_email' WHERE user_id = '$id_user'");
 
         if ($sql) {
             echo "<script>alert('Ubah data Berhasil !');window.location='?page=user';</script>";
         } else {
-            echo "<script>alert('Ubah data Gagal ! Ulangi Ubah data !');window.location='?page=user';</script>";
+            die(mysqli_error($con));
         }
     } else {
         $user_password = md5($_POST['user_password']);
 
-        $sql = mysqli_query($con, "UPDATE user SET user_nik = '$user_nik', user_nama = '$user_nama', user_tempat_lahir = '$user_tempat_lahir', user_tgl_lahir = '$user_tanggal_lahir', user_rt_id = '$user_rt_id', user_agama = '$user_agama', user_jk = '$user_jk', user_wn = '$user_wn', user_alamat = '$user_alamat', user_status = '$user_status', user_status_tinggal = $user_status_tinggal, user_pekerjaan = $user_pekerjaan, user_status_kawin = '$user_status_kawin', user_jenjang_pendidikan = '$user_jenjang_pendidikan', user_email = '$user_email', user_password = '$user_password' WHERE user_id = '$id_user'");
+        $sql = mysqli_query($con, "UPDATE user SET user_nik = '$user_nik', user_nama = '$user_nama', user_tempat_lahir = '$user_tempat_lahir', user_tgl_lahir = '$user_tanggal_lahir', user_rt_id = '$user_rt_id', user_agama = '$user_agama', user_jk = '$user_jk', user_wn = '$user_wn', user_alamat = '$user_alamat', user_status = '$user_status', user_status_tinggal = '$user_status_tinggal', user_pekerjaan = '$user_pekerjaan', user_status_kawin = '$user_status_kawin', user_jenjang_pendidikan = '$user_jenjang_pendidikan', user_email = '$user_email', user_password = '$user_password' WHERE user_id = '$id_user'");
 
         if ($sql) {
             echo "<script>alert('Ubah data Berhasil !');window.location='?page=user';</script>";
