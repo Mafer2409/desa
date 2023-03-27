@@ -89,7 +89,7 @@ $datauser = mysqli_fetch_assoc($sqluser);
 
             <div class="row mt-4 ml-2">
                 <a href="?page=edit-user&id=<?= $id ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
-                <a href="?page=hapus-user&id=<?= $id ?>" class="btn btn-sm btn-danger ml-2"><i class="fas fa-trash"></i> Hapus</a>
+                <a href="?page=hapus-user&id=<?= $id ?>" class="btn btn-sm btn-danger ml-2" onclick="return confirm('Yakin ingin menhapus data ini ?')"><i class="fas fa-trash"></i> Hapus</a>
             </div>
         </div>
     </div>
