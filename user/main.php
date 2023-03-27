@@ -109,6 +109,8 @@ if (!isset($_SESSION['id_user'])) {
             include "views/berita.php";
         } else if (@$_GET['page'] == 'detail-berita') {
             include "views/detail-berita.php";
+        } else if (@$_GET['page'] == 'read-kelahiran') {
+            include "views/read-kelahiran.php";
         }
         ?>
     </div>

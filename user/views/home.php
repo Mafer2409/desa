@@ -4,6 +4,15 @@ $idrt = $_SESSION['id_rt'];
 $sqlrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$idrt'");
 $datart = mysqli_fetch_assoc($sqlrt);
 $namart = $datart['rt'];
+
+$iduser = $_SESSION['id_user'];
+$sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_user = '$iduser' AND kelahiran_notif = '0'");
+$sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_user = '$iduser' AND kematian_notif = '0'");
+$sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_user = '$iduser' AND administrasi_notif = '0'");
+
+$num_kelahiran = mysqli_num_rows($sqlkelahiran);
+$num_kematian = mysqli_num_rows($sqlkematian);
+$num_administrasi = mysqli_num_rows($sqladministrasi);
 ?>
 
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -13,7 +22,52 @@ $namart = $datart['rt'];
             <div class="owl-carousel-inner">
                 <div class="container">
                     <div class="row justify-content-start">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
+                            <!-- ALERT KELAHIRAN -->
+                            <?php
+                            if ($num_kelahiran > 0) {
+                                $datakelahiran = mysqli_fetch_assoc($sqlkelahiran);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_kelahiran ?> Pemberitahuan!!</strong> Status pengajuan : <strong><?= $datakelahiran['kelahiran_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-kelahiran&status=<?= $datakelahiran['kelahiran_status'] ?>'">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT KELAHIRAN -->
+                            <!-- ALERT KEMATIAN -->
+                            <?php
+                            if ($num_kematian > 0) {
+                                $datakematian = mysqli_fetch_assoc($sqlkematian);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_kematian ?> Pemberitahuan!!</strong> Status pengajuan : <strong><?= $data['kematian_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT KEMATIAN -->
+                            <!-- ALERT ADMINISTRASI -->
+                            <?php
+                            if ($num_administrasi > 0) {
+                                $dataadministrasi = mysqli_fetch_assoc($sqladministrasi);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_administrasi ?> Pemberitahuan!!</strong> Status pengajuan : <strong><?= $data['administrasi_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT ADMINISTRASI -->
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
                             <p class="text-light fs-5 mb-4 pb-3">RT : <?= $namart ?></p>

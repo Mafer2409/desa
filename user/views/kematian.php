@@ -162,7 +162,7 @@ if (isset($_POST['simpan'])) {
     $kematian_status = 'Menunggu Verifikasi RT';
     $kematian_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kematian VALUES('', '$kematian_user', '$kematian_rt', '$kematian_tanggal', '$kematian_user_meninggal', '$kematian_tempat_meninggal', '$kematian_tanggal_meninggal', '$kematian_sebab_meninggal', '$kematian_sk_dokter', '$kematian_ktp_almarhum', '$kematian_akte', '$kematian_status', '$kematian_tanggal_verifikasi')");
+    $sql = mysqli_query($con, "INSERT INTO kematian VALUES('', '$kematian_user', '$kematian_rt', '$kematian_tanggal', '$kematian_user_meninggal', '$kematian_tempat_meninggal', '$kematian_tanggal_meninggal', '$kematian_sebab_meninggal', '$kematian_sk_dokter', '$kematian_ktp_almarhum', '$kematian_akte', '$kematian_status', '$kematian_tanggal_verifikasi', '0')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kematian';</script>";

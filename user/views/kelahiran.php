@@ -187,7 +187,7 @@ if (isset($_POST['simpan'])) {
     $kelahiran_status = 'Menunggu Verifikasi RT';
     $kelahiran_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi')");
+    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi', '0')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kelahiran';</script>";

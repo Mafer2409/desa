@@ -142,7 +142,7 @@ if (isset($_POST['simpan'])) {
     $administrasi_status = 'Menunggu Verifikasi RT';
     $administrasi_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi')");
+    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=pindah';</script>";
