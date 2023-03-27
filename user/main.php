@@ -111,6 +111,10 @@ if (!isset($_SESSION['id_user'])) {
             include "views/detail-berita.php";
         } else if (@$_GET['page'] == 'read-kelahiran') {
             include "views/read-kelahiran.php";
+        } else if (@$_GET['page'] == 'read-kematian') {
+            include "views/read-kematian.php";
+        } else if (@$_GET['page'] == 'read-administrasi') {
+            include "views/read-administrasi.php";
         }
         ?>
     </div>

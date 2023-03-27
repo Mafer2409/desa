@@ -29,8 +29,8 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                                 $datakelahiran = mysqli_fetch_assoc($sqlkelahiran);
                             ?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong><?= $num_kelahiran ?> Pemberitahuan!!</strong> Status pengajuan : <strong><?= $datakelahiran['kelahiran_status'] ?></strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-kelahiran&status=<?= $datakelahiran['kelahiran_status'] ?>'">
+                                    <strong><?= $num_kelahiran ?> Pemberitahuan!!</strong> Status pengajuan keterangan kelahiran : <strong><?= $datakelahiran['kelahiran_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-kelahiran&status=<?= $datakelahiran['kelahiran_status'] ?>&iduser=<?= $iduser ?>'">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -44,8 +44,8 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                                 $datakematian = mysqli_fetch_assoc($sqlkematian);
                             ?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong><?= $num_kematian ?> Pemberitahuan!!</strong> Status pengajuan : <strong><?= $data['kematian_status'] ?></strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <strong><?= $num_kematian ?> Pemberitahuan!!</strong> Status pengajuan keterangan kematian: <strong><?= $datakematian['kematian_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-kematian&status=<?= $datakematian['kematian_status'] ?>&iduser=<?= $iduser ?>'">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -59,8 +59,8 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                                 $dataadministrasi = mysqli_fetch_assoc($sqladministrasi);
                             ?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong><?= $num_administrasi ?> Pemberitahuan!!</strong> Status pengajuan : <strong><?= $data['administrasi_status'] ?></strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <strong><?= $num_administrasi ?> Pemberitahuan!!</strong> Status pengajuan keterangan pindah penduduk: <strong><?= $dataadministrasi['administrasi_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-administrasi&status=<?= $dataadministrasi['administrasi_status'] ?>&iduser=<?= $iduser ?>'">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -70,7 +70,7 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                             <!-- ALERT ADMINISTRASI -->
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
-                            <p class="text-light fs-5 mb-4 pb-3">RT : <?= $namart ?></p>
+                            <p class="text-light fs-5 mb-4 pb-3"><?= $namart ?></p>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                         <div class="col-lg-8">
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
-                            <p class="text-light fs-5 mb-4 pb-3">RT : <?= $namart ?></p>
+                            <p class="text-light fs-5 mb-4 pb-3"><?= $namart ?></p>
                         </div>
                     </div>
                 </div>
