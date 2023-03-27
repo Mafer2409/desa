@@ -309,6 +309,10 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/cari-tidak-tetap.php";
                     } else if (@$_GET['page'] == 'cari-meninggal') {
                         include "views/cari-meninggal.php";
+                    } else if (@$_GET['page'] == 'edit-user') {
+                        include "views/edit-user.php";
+                    } else if (@$_GET['page'] == 'hapus-user') {
+                        include "views/hapus-user.php";
                     }
                     ?>
                 </div>

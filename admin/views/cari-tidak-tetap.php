@@ -1,5 +1,7 @@
 <?php
 $idrt = $_GET['idrt'];
+$sqlrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$idrt'");
+$datart = mysqli_fetch_assoc($sqlrt);
 //$s = $_GET['s'];
 ?>
 
@@ -8,6 +10,7 @@ $idrt = $_GET['idrt'];
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
+            <h3>Data warga - Penduduk Tidak Tetap | <small><?= $datart['rt'] ?></small></h3>
             <div class="card">
                 <form class="mx-3" action="" method="post">
                     <div class="row">
