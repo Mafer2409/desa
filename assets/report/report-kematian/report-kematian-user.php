@@ -19,33 +19,29 @@ require('../../fpdf16/fpdf.php');
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/logo-flotim.jpg', 15, 20, 25, 25);
+$pdf->Image('../../img/potrait.jpg', 2, 20, 210, 45);
 
 $pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
 
-$pdf->SetFont('Arial', 'B', 18, 'C');
-$pdf->Cell(40, 0);
+$pdf->SetFont('Arial', 'B', 12, 'C');
+$pdf->Cell(60, 0);
 $pdf->Cell(45, 10, 'SURAT KETERANGAN KEMATIAN', 0, 1);
 
-$pdf->SetFont('Arial', 'B', 15, 'C');
-$pdf->Cell(60, 0);
-$pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
+// $pdf->SetFont('Arial', 'B', 15, 'C');
+// $pdf->Cell(60, 0);
+// $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
 
-$pdf->SetFont('Arial', 'I', 12, 'C');
-$pdf->Cell(30, 0);
-$pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
+// $pdf->SetFont('Arial', 'I', 12, 'C');
+// $pdf->Cell(30, 0);
+// $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
 
 // $pdf->SetFont('Arial', 'B', 12, 'C');
 // $pdf->Cell(60, 0);
 // $pdf->Cell(45, 10, $surat, 0, 1);
-
-$pdf->Cell(189, 10, '', 0, 1);
-
-$pdf->Line(20, 50, 189, 50);
-$pdf->SetLineWidth(2);
-$pdf->Line(20, 50, 189, 50);
-
-$pdf->Cell(189, 10, '', 0, 1);
 
 $pdf->SetFont('Arial', '', 8);
 $no = 0;

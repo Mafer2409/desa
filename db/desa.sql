@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Mar 2023 pada 10.34
+-- Waktu pembuatan: 28 Mar 2023 pada 09.17
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -132,8 +132,14 @@ CREATE TABLE `kelahiran` (
   `kelahiran_agama` varchar(255) NOT NULL,
   `kelahiran_alamat` text NOT NULL,
   `kelahiran_nama_ayah` varchar(255) NOT NULL,
+  `kelahiran_nik_ayah` varchar(255) NOT NULL,
+  `kelahiran_umur_ayah` varchar(255) NOT NULL,
+  `kelahiran_pekerjaan_ayah` varchar(255) NOT NULL,
   `kelahiran_ktp_ayah` text NOT NULL,
   `kelahiran_nama_ibu` varchar(255) NOT NULL,
+  `kelahiran_nik_ibu` varchar(255) NOT NULL,
+  `kelahiran_umur_ibu` varchar(255) NOT NULL,
+  `kelahiran_pekerjaan_ibu` varchar(255) NOT NULL,
   `kelahiran_ktp_ibu` text NOT NULL,
   `kelahiran_sk_lahir` text NOT NULL,
   `kelahiran_status` varchar(255) NOT NULL,
@@ -145,13 +151,14 @@ CREATE TABLE `kelahiran` (
 -- Dumping data untuk tabel `kelahiran`
 --
 
-INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_agama`, `kelahiran_alamat`, `kelahiran_nama_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`, `kelahiran_notif`) VALUES
-(1, 5, 2, '2023-09-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', '', '', 'Tes 3', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24', 0),
-(2, 5, 2, '2023-06-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', '', '', 'Tesasalsk', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24', 0),
-(3, 5, 2, '2022-06-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', '', '', 'Tes 3', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', '', '', 'Andreas Pandai', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', '', '', 'andreas', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26', 0),
-(6, 9, 1, '2023-03-27', 'aa', 'asa', '2023-03-07', 'Laki-laki', 'Katolik', 'asa', 'asa', 'Mafer - KTP Ayah - 1679905564.jpg', 'asas', 'Mafer - KTP Ibu - 1679905564.jpg', 'Mafer - SK Lahir - 1679905564.jpg', 'Menunggu Verifikasi RT', '0000-00-00', 0);
+INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_agama`, `kelahiran_alamat`, `kelahiran_nama_ayah`, `kelahiran_nik_ayah`, `kelahiran_umur_ayah`, `kelahiran_pekerjaan_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_nik_ibu`, `kelahiran_umur_ibu`, `kelahiran_pekerjaan_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`, `kelahiran_notif`) VALUES
+(1, 5, 2, '2023-09-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', '', '', 'Tes 3', '', '', '', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', '', '', '', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24', 0),
+(2, 5, 2, '2023-06-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', '', '', 'Tesasalsk', '', '', '', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', '', '', '', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24', 0),
+(3, 5, 2, '2022-06-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', '', '', 'Tes 3', '', '', '', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', '', '', '', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00', 0),
+(4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', '', '', 'Andreas Pandai', '', '', '', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', '', '', '', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
+(5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', '', '', 'andreas', '', '', '', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', '', '', '', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26', 0),
+(6, 9, 1, '2023-03-27', 'aa', 'asa', '2023-03-07', 'Laki-laki', 'Katolik', 'asa', 'asa', '', '', '', 'Mafer - KTP Ayah - 1679905564.jpg', 'asas', '', '', '', 'Mafer - KTP Ibu - 1679905564.jpg', 'Mafer - SK Lahir - 1679905564.jpg', 'Selesai', '2023-03-28', 1),
+(7, 9, 1, '2023-03-28', 'Tesss xxxx', 'xxxx', '2023-03-28', 'Laki-laki', 'Katolik', 'xxxx', 'xxxxxx', '21321312', '25', 'xxxxx', 'Mafer - KTP Ayah - 1679974479.jpeg', 'xxxxxxxxxxxx', '54353654', '23', 'xxxxxxxxxx', 'Mafer - KTP Ibu - 1679974479.jpeg', 'Mafer - SK Lahir - 1679974479.jpeg', 'Telah Dikonfirmasi RT', '2023-03-28', 0);
 
 -- --------------------------------------------------------
 
@@ -183,7 +190,8 @@ CREATE TABLE `kematian` (
 INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sebab_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`, `kematian_notif`) VALUES
 (1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', '', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Selesai', '2022-10-24', 0),
 (2, 5, 2, '2022-10-26', 1, 'Lamanele', '2001-12-12', '', 'Tes3 - Surat Ket - 1666786783.png', 'Tes3 - KTP Almarhum - 1666786783.png', 'Tes3 - Akte - 1666786783.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(3, 2, 2, '2023-02-07', 7, 'Tes', '2022-09-09', '', 'Tes 2 - Surat Ket - 1675775261.png', 'Tes 2 - KTP Almarhum - 1675775261.png', 'Tes 2 - Akte - 1675775261.png', 'Selesai', '2023-02-07', 0);
+(3, 2, 2, '2023-02-07', 7, 'Tes', '2022-09-09', '', 'Tes 2 - Surat Ket - 1675775261.png', 'Tes 2 - KTP Almarhum - 1675775261.png', 'Tes 2 - Akte - 1675775261.png', 'Selesai', '2023-02-07', 0),
+(4, 9, 1, '2023-03-28', 1, 'dwd', '2023-03-28', 'sadas', 'Mafer - Surat Ket - 1679972179.jpeg', 'Mafer - KTP Almarhum - 1679972179.jpeg', 'Mafer - Akte - 1679972179.jpeg', 'Selesai', '2023-03-28', 1);
 
 -- --------------------------------------------------------
 
@@ -276,7 +284,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `user_tgl_lahir`, `user_rt_id`, `user_agama`, `user_jk`, `user_wn`, `user_alamat`, `user_status`, `user_status_tinggal`, `user_pekerjaan`, `user_status_kawin`, `user_jenjang_pendidikan`, `user_email`, `user_password`) VALUES
-(1, '0', 'Tes 1', 'tes1', '2002-09-10', 1, '', 'Laki-laki', '', '', 'Aktif', 'Tetap', 'Karyawan Swasta', '', '', '', ''),
+(1, '0', 'Tes 1', 'tes1', '2002-09-10', 1, '', 'Laki-laki', '', '', 'Aktif', 'Tetap', 'Karyawan Swasta', '', '', 'tes1@gmail.com', 'fa3fb6e0dccc657b57251c97db271b05'),
 (2, '0', 'Tes 2', 'tes2', '1993-08-04', 2, '', 'Perempuan', '', '', 'Aktif', 'Tidak Tetap', 'Petani', '', '', 'tes2@gmail.com', '7a8a80e50f6ff558f552079cefe2715d'),
 (5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '', 'Alamat Coyyy', 'Aktif', 'Tetap', 'Nelayan', '', '', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed'),
 (7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '', '', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
@@ -379,13 +387,13 @@ ALTER TABLE `jenis`
 -- AUTO_INCREMENT untuk tabel `kelahiran`
 --
 ALTER TABLE `kelahiran`
-  MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `kematian`
 --
 ALTER TABLE `kematian`
-  MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kepala_desa`

@@ -14,10 +14,8 @@
                     <th>Nama Anak</th>
                     <th>TTL</th>
                     <th>Jenis Kelamin</th>
-                    <th>Nama Ayah</th>
-                    <th>KTP Ayah</th>
+                    <th>Ayah</th>
                     <th>Nama Ibu</th>
-                    <th>KTP Ibu</th>
                     <th>Surat Ket.</th>
                     <th>Status</th>
                     <th>Tgl Verifikasi</th>
@@ -36,13 +34,19 @@
                         <td><?= $data['kelahiran_nama_anak']; ?></td>
                         <td><?= $data['kelahiran_tempat_lahir']; ?>, <?= $data['kelahiran_tanggal_lahir']; ?></td>
                         <td><?= $data['kelahiran_jk']; ?></td>
-                        <td><?= $data['kelahiran_nama_ayah']; ?></td>
                         <td>
-                            <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ayah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                            Nama : <?= $data['kelahiran_nama_ayah']; ?><br>
+                            NIK : <?= $data['kelahiran_nik_ayah']; ?><br>
+                            Umur : <?= $data['kelahiran_umur_ayah']; ?><br>
+                            Pekerjaan : <?= $data['kelahiran_pekerjaan_ayah']; ?><br>
+                            KTP : <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ayah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kelahiran_nama_ibu']; ?></td>
                         <td>
-                            <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ibu']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                            Nama : <?= $data['kelahiran_nama_ibu']; ?><br>
+                            NIK : <?= $data['kelahiran_nik_ibu']; ?><br>
+                            Umur : <?= $data['kelahiran_umur_ibu']; ?><br>
+                            Pekerjaan : <?= $data['kelahiran_pekerjaan_ibu']; ?><br>
+                            KTP : <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ibu']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
                         <td>
                             <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
@@ -129,12 +133,39 @@
                         <input type="text" name="kelahiran_nama_ayah" class="form-control" placeholder="Nama Lengkap Ayah">
                     </div>
                     <div class="form-group">
+                        <label>NIK ayah</label>
+                        <input type="text" name="kelahiran_nik_ayah" class="form-control" placeholder="NIK Ayah">
+                    </div>
+                    <div class="form-group">
+                        <label>Umur ayah</label>
+                        <input type="number" name="kelahiran_umur_ayah" class="form-control" placeholder="Umur Ayah">
+                    </div>
+                    <div class="form-group">
+                        <label>Pekerjaan ayah</label>
+                        <input type="text" name="kelahiran_pekerjaan_ayah" class="form-control" placeholder="Pekerjaan Ayah">
+                    </div>
+                    <div class="form-group">
                         <label>KTP ayah</label>
                         <input type="file" name="kelahiran_ktp_ayah" class="form-control">
                     </div>
+
+                    <hr>
+
                     <div class="form-group">
                         <label>Nama ibu</label>
                         <input type="text" name="kelahiran_nama_ibu" class="form-control" placeholder="Nama Lengkap Ibu">
+                    </div>
+                    <div class="form-group">
+                        <label>NIK Ibu</label>
+                        <input type="text" name="kelahiran_nik_ibu" class="form-control" placeholder="NIK Ibu">
+                    </div>
+                    <div class="form-group">
+                        <label>Umur ibu</label>
+                        <input type="number" name="kelahiran_umur_ibu" class="form-control" placeholder="Umur Ibu">
+                    </div>
+                    <div class="form-group">
+                        <label>Pekerjaan ibu</label>
+                        <input type="text" name="kelahiran_pekerjaan_ibu" class="form-control" placeholder="Pekerjaan Ibu">
                     </div>
                     <div class="form-group">
                         <label>KTP ibu</label>
@@ -166,6 +197,9 @@ if (isset($_POST['simpan'])) {
     $kelahiran_agama = $_POST['kelahiran_agama'];
     $kelahiran_alamat = $_POST['kelahiran_alamat'];
     $kelahiran_nama_ayah = $_POST['kelahiran_nama_ayah'];
+    $kelahiran_nik_ayah = $_POST['kelahiran_nik_ayah'];
+    $kelahiran_umur_ayah = $_POST['kelahiran_umur_ayah'];
+    $kelahiran_pekerjaan_ayah = $_POST['kelahiran_pekerjaan_ayah'];
 
     $extensi = explode(".", $_FILES['kelahiran_ktp_ayah']['name']);
     $kelahiran_ktp_ayah = "$namauser - KTP Ayah - " . round(microtime(true)) . "." . end($extensi);
@@ -173,6 +207,9 @@ if (isset($_POST['simpan'])) {
     $upload = move_uploaded_file($sumber, "../assets/files/files-kelahiran/" . $kelahiran_ktp_ayah);
 
     $kelahiran_nama_ibu = $_POST['kelahiran_nama_ibu'];
+    $kelahiran_nik_ibu = $_POST['kelahiran_nik_ibu'];
+    $kelahiran_umur_ibu = $_POST['kelahiran_umur_ibu'];
+    $kelahiran_pekerjaan_ibu = $_POST['kelahiran_pekerjaan_ibu'];
 
     $extensi = explode(".", $_FILES['kelahiran_ktp_ibu']['name']);
     $kelahiran_ktp_ibu = "$namauser - KTP Ibu - " . round(microtime(true)) . "." . end($extensi);
@@ -187,7 +224,7 @@ if (isset($_POST['simpan'])) {
     $kelahiran_status = 'Menunggu Verifikasi RT';
     $kelahiran_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi', '0')");
+    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_nik_ayah', '$kelahiran_umur_ayah', '$kelahiran_pekerjaan_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_nik_ibu', '$kelahiran_umur_ibu', '$kelahiran_pekerjaan_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi', '0')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kelahiran';</script>";

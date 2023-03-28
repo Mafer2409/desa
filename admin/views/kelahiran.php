@@ -67,10 +67,8 @@
                                 <th>Nama Anak</th>
                                 <th>TTL</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Nama Ayah</th>
-                                <th>KTP Ayah</th>
-                                <th>Nama Ibu</th>
-                                <th>KTP Ibu</th>
+                                <th>Ayah</th>
+                                <th>Ibu</th>
                                 <th>Surat Ket.</th>
                                 <th>Status</th>
                                 <th>Tgl Verifikasi</th>
@@ -90,13 +88,19 @@
                                     <td><?= $data['kelahiran_nama_anak']; ?></td>
                                     <td><?= $data['kelahiran_tempat_lahir']; ?>, <?= $data['kelahiran_tanggal_lahir']; ?></td>
                                     <td><?= $data['kelahiran_jk']; ?></td>
-                                    <td><?= $data['kelahiran_nama_ayah']; ?></td>
                                     <td>
-                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ayah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        Nama : <?= $data['kelahiran_nama_ayah']; ?><br>
+                                        NIK : <?= $data['kelahiran_nik_ayah']; ?><br>
+                                        Umur : <?= $data['kelahiran_umur_ayah']; ?><br>
+                                        Pekerjaan : <?= $data['kelahiran_pekerjaan_ayah']; ?><br>
+                                        KTP : <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ayah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
-                                    <td><?= $data['kelahiran_nama_ibu']; ?></td>
                                     <td>
-                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ibu']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        Nama : <?= $data['kelahiran_nama_ibu']; ?><br>
+                                        NIK : <?= $data['kelahiran_nik_ibu']; ?><br>
+                                        Umur : <?= $data['kelahiran_umur_ibu']; ?><br>
+                                        Pekerjaan : <?= $data['kelahiran_pekerjaan_ibu']; ?><br>
+                                        KTP : <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ibu']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
                                     <td>
                                         <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
