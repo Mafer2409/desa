@@ -19,10 +19,8 @@ require('../../fpdf16/fpdf.php');
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/potrait.jpg', 2, 20, 210, 45);
+$pdf->Image('../../img/potrait.jpg', 2, 2, 210, 45);
 
-$pdf->Cell(189, 10, '', 0, 1);
-$pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
@@ -75,6 +73,16 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $datam['user_tempat_lahir'] . ', ' . $datam['user_tgl_lahir'], 0, 1);
 
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Agama', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $datam['user_agama'], 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Alamat/Tampat Tinggal', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $datam['user_alamat'], 0, 1);
+
     $pdf->Cell(10, 8, '', 0, 0);
     $pdf->Cell(40, 8, 'Telah meninggal dunia pada : ', 0, 1);
 
@@ -93,7 +101,7 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['kematian_sebab_meninggal'], 0, 1);
 
-    $pdf->Cell(189, 10, '', 0, 1);
+    $pdf->Cell(189, 5, '', 0, 1);
 
     $pdf->Cell(10, 8, '', 0, 0);
     $pdf->Cell(40, 8, 'Surat keterangan ini dibuat berdasarkan keterangan pelapor :', 0, 1);
@@ -104,9 +112,19 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(10, 8, $data['user_nama'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'NIK', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $data['user_nik'], 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
     $pdf->Cell(40, 8, 'Tempat, Tanggal Lahir', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
     $pdf->Cell(10, 8, $data['user_tempat_lahir'] . ', ' . $data['user_tgl_lahir'], 0, 1);
+
+    $pdf->Cell(30, 8, '', 0, 0);
+    $pdf->Cell(40, 8, 'Pekerjaan', 0, 0);
+    $pdf->Cell(10, 8, ':', 0, 0);
+    $pdf->Cell(10, 8, $data['user_pekerjaan'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
     $pdf->Cell(40, 8, 'Jenis kelamin', 0, 0);
@@ -114,11 +132,11 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(10, 8, $data['user_jk'], 0, 1);
 
     $pdf->Cell(30, 8, '', 0, 0);
-    $pdf->Cell(40, 8, 'NIK', 0, 0);
+    $pdf->Cell(40, 8, 'Alamat', 0, 0);
     $pdf->Cell(10, 8, ':', 0, 0);
-    $pdf->Cell(10, 8, $data['user_nik'], 0, 1);
+    $pdf->Cell(10, 8, $data['user_alamat'], 0, 1);
 
-    $pdf->Cell(189, 10, '', 0, 1);
+    $pdf->Cell(189, 5, '', 0, 1);
 
     $pdf->Cell(10, 8, '', 0, 0);
     $pdf->Cell(40, 8, 'Demikian surat keterangan ini dibuat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.', 0, 1);

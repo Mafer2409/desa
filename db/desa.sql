@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Mar 2023 pada 09.17
+-- Waktu pembuatan: 29 Mar 2023 pada 08.00
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -56,6 +56,7 @@ CREATE TABLE `administrasi` (
   `administrasi_ket` varchar(255) NOT NULL,
   `administrasi_dari` text NOT NULL,
   `administrasi_tujuan` text NOT NULL,
+  `administrasi_alasan` varchar(255) NOT NULL,
   `administrasi_ktp` text NOT NULL,
   `administrasi_kk` text NOT NULL,
   `administrasi_sk_pindah` text NOT NULL,
@@ -68,9 +69,10 @@ CREATE TABLE `administrasi` (
 -- Dumping data untuk tabel `administrasi`
 --
 
-INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_dari`, `administrasi_tujuan`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`, `administrasi_notif`) VALUES
-(2, 5, 2, '2022-10-24', 'Masuk', '', '', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24', 0),
-(3, 5, 2, '2022-10-26', 'Masuk', '', '', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00', 0);
+INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_dari`, `administrasi_tujuan`, `administrasi_alasan`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`, `administrasi_notif`) VALUES
+(2, 5, 2, '2022-10-24', 'Masuk', '', '', '', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24', 0),
+(3, 5, 2, '2022-10-26', 'Masuk', '', '', '', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
+(5, 9, 1, '2023-03-29', 'Masuk', 'Kupang', 'Nelelamadike', 'Sekolah', 'Mafer - KTP - 1680057531.jpeg', 'Mafer - KK - 1680057531.jpeg', 'Mafer - SK Pindah - 1680057531.jpeg', 'Selesai', '2023-03-29', 0);
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,7 @@ INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kela
 (4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', '', '', 'Andreas Pandai', '', '', '', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', '', '', '', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
 (5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', '', '', 'andreas', '', '', '', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', '', '', '', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26', 0),
 (6, 9, 1, '2023-03-27', 'aa', 'asa', '2023-03-07', 'Laki-laki', 'Katolik', 'asa', 'asa', '', '', '', 'Mafer - KTP Ayah - 1679905564.jpg', 'asas', '', '', '', 'Mafer - KTP Ibu - 1679905564.jpg', 'Mafer - SK Lahir - 1679905564.jpg', 'Selesai', '2023-03-28', 1),
-(7, 9, 1, '2023-03-28', 'Tesss xxxx', 'xxxx', '2023-03-28', 'Laki-laki', 'Katolik', 'xxxx', 'xxxxxx', '21321312', '25', 'xxxxx', 'Mafer - KTP Ayah - 1679974479.jpeg', 'xxxxxxxxxxxx', '54353654', '23', 'xxxxxxxxxx', 'Mafer - KTP Ibu - 1679974479.jpeg', 'Mafer - SK Lahir - 1679974479.jpeg', 'Telah Dikonfirmasi RT', '2023-03-28', 0);
+(7, 9, 1, '2023-03-28', 'Tesss xxxx', 'xxxx', '2023-03-28', 'Laki-laki', 'Katolik', 'xxxx', 'xxxxxx', '21321312', '25', 'xxxxx', 'Mafer - KTP Ayah - 1679974479.jpeg', 'xxxxxxxxxxxx', '54353654', '23', 'xxxxxxxxxx', 'Mafer - KTP Ibu - 1679974479.jpeg', 'Mafer - SK Lahir - 1679974479.jpeg', 'Selesai', '2023-03-29', 1);
 
 -- --------------------------------------------------------
 
@@ -369,7 +371,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `administrasi`
 --
 ALTER TABLE `administrasi`
-  MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `berita`

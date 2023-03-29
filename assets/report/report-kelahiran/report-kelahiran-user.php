@@ -19,10 +19,8 @@ require('../../fpdf16/fpdf.php');
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/potrait.jpg', 2, 20, 210, 45);
+$pdf->Image('../../img/potrait.jpg', 2, 2, 210, 45);
 
-$pdf->Cell(189, 10, '', 0, 1);
-$pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
@@ -69,23 +67,33 @@ $pdf->Cell(40, 8, 'Terlahir seorang anak', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
 $pdf->Cell(10, 8, $data['kelahiran_jk'] . ' bernama ' . $data['kelahiran_nama_anak'], 0, 1);
 
-$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(189, 5, '', 0, 1);
+
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Dari seorang ibu : ', 0, 1);
-$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Nama : ' . $data['kelahiran_nama_ibu'], 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'NIK : ' . $data['kelahiran_nik_ibu'], 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Umur : ' . $data['kelahiran_umur_ibu'], 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Pekerjaan : ' . $data['kelahiran_pekerjaan_ibu'], 0, 1);
 
-$pdf->Cell(10, 8, '', 0, 0);
-$pdf->Cell(40, 8, 'Dari seorang ayah : ', 0, 1);
-$pdf->Cell(10, 8, '', 0, 0);
+$pdf->Cell(189, 2, '', 0, 1);
+
+$pdf->Cell(30, 8, '', 0, 0);
+$pdf->Cell(40, 8, ',dan seorang ayah : ', 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Nama : ' . $data['kelahiran_nama_ayah'], 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'NIK : ' . $data['kelahiran_nik_ayah'], 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Umur : ' . $data['kelahiran_umur_ayah'], 0, 1);
+$pdf->Cell(30, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Pekerjaan : ' . $data['kelahiran_pekerjaan_ayah'], 0, 1);
 
-$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 5, '', 0, 1);
 
 $pdf->Cell(10, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Surat keterangan ini dibuat berdasarkan keterangan pelapor :', 0, 1);
@@ -110,7 +118,7 @@ $pdf->Cell(40, 8, 'NIK', 0, 0);
 $pdf->Cell(10, 8, ':', 0, 0);
 $pdf->Cell(10, 8, $data['user_nik'], 0, 1);
 
-$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 5, '', 0, 1);
 
 $pdf->Cell(10, 8, '', 0, 0);
 $pdf->Cell(40, 8, 'Demikian surat keterangan ini dibuat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.', 0, 1);
@@ -122,8 +130,7 @@ $datakades = mysqli_fetch_assoc($sqlkades);
 
 $pdf->SetFont('Times', '', 8);
 
-$pdf->Cell(189, 10, '', 0, 1);
-$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 5, '', 0, 1);
 
 $pdf->SetFont('Times', '', 10);
 $pdf->Cell(115, 0);

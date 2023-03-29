@@ -91,7 +91,12 @@ $idrt = $_GET['idrt'];
             </thead>
             <tbody>
                 <?php
-                $sql = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND kematian.kematian_rt = '$idrt'");
+                if ($bln == 0) {
+                    $sql = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND kematian.kematian_rt = '$idrt' AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn'");
+                } else {
+                    $sql = mysqli_query($con, "SELECT * FROM kematian, user WHERE kematian.kematian_user = user.user_id AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn' AND MONTH(kematian.kematian_tanggal_verifikasi) = '$bln' AND kematian.kematian_rt = '$idrt'");
+                }
+
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($sql)) {
                     $iduserm = $data['kematian_user_meninggal'];

@@ -98,7 +98,19 @@ $pin = $_GET['pin'];
             </thead>
             <tbody>
                 <?php
-                $sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id AND administrasi.administrasi_rt = '$idrt'");
+                if ($bln == 0) {
+                    if ($pin == '0') {
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id AND administrasi.administrasi_rt = '$idrt' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn'");
+                    } else {
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id AND administrasi.administrasi_rt = '$idrt' AND administrasi.administrasi_ket = '$pin' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn'");
+                    }
+                } else {
+                    if ($pin == '0') {
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id AND administrasi.administrasi_rt = '$idrt' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln'");
+                    } else {
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id AND administrasi.administrasi_rt = '$idrt' AND administrasi.administrasi_ket = '$pin' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln'");
+                    }
+                }
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($sql)) {
                 ?>

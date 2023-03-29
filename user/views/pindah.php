@@ -14,6 +14,7 @@
                     <th>Ket</th>
                     <th>Dari</th>
                     <th>Tujuan</th>
+                    <th>Alasan</th>
                     <th>KTP</th>
                     <th>KK</th>
                     <th>Surat Ket.</th>
@@ -34,6 +35,7 @@
                         <td><?= $data['administrasi_ket']; ?></td>
                         <td><?= $data['administrasi_dari']; ?></td>
                         <td><?= $data['administrasi_tujuan']; ?></td>
+                        <td><?= $data['administrasi_alasan']; ?></td>
                         <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
@@ -94,6 +96,10 @@
                         <input type="text" name="administrasi_tujuan" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label>Alasan Pindah</label>
+                        <input type="text" name="administrasi_alasan" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label>KTP</label>
                         <input type="file" name="administrasi_ktp" class="form-control">
                     </div>
@@ -123,6 +129,7 @@ if (isset($_POST['simpan'])) {
     $administrasi_ket = $_POST['administrasi_ket'];
     $administrasi_dari = $_POST['administrasi_dari'];
     $administrasi_tujuan = $_POST['administrasi_tujuan'];
+    $administrasi_alasan = $_POST['administrasi_alasan'];
 
     $extensi = explode(".", $_FILES['administrasi_ktp']['name']);
     $administrasi_ktp = "$namauser - KTP - " . round(microtime(true)) . "." . end($extensi);
@@ -142,7 +149,7 @@ if (isset($_POST['simpan'])) {
     $administrasi_status = 'Menunggu Verifikasi RT';
     $administrasi_tanggal_verifikasi = '';
 
-    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0')");
+    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_alasan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=pindah';</script>";
