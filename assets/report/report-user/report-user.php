@@ -14,7 +14,11 @@ $datart = mysqli_fetch_assoc($sqlrt);
 $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
+$pdf->Image('../../img/lanscape.jpg', 2, 2, 300, 50);
+
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
 // ======================================================================================
 if ($idrt == 0) {
 
@@ -24,20 +28,6 @@ if ($idrt == 0) {
         $pdf->SetFont('Arial', 'B', 18, 'C');
         $pdf->Cell(90, 0);
         $pdf->Cell(45, 10, 'LAPORAN DATA SEMUA WARGA', 0, 1);
-
-        $pdf->SetFont('Arial', 'B', 15, 'C');
-        $pdf->Cell(110, 0);
-        $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
-
-        $pdf->SetFont('Arial', 'I', 12, 'C');
-        $pdf->Cell(80, 0);
-        $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
-
-        $pdf->Cell(189, 10, '', 0, 1);
-
-        $pdf->Line(20, 50, 289, 50);
-        $pdf->SetLineWidth(0);
-        $pdf->Line(20, 50, 289, 50);
 
         $pdf->Cell(189, 10, '', 0, 1);
 
@@ -101,20 +91,6 @@ if ($idrt == 0) {
         $pdf->SetFont('Arial', 'B', 18, 'C');
         $pdf->Cell(90, 0);
         $pdf->Cell(45, 10, 'Laporan Data Warga - ' . $s, 0, 1);
-
-        $pdf->SetFont('Arial', 'B', 15, 'C');
-        $pdf->Cell(110, 0);
-        $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
-
-        $pdf->SetFont('Arial', 'I', 12, 'C');
-        $pdf->Cell(80, 0);
-        $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
-
-        $pdf->Cell(189, 10, '', 0, 1);
-
-        $pdf->Line(20, 50, 289, 50);
-        $pdf->SetLineWidth(0);
-        $pdf->Line(20, 50, 289, 50);
 
         $pdf->Cell(189, 10, '', 0, 1);
 
@@ -197,20 +173,6 @@ if ($idrt == 0) {
         $pdf->Cell(75, 0);
         $pdf->Cell(45, 10, 'LAPORAN DATA WARGA RT : ' . $datart['rt'], 0, 1);
 
-        $pdf->SetFont('Arial', 'B', 15, 'C');
-        $pdf->Cell(110, 0);
-        $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
-
-        $pdf->SetFont('Arial', 'I', 12, 'C');
-        $pdf->Cell(80, 0);
-        $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
-
-        $pdf->Cell(189, 10, '', 0, 1);
-
-        $pdf->Line(20, 50, 289, 50);
-        $pdf->SetLineWidth(0);
-        $pdf->Line(20, 50, 289, 50);
-
         $pdf->Cell(189, 10, '', 0, 1);
 
         $pdf->SetFont('Arial', '', 8);
@@ -273,20 +235,6 @@ if ($idrt == 0) {
         $pdf->SetFont('Arial', 'B', 18, 'C');
         $pdf->Cell(75, 0);
         $pdf->Cell(45, 10, 'Laporan Data Warga - ' . $s . ' - ' . $datart['rt'], 0, 1);
-
-        $pdf->SetFont('Arial', 'B', 15, 'C');
-        $pdf->Cell(110, 0);
-        $pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
-
-        $pdf->SetFont('Arial', 'I', 12, 'C');
-        $pdf->Cell(80, 0);
-        $pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
-
-        $pdf->Cell(189, 10, '', 0, 1);
-
-        $pdf->Line(20, 50, 289, 50);
-        $pdf->SetLineWidth(0);
-        $pdf->Line(20, 50, 289, 50);
 
         $pdf->Cell(189, 10, '', 0, 1);
 

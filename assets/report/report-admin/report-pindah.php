@@ -13,9 +13,10 @@ $tglnow = date('d - m - Y');
 $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
-// ======================================================================================
+$pdf->Image('../../img/lanscape.jpg', 2, 2, 300, 50);
 
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
 
 $bulan = '';
@@ -91,20 +92,6 @@ if ($thn == 0) {
     }
 }
 
-$pdf->SetFont('Arial', 'B', 15, 'C');
-$pdf->Cell(110, 0);
-$pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
-
-$pdf->SetFont('Arial', 'I', 12, 'C');
-$pdf->Cell(80, 0);
-$pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
-
-$pdf->Cell(189, 10, '', 0, 1);
-
-$pdf->Line(20, 50, 289, 50);
-$pdf->SetLineWidth(0);
-$pdf->Line(20, 50, 289, 50);
-
 $pdf->Cell(189, 10, '', 0, 1);
 
 $pdf->SetFont('Arial', '', 8);
@@ -115,6 +102,7 @@ $pdf->Cell(40, 5, 'RW/RT', 1, 0);
 $pdf->Cell(40, 5, 'Pindah', 1, 0);
 $pdf->Cell(40, 5, 'Dari', 1, 0);
 $pdf->Cell(40, 5, 'Tujuan', 1, 0);
+$pdf->Cell(40, 5, 'Alasan', 1, 0);
 $pdf->Cell(30, 5, 'Verifikasi', 1, 1);
 
 $pdf->SetFont('Arial', '', 8);
@@ -158,6 +146,7 @@ while ($data = mysqli_fetch_assoc($sql)) {
     $pdf->Cell(40, 5, $data['administrasi_ket'], 1, 0);
     $pdf->Cell(40, 5, $data['administrasi_dari'], 1, 0);
     $pdf->Cell(40, 5, $data['administrasi_tujuan'], 1, 0);
+    $pdf->Cell(40, 5, $data['administrasi_alasan'], 1, 0);
     $pdf->Cell(30, 5, $data['administrasi_tanggal_verifikasi'], 1, 1);
 }
 

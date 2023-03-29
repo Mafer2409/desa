@@ -16,9 +16,10 @@ $tglnow = date('d - m - Y');
 $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->AddPage();
 
-$pdf->Image('../../img/logo-flotim.jpg', 25, 20, 25, 25);
-// ======================================================================================
+$pdf->Image('../../img/lanscape.jpg', 2, 2, 300, 50);
 
+$pdf->Cell(189, 10, '', 0, 1);
+$pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(189, 10, '', 0, 1);
 
 $bulan = '';
@@ -66,20 +67,6 @@ if ($bln == '0' && $thn == '0') {
 $pdf->SetFont('Arial', 'B', 15, 'C');
 $pdf->Cell(115, 0);
 $pdf->Cell(58, 10, $datart['rt'], 0, 1);
-
-$pdf->SetFont('Arial', 'B', 15, 'C');
-$pdf->Cell(107, 0);
-$pdf->Cell(58, 10, 'Kantor Desa Nelelamadike', 0, 1);
-
-$pdf->SetFont('Arial', 'I', 12, 'C');
-$pdf->Cell(80, 0);
-$pdf->Cell(30, 10, 'Jl. Trans Waiwerang, Desa Nelelamadike, Kec. Ile Boleng, Flores Timur', 0, 1);
-
-$pdf->Cell(189, 10, '', 0, 1);
-
-$pdf->Line(20, 50, 289, 50);
-$pdf->SetLineWidth(0);
-$pdf->Line(20, 50, 289, 50);
 
 $pdf->Cell(189, 10, '', 0, 1);
 
