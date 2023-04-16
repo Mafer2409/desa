@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Mar 2023 pada 08.00
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.1
+-- Waktu pembuatan: 16 Apr 2023 pada 14.59
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -217,6 +216,29 @@ INSERT INTO `kepala_desa` (`kepala_desa_id`, `kepala_desa_nama`, `kepala_desa_tt
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `penduduk`
+--
+
+CREATE TABLE `penduduk` (
+  `penduduk_id` int(11) NOT NULL,
+  `penduduk_nik` varchar(255) NOT NULL,
+  `penduduk_nama` varchar(255) NOT NULL,
+  `penduduk_tempat_lahir` varchar(255) NOT NULL,
+  `penduduk_tgl_lahir` date NOT NULL,
+  `penduduk_rt_id` int(11) NOT NULL,
+  `penduduk_agama` varchar(255) NOT NULL,
+  `penduduk_jk` varchar(255) NOT NULL,
+  `penduduk_wn` varchar(255) NOT NULL,
+  `penduduk_alamat` text NOT NULL,
+  `penduduk_status_tinggal` varchar(255) NOT NULL,
+  `penduduk_pekerjaan` varchar(255) NOT NULL,
+  `penduduk_status_kawin` varchar(255) NOT NULL,
+  `penduduk_jenjang_pendidikan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `rt`
 --
 
@@ -291,7 +313,8 @@ INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `us
 (5, '0', 'Tes3', 'Tes Tiga', '1999-09-09', 2, '', 'Laki-laki', '', 'Alamat Coyyy', 'Aktif', 'Tetap', 'Nelayan', '', '', 'tes3@gmail.com', '37a98352f0e0d2f4d64e96fe334871ed'),
 (7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '', '', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
 (9, '23114046', 'Mafer', 'Larantuka', '1996-09-24', 1, 'Katolik', 'Laki-laki', 'WNI', 'Weri', 'Aktif', 'Tidak Tetap', 'Karyawan Swasta', 'Belum Menikah', 'S1', 'manfdz70@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b'),
-(10, '12345', 'Tes 7', '7 tes', '1997-07-07', 5, 'Katolik', 'Perempuan', 'WNI', 'Baumata', 'Aktif', 'Tidak Tetap', 'Pelajar', 'Belum Menikah', 'SLTA/SMA/SMK', 'tes7@gmail.com', '85c93fe6d13a2376fb9dce341a4aa2b9');
+(10, '12345', 'Tes 7', '7 tes', '1997-07-07', 5, 'Katolik', 'Perempuan', 'WNI', 'Baumata', 'Aktif', 'Tidak Tetap', 'Pelajar', 'Belum Menikah', 'SLTA/SMA/SMK', 'tes7@gmail.com', '85c93fe6d13a2376fb9dce341a4aa2b9'),
+(11, '1213', 'fdsfdf', 'sdsd', '2023-04-16', 2, 'Islam', 'Laki-laki', 'WNA', 'sdas', 'Aktif', 'Tetap', 'dsdas', 'Belum Menikah', 'SLTA/SMA/SMK', 'sda@mail.com', '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Indexes for dumped tables
@@ -338,6 +361,12 @@ ALTER TABLE `kematian`
 --
 ALTER TABLE `kepala_desa`
   ADD PRIMARY KEY (`kepala_desa_id`);
+
+--
+-- Indeks untuk tabel `penduduk`
+--
+ALTER TABLE `penduduk`
+  ADD PRIMARY KEY (`penduduk_id`);
 
 --
 -- Indeks untuk tabel `rt`
@@ -404,6 +433,12 @@ ALTER TABLE `kepala_desa`
   MODIFY `kepala_desa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `penduduk`
+--
+ALTER TABLE `penduduk`
+  MODIFY `penduduk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `rt`
 --
 ALTER TABLE `rt`
@@ -419,7 +454,7 @@ ALTER TABLE `rw`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

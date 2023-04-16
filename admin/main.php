@@ -90,6 +90,12 @@ if (!isset($_SESSION['id_admin'])) {
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=penduduk">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">Penduduk</span>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=jenis">
                             <i class="icon-layout menu-icon"></i>
@@ -313,6 +319,14 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/edit-user.php";
                     } else if (@$_GET['page'] == 'hapus-user') {
                         include "views/hapus-user.php";
+                    } else if (@$_GET['page'] == 'penduduk') {
+                        include "views/penduduk.php";
+                    } else if (@$_GET['page'] == 'info_penduduk') {
+                        include "views/info_penduduk.php";
+                    } else if (@$_GET['page'] == 'edit_penduduk') {
+                        include "views/edit_penduduk.php";
+                    } else if (@$_GET['page'] == 'hapus_penduduk') {
+                        include "views/hapus_penduduk.php";
                     }
                     ?>
                 </div>
