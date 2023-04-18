@@ -12,6 +12,11 @@ $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administ
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
+
+
+$sqldaftar = mysqli_query($con, "SELECT * FROM user WHERE user_rt_id = '$idrt' AND user_status = 'Menunggu Verifikasi'");
+$num_daftar = mysqli_num_rows($sqldaftar);
+
 ?>
 
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -67,6 +72,20 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                             }
                             ?>
                             <!-- ALERT ADMINISTRASI -->
+                            <!-- ALERT DAFTAR -->
+                            <?php
+                            if ($num_daftar > 0) {
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Pemberitahuan!! <?= $num_daftar ?> Warga menunggu verifikasi registrasi !</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT DAFTAR -->
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
                             <p class="text-light fs-5 mb-4 pb-3">KETUA RT : <?= $namart ?></p>
