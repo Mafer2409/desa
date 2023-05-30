@@ -99,19 +99,61 @@
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_akte']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kematian_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['kematian_status'] == 'Ditolak RT') {
+                                echo $data['kematian_status'] . "(" . $data['kematian_ket'] . ")";
+                            } else {
+                                echo $data['kematian_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
                             if ($data['kematian_status'] == 'Menunggu Verifikasi RT') {
                             ?>
                                 <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                <a href="" class="text-danger" data-toggle="modal" data-target="#tolakKematian<?= $data['kematian_id'] ?>"><i class="fas fa-times fa-md"></i></a>
                             <?php
                             }
                             ?>
                         </td>
                     </tr>
+                    <!-- Modal Tolak kematian -->
+                    <div class="modal fade" id="tolakKematian<?= $data['kematian_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Alasan Penolakan Permintaan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="" method="post">
+                                    <div class="modal-body">
+                                        <label for="">Alasan :</label>
+                                        <input type="hidden" class="form-control" name="kematian_id" value="<?= $data['kematian_id'] ?>" required>
+                                        <input type="text" class="form-control" name="kematian_ket" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <input type="submit" name="simpan_kematian" class="btn btn-primary" value="Kirim">
+                                    </div>
+                                </form>
+                                <?php
+                                if (isset($_POST['simpan_kematian'])) {
+                                    $kematian_ket = $_POST['kematian_ket'];
+                                    $kematian_id = $_POST['kematian_id'];
+
+                                    $sql_kematian = mysqli_query($con, "UPDATE kematian SET kematian_ket = '$kematian_ket' WHERE kematian_id = '$kematian_id'");
+
+                                    echo "<script>window.location='?page=aksikematian&id=$kematian_id&aksi=Ditolak';</script>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -166,7 +208,15 @@
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_akte']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kematian_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['kematian_status'] == 'Ditolak RT') {
+                                echo $data['kematian_status'] . "(" . $data['kematian_ket'] . ")";
+                            } else {
+                                echo $data['kematian_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php

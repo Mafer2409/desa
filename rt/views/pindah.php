@@ -108,19 +108,61 @@
                         <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_sk_pindah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['administrasi_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['administrasi_status'] == 'Ditolak RT') {
+                                echo $data['administrasi_status'] . "(" . $data['administrasi_keterangan'] . ")";
+                            } else {
+                                echo $data['administrasi_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['administrasi_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
                             if ($data['administrasi_status'] == 'Menunggu Verifikasi RT') {
                             ?>
                                 <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                <a href="" class="text-danger" data-toggle="modal" data-target="#tolakAdministrasi<?= $data['administrasi_id'] ?>"><i class="fas fa-times fa-md"></i></a>
                             <?php
                             }
                             ?>
                         </td>
                     </tr>
+                    <!-- Modal Tolak administrasi -->
+                    <div class="modal fade" id="tolakAdministrasi<?= $data['administrasi_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Alasan Penolakan Permintaan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="" method="post">
+                                    <div class="modal-body">
+                                        <label for="">Alasan :</label>
+                                        <input type="hidden" class="form-control" name="administrasi_id" value="<?= $data['administrasi_id'] ?>" required>
+                                        <input type="text" class="form-control" name="administrasi_keterangan" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <input type="submit" name="simpan_administrasi" class="btn btn-primary" value="Kirim">
+                                    </div>
+                                </form>
+                                <?php
+                                if (isset($_POST['simpan_administrasi'])) {
+                                    $administrasi_keterangan = $_POST['administrasi_keterangan'];
+                                    $administrasi_id = $_POST['administrasi_id'];
+
+                                    $sql_administrasi = mysqli_query($con, "UPDATE administrasi SET administrasi_keterangan = '$administrasi_keterangan' WHERE administrasi_id = '$administrasi_id'");
+
+                                    echo "<script>window.location='?page=aksipindah&id=$administrasi_id&aksi=Ditolak';</script>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -174,7 +216,15 @@
                         <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_sk_pindah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['administrasi_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['administrasi_status'] == 'Ditolak RT') {
+                                echo $data['administrasi_status'] . "(" . $data['administrasi_keterangan'] . ")";
+                            } else {
+                                echo $data['administrasi_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['administrasi_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php

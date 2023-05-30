@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Apr 2023 pada 14.59
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Waktu pembuatan: 30 Bulan Mei 2023 pada 09.22
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -61,17 +62,19 @@ CREATE TABLE `administrasi` (
   `administrasi_sk_pindah` text NOT NULL,
   `administrasi_status` varchar(255) NOT NULL,
   `administrasi_tanggal_verifikasi` date NOT NULL,
-  `administrasi_notif` int(11) NOT NULL
+  `administrasi_notif` int(11) NOT NULL,
+  `administrasi_keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `administrasi`
 --
 
-INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_dari`, `administrasi_tujuan`, `administrasi_alasan`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`, `administrasi_notif`) VALUES
-(2, 5, 2, '2022-10-24', 'Masuk', '', '', '', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24', 0),
-(3, 5, 2, '2022-10-26', 'Masuk', '', '', '', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(5, 9, 1, '2023-03-29', 'Masuk', 'Kupang', 'Nelelamadike', 'Sekolah', 'Mafer - KTP - 1680057531.jpeg', 'Mafer - KK - 1680057531.jpeg', 'Mafer - SK Pindah - 1680057531.jpeg', 'Selesai', '2023-03-29', 0);
+INSERT INTO `administrasi` (`administrasi_id`, `administrasi_user`, `administrasi_rt`, `administrasi_tanggal`, `administrasi_ket`, `administrasi_dari`, `administrasi_tujuan`, `administrasi_alasan`, `administrasi_ktp`, `administrasi_kk`, `administrasi_sk_pindah`, `administrasi_status`, `administrasi_tanggal_verifikasi`, `administrasi_notif`, `administrasi_keterangan`) VALUES
+(2, 5, 2, '2022-10-24', 'Masuk', '', '', '', 'Tes3 - KTP - 1666619498.png', 'Tes3 - KK - 1666619498.jpg', 'Tes3 - SK Pindah - 1666619498.jpg', 'Selesai', '2022-10-24', 0, ''),
+(3, 5, 2, '2022-10-26', 'Masuk', '', '', '', 'Tes3 - KTP - 1666786648.png', 'Tes3 - KK - 1666786648.png', 'Tes3 - SK Pindah - 1666786648.png', 'Menunggu Verifikasi RT', '0000-00-00', 0, ''),
+(5, 9, 1, '2023-03-29', 'Masuk', 'Kupang', 'Nelelamadike', 'Sekolah', 'Mafer - KTP - 1680057531.jpeg', 'Mafer - KK - 1680057531.jpeg', 'Mafer - SK Pindah - 1680057531.jpeg', 'Selesai', '2023-03-29', 1, ''),
+(6, 9, 1, '2023-05-30', 'Masuk', 'cdds', 'sdfsdf', 'sdfsdf', 'Mafer - KTP - 1685430429.PNG', 'Mafer - KK - 1685430429.PNG', 'Mafer - SK Pindah - 1685430429.PNG', 'Ditolak RT', '0000-00-00', 0, 'Tolak pindah karna');
 
 -- --------------------------------------------------------
 
@@ -145,21 +148,24 @@ CREATE TABLE `kelahiran` (
   `kelahiran_sk_lahir` text NOT NULL,
   `kelahiran_status` varchar(255) NOT NULL,
   `kelahiran_tanggal_verifikasi` date NOT NULL,
-  `kelahiran_notif` int(11) NOT NULL
+  `kelahiran_notif` int(11) NOT NULL,
+  `kelahiran_ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kelahiran`
 --
 
-INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_agama`, `kelahiran_alamat`, `kelahiran_nama_ayah`, `kelahiran_nik_ayah`, `kelahiran_umur_ayah`, `kelahiran_pekerjaan_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_nik_ibu`, `kelahiran_umur_ibu`, `kelahiran_pekerjaan_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`, `kelahiran_notif`) VALUES
-(1, 5, 2, '2023-09-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', '', '', 'Tes 3', '', '', '', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', '', '', '', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24', 0),
-(2, 5, 2, '2023-06-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', '', '', 'Tesasalsk', '', '', '', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', '', '', '', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24', 0),
-(3, 5, 2, '2022-06-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', '', '', 'Tes 3', '', '', '', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', '', '', '', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', '', '', 'Andreas Pandai', '', '', '', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', '', '', '', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', '', '', 'andreas', '', '', '', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', '', '', '', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26', 0),
-(6, 9, 1, '2023-03-27', 'aa', 'asa', '2023-03-07', 'Laki-laki', 'Katolik', 'asa', 'asa', '', '', '', 'Mafer - KTP Ayah - 1679905564.jpg', 'asas', '', '', '', 'Mafer - KTP Ibu - 1679905564.jpg', 'Mafer - SK Lahir - 1679905564.jpg', 'Selesai', '2023-03-28', 1),
-(7, 9, 1, '2023-03-28', 'Tesss xxxx', 'xxxx', '2023-03-28', 'Laki-laki', 'Katolik', 'xxxx', 'xxxxxx', '21321312', '25', 'xxxxx', 'Mafer - KTP Ayah - 1679974479.jpeg', 'xxxxxxxxxxxx', '54353654', '23', 'xxxxxxxxxx', 'Mafer - KTP Ibu - 1679974479.jpeg', 'Mafer - SK Lahir - 1679974479.jpeg', 'Selesai', '2023-03-29', 1);
+INSERT INTO `kelahiran` (`kelahiran_id`, `kelahiran_user`, `kelahiran_rt`, `kelahiran_tanggal`, `kelahiran_nama_anak`, `kelahiran_tempat_lahir`, `kelahiran_tanggal_lahir`, `kelahiran_jk`, `kelahiran_agama`, `kelahiran_alamat`, `kelahiran_nama_ayah`, `kelahiran_nik_ayah`, `kelahiran_umur_ayah`, `kelahiran_pekerjaan_ayah`, `kelahiran_ktp_ayah`, `kelahiran_nama_ibu`, `kelahiran_nik_ibu`, `kelahiran_umur_ibu`, `kelahiran_pekerjaan_ibu`, `kelahiran_ktp_ibu`, `kelahiran_sk_lahir`, `kelahiran_status`, `kelahiran_tanggal_verifikasi`, `kelahiran_notif`, `kelahiran_ket`) VALUES
+(1, 5, 2, '2023-09-24', 'Tes 3 pu kelahiran', 'Tes3x', '2022-10-09', 'Laki-laki', '', '', 'Tes 3', '', '', '', 'Tes3 - KTP Ayah - 1666593089.jpg', '3 Tess', '', '', '', 'Tes3 - KTP Ibu - 1666593089.png', 'Tes3 - SK Lahir - 1666593089.jpg', 'Selesai', '2022-10-24', 0, ''),
+(2, 5, 2, '2023-06-24', 'Tesss Anak', 'ysasiuai', '2000-09-10', 'Laki-laki', '', '', 'Tesasalsk', '', '', '', 'Tes3 - KTP Ayah - 1666617591.png', 'yufwkf', '', '', '', 'Tes3 - KTP Ibu - 1666617591.jfif', 'Tes3 - SK Lahir - 1666617591.jpg', 'Selesai', '2022-10-24', 0, ''),
+(3, 5, 2, '2022-06-24', 'Ketiga', 'Tiga', '2002-11-10', 'Perempuan', '', '', 'Tes 3', '', '', '', 'Tes3 - KTP Ayah - 1666620068.png', 'Tess yy', '', '', '', 'Tes3 - KTP Ibu - 1666620068.jpg', 'Tes3 - SK Lahir - 1666620068.jpg', 'Menunggu Verifikasi RT', '0000-00-00', 0, ''),
+(4, 5, 2, '2022-10-26', 'Stephanus Andreas', 'Kuala Lumpur', '1997-08-31', 'Laki-laki', '', '', 'Andreas Pandai', '', '', '', 'Tes3 - KTP Ayah - 1666786143.png', 'Yasinta Sura', '', '', '', 'Tes3 - KTP Ibu - 1666786143.png', 'Tes3 - SK Lahir - 1666786143.png', 'Menunggu Verifikasi RT', '0000-00-00', 0, ''),
+(5, 6, 5, '2022-10-26', 'stev', 'lamanele', '2021-03-10', 'Laki-laki', '', '', 'andreas', '', '', '', 'Tes4 - KTP Ayah - 1666787647.png', 'yasinta', '', '', '', 'Tes4 - KTP Ibu - 1666787647.png', 'Tes4 - SK Lahir - 1666787647.jpeg', 'Selesai', '2022-10-26', 0, ''),
+(6, 9, 1, '2023-03-27', 'aa', 'asa', '2023-03-07', 'Laki-laki', 'Katolik', 'asa', 'asa', '', '', '', 'Mafer - KTP Ayah - 1679905564.jpg', 'asas', '', '', '', 'Mafer - KTP Ibu - 1679905564.jpg', 'Mafer - SK Lahir - 1679905564.jpg', 'Selesai', '2023-03-28', 1, ''),
+(7, 9, 1, '2023-03-28', 'Tesss xxxx', 'xxxx', '2023-03-28', 'Laki-laki', 'Katolik', 'xxxx', 'xxxxxx', '21321312', '25', 'xxxxx', 'Mafer - KTP Ayah - 1679974479.jpeg', 'xxxxxxxxxxxx', '54353654', '23', 'xxxxxxxxxx', 'Mafer - KTP Ibu - 1679974479.jpeg', 'Mafer - SK Lahir - 1679974479.jpeg', 'Selesai', '2023-03-29', 1, ''),
+(8, 9, 1, '2023-05-30', 'teeetteet', 'dfgdfgdf', '2023-05-29', 'Laki-laki', 'Katolik', 'scssa', 'gsdgfd', '4545435', '32', 'dfdsfd', 'Mafer - KTP Ayah - 1685426874.PNG', 'dsfdsfsdf', '454356465', '31', 'fdfgdf', 'Mafer - KTP Ibu - 1685426874.PNG', 'Mafer - SK Lahir - 1685426874.PNG', 'Ditolak RT', '0000-00-00', 1, ''),
+(9, 9, 1, '2023-05-30', 'xsdvfd', 'fdbfdbfd', '2023-05-08', 'Laki-laki', 'Katolik', 'dfbfdb', 'fdfbdfbfd', '876867876', '30', 'bfbfdb', 'Mafer - KTP Ayah - 1685430881.PNG', 'dffbgdf', '5465765', '30', 'dfdfbgf', 'Mafer - KTP Ibu - 1685430881.PNG', 'Mafer - SK Lahir - 1685430881.PNG', 'Ditolak RT', '0000-00-00', 0, 'Tes alasan kerlahirannn');
 
 -- --------------------------------------------------------
 
@@ -181,18 +187,21 @@ CREATE TABLE `kematian` (
   `kematian_akte` text NOT NULL,
   `kematian_status` varchar(255) NOT NULL,
   `kematian_tanggal_verifikasi` date NOT NULL,
-  `kematian_notif` int(11) NOT NULL
+  `kematian_notif` int(11) NOT NULL,
+  `kematian_ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kematian`
 --
 
-INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sebab_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`, `kematian_notif`) VALUES
-(1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', '', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Selesai', '2022-10-24', 0),
-(2, 5, 2, '2022-10-26', 1, 'Lamanele', '2001-12-12', '', 'Tes3 - Surat Ket - 1666786783.png', 'Tes3 - KTP Almarhum - 1666786783.png', 'Tes3 - Akte - 1666786783.png', 'Menunggu Verifikasi RT', '0000-00-00', 0),
-(3, 2, 2, '2023-02-07', 7, 'Tes', '2022-09-09', '', 'Tes 2 - Surat Ket - 1675775261.png', 'Tes 2 - KTP Almarhum - 1675775261.png', 'Tes 2 - Akte - 1675775261.png', 'Selesai', '2023-02-07', 0),
-(4, 9, 1, '2023-03-28', 1, 'dwd', '2023-03-28', 'sadas', 'Mafer - Surat Ket - 1679972179.jpeg', 'Mafer - KTP Almarhum - 1679972179.jpeg', 'Mafer - Akte - 1679972179.jpeg', 'Selesai', '2023-03-28', 1);
+INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sebab_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`, `kematian_notif`, `kematian_ket`) VALUES
+(1, 5, 2, '2022-10-24', 2, 'Tesssss', '2022-10-10', '', 'Tes3 - Surat Ket - 1666597635.png', 'Tes3 - KTP Almarhum - 1666597635.jpg', 'Tes3 - Akte - 1666597635.jpg', 'Selesai', '2022-10-24', 0, ''),
+(2, 5, 2, '2022-10-26', 1, 'Lamanele', '2001-12-12', '', 'Tes3 - Surat Ket - 1666786783.png', 'Tes3 - KTP Almarhum - 1666786783.png', 'Tes3 - Akte - 1666786783.png', 'Menunggu Verifikasi RT', '0000-00-00', 0, ''),
+(3, 2, 2, '2023-02-07', 7, 'Tes', '2022-09-09', '', 'Tes 2 - Surat Ket - 1675775261.png', 'Tes 2 - KTP Almarhum - 1675775261.png', 'Tes 2 - Akte - 1675775261.png', 'Selesai', '2023-02-07', 0, ''),
+(4, 9, 1, '2023-03-28', 1, 'dwd', '2023-03-28', 'sadas', 'Mafer - Surat Ket - 1679972179.jpeg', 'Mafer - KTP Almarhum - 1679972179.jpeg', 'Mafer - Akte - 1679972179.jpeg', 'Selesai', '2023-03-28', 1, ''),
+(5, 9, 1, '2023-05-30', 1, 'fgfdgd', '2023-05-28', 'hgfhgh', 'Mafer - Surat Ket - 1685429445.PNG', 'Mafer - KTP Almarhum - 1685429445.PNG', 'Mafer - Akte - 1685429445.PNG', 'Ditolak Admin', '0000-00-00', 0, ''),
+(6, 9, 1, '2023-05-30', 7, 'sdfdsfsd', '2023-05-29', 'dsfds', 'Mafer - Surat Ket - 1685430713.PNG', 'Mafer - KTP Almarhum - 1685430713.PNG', 'Mafer - Akte - 1685430713.PNG', 'Ditolak RT', '0000-00-00', 0, 'Tes alasan kematian');
 
 -- --------------------------------------------------------
 
@@ -314,7 +323,8 @@ INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `us
 (7, '0', 'sss', 'sss', '2001-03-10', 5, '', 'Laki-laki', '', '', 'Non-Aktif', 'Meninggal', '', '', '', '', ''),
 (9, '23114046', 'Mafer', 'Larantuka', '1996-09-24', 1, 'Katolik', 'Laki-laki', 'WNI', 'Weri', 'Aktif', 'Tidak Tetap', 'Karyawan Swasta', 'Belum Menikah', 'S1', 'manfdz70@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b'),
 (10, '12345', 'Tes 7', '7 tes', '1997-07-07', 5, 'Katolik', 'Perempuan', 'WNI', 'Baumata', 'Aktif', 'Tidak Tetap', 'Pelajar', 'Belum Menikah', 'SLTA/SMA/SMK', 'tes7@gmail.com', '85c93fe6d13a2376fb9dce341a4aa2b9'),
-(11, '1213', 'fdsfdf', 'sdsd', '2023-04-16', 2, 'Islam', 'Laki-laki', 'WNA', 'sdas', 'Aktif', 'Tetap', 'dsdas', 'Belum Menikah', 'SLTA/SMA/SMK', 'sda@mail.com', '827ccb0eea8a706c4c34a16891f84e7b');
+(11, '1213', 'fdsfdf', 'sdsd', '2023-04-16', 2, 'Islam', 'Laki-laki', 'WNA', 'sdas', 'Aktif', 'Tetap', 'dsdas', 'Belum Menikah', 'SLTA/SMA/SMK', 'sda@mail.com', '827ccb0eea8a706c4c34a16891f84e7b'),
+(12, '123', 'Tessss', 'asadasdsadsad', '2001-10-10', 1, 'Katolik', 'Laki-laki', 'WNI', 'ASDADAS', 'Menunggu Verifikasi', 'Tetap', 'SSDA', 'Belum Menikah', 'S3', 'sad@mail.com', '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Indexes for dumped tables
@@ -400,7 +410,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `administrasi`
 --
 ALTER TABLE `administrasi`
-  MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `berita`
@@ -418,13 +428,13 @@ ALTER TABLE `jenis`
 -- AUTO_INCREMENT untuk tabel `kelahiran`
 --
 ALTER TABLE `kelahiran`
-  MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `kematian`
 --
 ALTER TABLE `kematian`
-  MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `kepala_desa`
@@ -454,7 +464,7 @@ ALTER TABLE `rw`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

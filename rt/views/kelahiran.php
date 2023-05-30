@@ -103,19 +103,61 @@
                         <td>
                             <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kelahiran_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['kelahiran_status'] == 'Ditolak RT') {
+                                echo $data['kelahiran_status'] . "(" . $data['kelahiran_ket'] . ")";
+                            } else {
+                                echo $data['kelahiran_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
                             if ($data['kelahiran_status'] == 'Menunggu Verifikasi RT') {
                             ?>
                                 <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                <a href="" class="text-danger" data-toggle="modal" data-target="#tolakKelahiran<?= $data['kelahiran_id'] ?>"><i class="fas fa-times fa-md"></i></a>
                             <?php
                             }
                             ?>
                         </td>
                     </tr>
+                    <!-- Modal Tolak Kelahiran -->
+                    <div class="modal fade" id="tolakKelahiran<?= $data['kelahiran_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Alasan Penolakan Permintaan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="" method="post">
+                                    <div class="modal-body">
+                                        <label for="">Alasan :</label>
+                                        <input type="hidden" class="form-control" name="kelahiran_id" value="<?= $data['kelahiran_id'] ?>" required>
+                                        <input type="text" class="form-control" name="kelahiran_ket" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <input type="submit" name="simpan_kelahiran" class="btn btn-primary" value="Kirim">
+                                    </div>
+                                </form>
+                                <?php
+                                if (isset($_POST['simpan_kelahiran'])) {
+                                    $kelahiran_ket = $_POST['kelahiran_ket'];
+                                    $kelahiran_id = $_POST['kelahiran_id'];
+
+                                    $sql_kelahiran = mysqli_query($con, "UPDATE kelahiran SET kelahiran_ket = '$kelahiran_ket' WHERE kelahiran_id = '$kelahiran_id'");
+
+                                    echo "<script>window.location='?page=aksikelahiran&id=$kelahiran_id&aksi=Ditolak';</script>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -175,14 +217,22 @@
                         <td>
                             <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kelahiran_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['kelahiran_status'] == 'Ditolak RT') {
+                                echo $data['kelahiran_status'] . "(" . $data['kelahiran_ket'] . ")";
+                            } else {
+                                echo $data['kelahiran_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
                             if ($data['kelahiran_status'] == 'Menunggu Verifikasi RT') {
                             ?>
                                 <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+
                             <?php
                             }
                             ?>

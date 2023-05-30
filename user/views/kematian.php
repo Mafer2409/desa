@@ -46,7 +46,15 @@
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_akte']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kematian_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['kematian_status'] == 'Ditolak RT') {
+                                echo $data['kematian_status'] . "(" . $data['kematian_ket'] . ")";
+                            } else {
+                                echo $data['kematian_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
@@ -161,8 +169,9 @@ if (isset($_POST['simpan'])) {
 
     $kematian_status = 'Menunggu Verifikasi RT';
     $kematian_tanggal_verifikasi = '';
+    $kematian_ket = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kematian VALUES('', '$kematian_user', '$kematian_rt', '$kematian_tanggal', '$kematian_user_meninggal', '$kematian_tempat_meninggal', '$kematian_tanggal_meninggal', '$kematian_sebab_meninggal', '$kematian_sk_dokter', '$kematian_ktp_almarhum', '$kematian_akte', '$kematian_status', '$kematian_tanggal_verifikasi', '0')");
+    $sql = mysqli_query($con, "INSERT INTO kematian VALUES('', '$kematian_user', '$kematian_rt', '$kematian_tanggal', '$kematian_user_meninggal', '$kematian_tempat_meninggal', '$kematian_tanggal_meninggal', '$kematian_sebab_meninggal', '$kematian_sk_dokter', '$kematian_ktp_almarhum', '$kematian_akte', '$kematian_status', '$kematian_tanggal_verifikasi', '0', '$kematian_ket')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kematian';</script>";

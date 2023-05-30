@@ -45,7 +45,15 @@
                         <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_sk_pindah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['administrasi_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['administrasi_status'] == 'Ditolak RT') {
+                                echo $data['administrasi_status'] . "(" . $data['administrasi_keterangan'] . ")";
+                            } else {
+                                echo $data['administrasi_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['administrasi_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
@@ -148,8 +156,9 @@ if (isset($_POST['simpan'])) {
 
     $administrasi_status = 'Menunggu Verifikasi RT';
     $administrasi_tanggal_verifikasi = '';
+    $administrasi_keterangan = '';
 
-    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_alasan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0')");
+    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_alasan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0', '$administrasi_keterangan')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=pindah';</script>";

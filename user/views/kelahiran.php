@@ -51,7 +51,15 @@
                         <td>
                             <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td><?= $data['kelahiran_status']; ?></td>
+                        <td>
+                            <?php
+                            if ($data['kelahiran_status'] == 'Ditolak RT') {
+                                echo $data['kelahiran_status'] . "(" . $data['kelahiran_ket'] . ")";
+                            } else {
+                                echo $data['kelahiran_status'];
+                            }
+                            ?>
+                        </td>
                         <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
@@ -223,8 +231,9 @@ if (isset($_POST['simpan'])) {
 
     $kelahiran_status = 'Menunggu Verifikasi RT';
     $kelahiran_tanggal_verifikasi = '';
+    $kelahiran_ket = '';
 
-    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_nik_ayah', '$kelahiran_umur_ayah', '$kelahiran_pekerjaan_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_nik_ibu', '$kelahiran_umur_ibu', '$kelahiran_pekerjaan_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi', '0')");
+    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_nik_ayah', '$kelahiran_umur_ayah', '$kelahiran_pekerjaan_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_nik_ibu', '$kelahiran_umur_ibu', '$kelahiran_pekerjaan_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi', '0', '$kelahiran_ket')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=kelahiran';</script>";
