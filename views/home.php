@@ -14,9 +14,9 @@
                                 <div class="col-lg-3 mx-">
                                     <a href="sign-in.php" class="btn btn-primary rounded-pill py-3 px-5">Sign In!</a>
                                 </div>
-                                <!-- <div class="col-lg-6 mx-">
+                                <div class="col-lg-6 mx-">
                                     <a href="sign-up.php" class="btn btn-primary rounded-pill py-3 px-5">Sign Up!</a>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,9 +36,9 @@
                                 <div class="col-lg-3 mx-">
                                     <a href="sign-in.php" class="btn btn-primary rounded-pill py-3 px-5">Sign In!</a>
                                 </div>
-                                <!-- <div class="col-lg-6 mx-">
+                                <div class="col-lg-6 mx-">
                                     <a href="sign-up.php" class="btn btn-primary rounded-pill py-3 px-5">Sign Up!</a>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
