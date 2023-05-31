@@ -75,6 +75,7 @@ if (!isset($_SESSION['id_user'])) {
                         <a href="?page=pindah" class="dropdown-item">Pindah</a>
                     </div>
                 </div>
+                <a href="?page=validasi" class="nav-item nav-link">Validasi</a>
                 <a href="?page=berita" class="nav-item nav-link">Berita</a>
                 <a href="../index.php" class="nav-item nav-link text-danger" onclick="return confirm('Yakin ingin keluar ?')">Logout</a>
             </div>
@@ -115,6 +116,10 @@ if (!isset($_SESSION['id_user'])) {
             include "views/read-kematian.php";
         } else if (@$_GET['page'] == 'read-administrasi') {
             include "views/read-administrasi.php";
+        } else if (@$_GET['page'] == 'validasi') {
+            include "views/validasi.php";
+        } else if (@$_GET['page'] == 'validasi-cari') {
+            include "views/validasi-cari.php";
         }
         ?>
     </div>
