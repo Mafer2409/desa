@@ -1,8 +1,18 @@
+<?php
+$sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$nikuser'");
+?>
+
 <div class="container-xxl py-6">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <a href="" class="btn btn-md btn-success" data-toggle="modal" data-target="#ModalTambah"><i class="fas fa-plus"></i> Tambah Data</a>
+                <?php
+                if (mysqli_num_rows($sqlcek) > 0) {
+                ?>
+                    <a href="" class="btn btn-md btn-success" data-toggle="modal" data-target="#ModalTambah"><i class="fas fa-plus"></i> Tambah Data</a>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <h3 class="mb-2">Data Administrasi Kelahiran | <small><?= $namauser ?></small></h3>

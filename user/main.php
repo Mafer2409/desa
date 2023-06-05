@@ -5,6 +5,7 @@ if (!isset($_SESSION['id_user'])) {
     echo "<script>alert('Anda harus login terlebih dahulu !');window.location='../index.php';</script>";
 } else {
     $iduser = $_SESSION['id_user'];
+    $nikuser = $_SESSION['nik_user'];
     $namauser = $_SESSION['nama_user'];
     $idrt = $_SESSION['id_rt'];
 }

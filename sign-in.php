@@ -83,6 +83,7 @@ session_destroy();
                                         echo "<script>alert('Login Berhasil !');window.location='rt/main.php';</script>";
                                     } else {
                                         $_SESSION['id_user'] = $data['user_id'];
+                                        $_SESSION['nik_user'] = $data['user_nik'];
                                         $_SESSION['nama_user'] = $data['user_nama'];
                                         $_SESSION['id_rt'] = $data['user_rt_id'];
                                         echo "<script>alert('Login Berhasil !');window.location='user/main.php';</script>";
