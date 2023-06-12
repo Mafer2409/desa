@@ -90,12 +90,12 @@ if (!isset($_SESSION['id_admin'])) {
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=penduduk">
                             <i class="icon-head menu-icon"></i>
                             <span class="menu-title">Penduduk</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=jenis">
                             <i class="icon-layout menu-icon"></i>
@@ -111,12 +111,14 @@ if (!isset($_SESSION['id_admin'])) {
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-warga" aria-expanded="false" aria-controls="ui-basic">
                             <i class="icon-head menu-icon"></i>
-                            <span class="menu-title">Data Warga</span>
+                            <span class="menu-title">Data Penduduk</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-warga">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="?page=user">Semua warga</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=user">Semua penduduk</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=penduduk-registrasi">Telah registrasi</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=penduduk-belum-registrasi">Belum registrasi</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=tetap">Tetap</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=tidak-tetap">Tidak Tetap</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=meninggal">Meninggal</a></li>
@@ -327,6 +329,10 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/edit_penduduk.php";
                     } else if (@$_GET['page'] == 'hapus_penduduk') {
                         include "views/hapus_penduduk.php";
+                    } else if (@$_GET['page'] == 'penduduk-registrasi') {
+                        include "views/penduduk-registrasi.php";
+                    } else if (@$_GET['page'] == 'penduduk-belum-registrasi') {
+                        include "views/penduduk-belum-registrasi.php";
                     }
                     ?>
                 </div>

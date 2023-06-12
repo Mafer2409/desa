@@ -43,7 +43,7 @@ session_destroy();
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth px-0">
                 <div class="row w-100 mx-0">
-                    <div class="col-lg-6 mx-auto mt-5">
+                    <div class="col-lg-6 mx-auto mt-5 mb-5">
                         <div class="card bg-success">
                             <div class="card-body">
                                 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
@@ -55,7 +55,7 @@ session_destroy();
                                     <form class="pt-3" action="" method="post">
                                         <div class="mb-2">
                                             <div class="form-group">
-                                                <input type="text" name="user_nik" id="user_nik" class="form-control form-control-lg" placeholder="NIK" required>
+                                                <input type="text" name="user_nik" minlength="16" maxlength="16" id="user_nik" class="form-control form-control-lg" placeholder="NIK" required>
                                             </div>
                                             <!-- <div class="container mb-5" align="center">
                                         <h4 id="status">Isilah NIK anda diatas!</h4>
@@ -77,6 +77,7 @@ session_destroy();
                                     <?php
                                     include 'system/koneksi.php';
                                     if (isset($_POST['daftar'])) {
+                                        $user_id = $_POST['user_id'];
                                         $user_nik = $_POST['user_nik'];
                                         // $user_nama = $_POST['user_nama'];
                                         // $user_tempat_lahir = $_POST['user_tempat_lahir'];
@@ -103,20 +104,13 @@ session_destroy();
                                         //     $user_status = 'Menunggu Verifikasi';
                                         // }
 
-                                        $cek = mysqli_query($con, "SELECT * FROM user WHERE user_nik = '$user_nik'");
-                                        $datacek = mysqli_fetch_assoc($cek);
+                                        // $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$user_nik', '$user_nama', '$user_tempat_lahir', '$user_tanggal_lahir', '$user_rt_id', '$user_agama', '$user_jk', '$user_wn', '$user_alamat', '$user_status', '$user_status_tinggal', '$user_pekerjaan', '$user_status_kawin', '$user_jenjang_pendidikan', '$user_email', '$user_password')");
+                                        $sql = mysqli_query($con, "UPDATE user SET user_status='Aktif', user_email='$user_email', user_password='$user_password' WHERE user_id = '$user_id'");
 
-                                        if ($datacek['user_email'] == '' || $datacek['user_password'] == '') {
-                                            // $sql = mysqli_query($con, "INSERT INTO user VALUES('', '$user_nik', '$user_nama', '$user_tempat_lahir', '$user_tanggal_lahir', '$user_rt_id', '$user_agama', '$user_jk', '$user_wn', '$user_alamat', '$user_status', '$user_status_tinggal', '$user_pekerjaan', '$user_status_kawin', '$user_jenjang_pendidikan', '$user_email', '$user_password')");
-                                            $sql = mysqli_query($con, "UPDATE user SET user_");
-
-                                            if ($sql) {
-                                                echo "<script>alert('Pendaftaran Berhasil !');window.location='index.php';</script>";
-                                            } else {
-                                                echo "<script>alert('Pendaftaran Gagal ! Ulangi Pendaftaran !');window.location='sign-up.php';</script>";
-                                            }
+                                        if ($sql) {
+                                            echo "<script>alert('Pendaftaran Berhasil !');window.location='index.php';</script>";
                                         } else {
-                                            echo "<script>alert('Pendaftaran Gagal ! Anda telah registrasi email dan password ! Silahkan lakukan login !');window.location='sign-up.php';</script>";
+                                            echo "<script>alert('Pendaftaran Gagal ! Ulangi Pendaftaran !');window.location='sign-up.php';</script>";
                                         }
                                     }
                                     ?>

@@ -1,11 +1,11 @@
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3>Data semua penduduk</h3>
-            <a href="#" class="btn btn-md btn-success mb-2" data-toggle="modal" data-target="#ModalTambah"><i class="fas fa-plus"></i> Tambah penduduk</a>
+            <h3>Data penduduk yang belum registrasi</h3>
+            <!-- <a href="#" class="btn btn-md btn-success mb-2" data-toggle="modal" data-target="#ModalTambah"><i class="fas fa-plus"></i> Tambah penduduk</a> -->
             <div class="card">
                 <form class="mx-3" action="" method="post">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="mt-3">Pilih RT</label>
@@ -28,7 +28,7 @@
                                 <a href="../assets/report/report-user/report-user.php?idrt=0&s=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
                 <div class="card-body table-responsive">
                     <table id="bootstrap-data-table" class="table table-striped table-sm">
@@ -46,7 +46,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id");
+                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_status = 'Belum registrasi'");
                             while ($data = mysqli_fetch_assoc($sql)) {
                             ?>
                                 <tr>
@@ -100,7 +100,7 @@ if (isset($_POST['cari'])) {
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" name="user_nik" minlength="16" maxlength="16" class="form-control form-control-lg" placeholder="NIK" required>
+                        <input type="text" name="user_nik" class="form-control form-control-lg" placeholder="NIK" required>
                     </div>
                     <div class="form-group">
                         <input type="text" name="user_nama" class="form-control form-control-lg" placeholder="Nama Lengkap" required>
