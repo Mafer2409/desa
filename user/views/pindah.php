@@ -20,7 +20,7 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                     <th>Alasan</th>
                     <th>KTP</th>
                     <th>KK</th>
-                    <th>Surat Ket.</th>
+                    <!-- <th>Surat Ket.</th> -->
                     <th>Status</th>
                     <th>Tgl Verifikasi</th>
                     <th>Opsi</th>
@@ -45,9 +45,9 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_kk']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                         </td>
-                        <td>
+                        <!-- <td>
                             <a href="../assets/files/files-pindah/<?= $data['administrasi_sk_pindah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
-                        </td>
+                        </td> -->
                         <td>
                             <?php
                             if ($data['administrasi_status'] == 'Ditolak RT') {
@@ -118,10 +118,10 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <label>KK</label>
                         <input type="file" name="administrasi_kk" class="form-control">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Surat ket.</label>
                         <input type="file" name="administrasi_sk_pindah" class="form-control">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -152,16 +152,16 @@ if (isset($_POST['simpan'])) {
     $sumber = $_FILES['administrasi_kk']['tmp_name'];
     $upload = move_uploaded_file($sumber, "../assets/files/files-pindah/" . $administrasi_kk);
 
-    $extensi = explode(".", $_FILES['administrasi_sk_pindah']['name']);
-    $administrasi_sk_pindah = "$namauser - SK Pindah - " . round(microtime(true)) . "." . end($extensi);
-    $sumber = $_FILES['administrasi_sk_pindah']['tmp_name'];
-    $upload = move_uploaded_file($sumber, "../assets/files/files-pindah/" . $administrasi_sk_pindah);
+    // $extensi = explode(".", $_FILES['administrasi_sk_pindah']['name']);
+    // $administrasi_sk_pindah = "$namauser - SK Pindah - " . round(microtime(true)) . "." . end($extensi);
+    // $sumber = $_FILES['administrasi_sk_pindah']['tmp_name'];
+    // $upload = move_uploaded_file($sumber, "../assets/files/files-pindah/" . $administrasi_sk_pindah);
 
     $administrasi_status = 'Menunggu Verifikasi RT';
     $administrasi_tanggal_verifikasi = '';
     $administrasi_keterangan = '';
 
-    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_alasan', '$administrasi_ktp', '$administrasi_kk', '$administrasi_sk_pindah', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0', '$administrasi_keterangan')");
+    $sql = mysqli_query($con, "INSERT INTO administrasi VALUES('', '$administrasi_user', '$administrasi_rt', '$administrasi_tanggal', '$administrasi_ket', '$administrasi_dari', '$administrasi_tujuan', '$administrasi_alasan', '$administrasi_ktp', '$administrasi_kk', '', '$administrasi_status', '$administrasi_tanggal_verifikasi', '0', '$administrasi_keterangan')");
 
     if ($sql) {
         echo "<script>alert('Berhasil !');window.location='?page=pindah';</script>";

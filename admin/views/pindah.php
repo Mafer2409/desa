@@ -80,7 +80,7 @@
                                 <th>Alasan</th>
                                 <th>KTP</th>
                                 <th>KK</th>
-                                <th>Surat Ket.</th>
+                                <!-- <th>Surat Ket.</th> -->
                                 <th>Status</th>
                                 <th>Tgl Verifikasi</th>
                                 <th>Opsi</th>
@@ -106,9 +106,9 @@
                                     <td>
                                         <a href="../assets/files/files-pindah/<?= $data['administrasi_kk']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <a href="../assets/files/files-pindah/<?= $data['administrasi_sk_pindah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
-                                    </td>
+                                    </td> -->
                                     <td><?= $data['administrasi_status']; ?></td>
                                     <td><?= $data['administrasi_tanggal_verifikasi']; ?></td>
                                     <td>
