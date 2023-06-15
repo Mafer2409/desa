@@ -157,8 +157,8 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <input type="text" name="kelahiran_pekerjaan_ayah" class="form-control" placeholder="Pekerjaan Ayah">
                     </div>
                     <div class="form-group">
-                        <label>KTP ayah</label>
-                        <input type="file" name="kelahiran_ktp_ayah" class="form-control">
+                        <label>KTP ayah (Pdf File)</label>
+                        <input type="file" name="kelahiran_ktp_ayah" accept="application/pdf" class="form-control">
                     </div>
 
                     <hr>
@@ -180,12 +180,12 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <input type="text" name="kelahiran_pekerjaan_ibu" class="form-control" placeholder="Pekerjaan Ibu">
                     </div>
                     <div class="form-group">
-                        <label>KTP ibu</label>
-                        <input type="file" name="kelahiran_ktp_ibu" class="form-control">
+                        <label>KTP ibu (Pdf File)</label>
+                        <input type="file" name="kelahiran_ktp_ibu" accept="application/pdf" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Surat ket. lahir</label>
-                        <input type="file" name="kelahiran_sk_lahir" class="form-control">
+                        <label>Surat ket. lahir (Pdf File)</label>
+                        <input type="file" name="kelahiran_sk_lahir" accept="application/pdf" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">

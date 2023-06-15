@@ -133,7 +133,7 @@ $datauser = mysqli_fetch_assoc($sqluser);
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="user_email" class="form-control form-control-lg" placeholder="E-Mail" required value="<?= $datauser['user_email'] ?>">
+                                <input type="email" name="user_email" class="form-control form-control-lg" placeholder="E-Mail" value="<?= $datauser['user_email'] ?>">
                             </div>
                             <p class="text-danger"><i>Abaikan jika tidak ingin mengganti password !!!</i></p>
                             <div class="form-group">

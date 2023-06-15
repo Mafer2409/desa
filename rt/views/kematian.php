@@ -91,7 +91,13 @@
                         <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
                         <td><?= $data['kematian_sebab_meninggal']; ?></td>
                         <td>
-                            <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                            <?php
+                            if ($data['kematian_sk_dokter'] != '') {
+                            ?>
+                                <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                            <?php
+                            }
+                            ?>
                         </td>
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_ktp_almarhum']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>

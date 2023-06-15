@@ -41,7 +41,13 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
                         <td><?= $data['kematian_sebab_meninggal']; ?></td>
                         <td>
-                            <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                            <?php
+                            if ($data['kematian_sk_dokter'] != '') {
+                            ?>
+                                <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                            <?php
+                            }
+                            ?>
                         </td>
                         <td>
                             <a href="../assets/files/files-kematian/<?= $data['kematian_ktp_almarhum']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
@@ -124,16 +130,16 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <input type="text" name="kematian_sebab_meninggal" class="form-control" placeholder="Sebab Meninggal" required>
                     </div>
                     <div class="form-group">
-                        <label>Surat Ket. Meninggal <i>Optional</i></label>
-                        <input type="file" name="kematian_sk_dokter" class="form-control">
+                        <label>Surat Ket. Meninggal (Pdf File) <i>Optional</i></label>
+                        <input type="file" name="kematian_sk_dokter" accept="application/pdf" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>KTP Almarhum</label>
-                        <input type="file" name="kematian_ktp_almarhum" class="form-control">
+                        <label>KTP Almarhum (Pdf File)</label>
+                        <input type="file" name="kematian_ktp_almarhum" accept="application/pdf" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Akte Almarhum</label>
-                        <input type="file" name="kematian_akte" class="form-control">
+                        <label>Akte Almarhum (Pdf File)</label>
+                        <input type="file" name="kematian_akte" accept="application/pdf" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -155,18 +161,23 @@ if (isset($_POST['simpan'])) {
     $kematian_tanggal_meninggal = $_POST['kematian_tanggal_meninggal'];
     $kematian_sebab_meninggal = $_POST['kematian_sebab_meninggal'];
 
-    $extensi = explode(".", $_FILES['kematian_sk_dokter']['name']);
-    $kematian_sk_dokter = "$namauser - Surat Ket - " . round(microtime(true)) . "." . end($extensi);
-    $sumber = $_FILES['kematian_sk_dokter']['tmp_name'];
-    $upload = move_uploaded_file($sumber, "../assets/files/files-kematian/" . $kematian_sk_dokter);
+    $sk_dokter = $_FILES['kematian_sk_dokter'];
+    if (!$sk_dokter['name']) {
+        $kematian_sk_dokter = '';
+    } else {
+        $extensi_kematian_sk_dokter = explode(".", $_FILES['kematian_sk_dokter']['name']);
+        $kematian_sk_dokter = "$namauser - Surat Ket - " . round(microtime(true)) . "." . end($extensi_kematian_sk_dokter);
+        $sumber = $_FILES['kematian_sk_dokter']['tmp_name'];
+        $upload = move_uploaded_file($sumber, "../assets/files/files-kematian/" . $kematian_sk_dokter);
+    }
 
-    $extensi = explode(".", $_FILES['kematian_ktp_almarhum']['name']);
-    $kematian_ktp_almarhum = "$namauser - KTP Almarhum - " . round(microtime(true)) . "." . end($extensi);
+    $extensi_kematian_ktp_almarhum = explode(".", $_FILES['kematian_ktp_almarhum']['name']);
+    $kematian_ktp_almarhum = "$namauser - KTP Almarhum - " . round(microtime(true)) . "." . end($extensi_kematian_ktp_almarhum);
     $sumber = $_FILES['kematian_ktp_almarhum']['tmp_name'];
     $upload = move_uploaded_file($sumber, "../assets/files/files-kematian/" . $kematian_ktp_almarhum);
 
-    $extensi = explode(".", $_FILES['kematian_akte']['name']);
-    $kematian_akte = "$namauser - Akte - " . round(microtime(true)) . "." . end($extensi);
+    $extensi_kematian_akte = explode(".", $_FILES['kematian_akte']['name']);
+    $kematian_akte = "$namauser - Akte - " . round(microtime(true)) . "." . end($extensi_kematian_akte);
     $sumber = $_FILES['kematian_akte']['tmp_name'];
     $upload = move_uploaded_file($sumber, "../assets/files/files-kematian/" . $kematian_akte);
 

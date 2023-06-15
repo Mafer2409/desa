@@ -111,12 +111,12 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <input type="text" name="administrasi_alasan" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>KTP</label>
-                        <input type="file" name="administrasi_ktp" class="form-control">
+                        <label>KTP (Pdf File)</label>
+                        <input type="file" name="administrasi_ktp" accept="application/pdf" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>KK</label>
-                        <input type="file" name="administrasi_kk" class="form-control">
+                        <label>KK (Pdf File)</label>
+                        <input type="file" name="administrasi_kk" accept="application/pdf" class="form-control">
                     </div>
                     <!-- <div class="form-group">
                         <label>Surat ket.</label>
