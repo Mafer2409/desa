@@ -124,7 +124,7 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         <input type="text" name="kematian_sebab_meninggal" class="form-control" placeholder="Sebab Meninggal" required>
                     </div>
                     <div class="form-group">
-                        <label>Surat Ket. Meninggal</label>
+                        <label>Surat Ket. Meninggal <i>Optional</i></label>
                         <input type="file" name="kematian_sk_dokter" class="form-control">
                     </div>
                     <div class="form-group">
