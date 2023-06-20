@@ -1,54 +1,5 @@
 <div class="container-xxl py-6">
     <div class="container">
-        <h3 class="mb-2">Warga Pendaftar</h3>
-        <table id="bootstrap-data-table" class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>TTL</th>
-                    <th>RW/RT</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Pekerjaan</th>
-                    <th>Status Tinggal</th>
-                    <th>Status User</th>
-                    <th>Opsi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt' AND user.user_status = 'Menunggu Verifikasi'");
-                $no = 1;
-                while ($data = mysqli_fetch_assoc($sql)) {
-                ?>
-                    <tr>
-                        <td><?= $no++; ?>.</td>
-                        <td><?= $data['user_nama']; ?></td>
-                        <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
-                        <td><?= $data['rt']; ?></td>
-                        <td><?= $data['user_jk']; ?></td>
-                        <td><?= $data['user_pekerjaan']; ?></td>
-                        <td><?= $data['user_status_tinggal']; ?></td>
-                        <td><?= $data['user_status']; ?></td>
-                        <td>
-                            <a href="?page=info-warga&id=<?= $data['user_id'] ?>" class="text-info"><i class="fas fa-bars fa-md"></i></a>
-                            <a href="?page=aksiwarga&id=<?= $data['user_id'] ?>&aksi=Aktif" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                            <a href="?page=aksiwarga&id=<?= $data['user_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-
-
-<div class="container-xxl py-6">
-    <div class="container">
         <h3>Semua Warga RT: <?= $namart ?></h3>
         <table id="bootstrap-data-table" class="table table-striped table-sm">
             <thead>
