@@ -60,6 +60,8 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                             if ($data['kelahiran_status'] == 'Selesai') {
                             ?>
                                 <!-- <a href="../assets/report/report-kelahiran/report-kelahiran-user.php?id=<?= $data['kelahiran_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a> -->
+
+                                <!-- PALSU -->
                                 <a href="" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a>
                             <?php
                             }
