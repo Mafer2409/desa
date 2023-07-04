@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Jun 2023 pada 14.52
--- Versi Server: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Waktu pembuatan: 04 Jul 2023 pada 17.48
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -98,6 +98,32 @@ INSERT INTO `berita` (`berita_id`, `berita_judul`, `berita_tanggal`, `berita_isi
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `izinusaha`
+--
+
+CREATE TABLE `izinusaha` (
+  `izinusaha_id` int(11) NOT NULL,
+  `izinusaha_user` int(11) NOT NULL,
+  `izinusaha_rt` int(11) NOT NULL,
+  `izinusaha_tanggal` date NOT NULL,
+  `izinusaha_nama_pemilik` varchar(255) NOT NULL,
+  `izinusaha_nik_pemilik` varchar(255) NOT NULL,
+  `izinusaha_tempat_lahir_pemilik` varchar(255) NOT NULL,
+  `izinusaha_tanggal_lahir_pemilik` varchar(255) NOT NULL,
+  `izinusaha_jenis_kelamin_pemilik` varchar(255) NOT NULL,
+  `izinusaha_alamat_pemilik` text NOT NULL,
+  `izinusaha_nama_usaha` varchar(255) NOT NULL,
+  `izinusaha_jenis_usaha` varchar(255) NOT NULL,
+  `izinusaha_alamat_usaha` text NOT NULL,
+  `izinusaha_status` varchar(255) NOT NULL,
+  `izinusaha_tanggal_verifikasi` date NOT NULL,
+  `izinusaha_notif` int(11) NOT NULL,
+  `izinusaha_ket` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `jenis`
 --
 
@@ -186,7 +212,8 @@ CREATE TABLE `kematian` (
 --
 
 INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian_tanggal`, `kematian_user_meninggal`, `kematian_tempat_meninggal`, `kematian_tanggal_meninggal`, `kematian_sebab_meninggal`, `kematian_sk_dokter`, `kematian_ktp_almarhum`, `kematian_akte`, `kematian_status`, `kematian_tanggal_verifikasi`, `kematian_notif`, `kematian_ket`) VALUES
-(1, 17, 8, '2023-06-08', 17, 'Nelelamadike', '2023-05-06', 'serangan jantung', 'LINUS PATI BOLI - Surat Ket - 1686209174.jpg', 'LINUS PATI BOLI - KTP Almarhum - 1686209174.', 'LINUS PATI BOLI - Akte - 1686209174.jpg', 'Selesai', '2023-06-08', 0, '');
+(1, 17, 8, '2023-06-08', 17, 'Nelelamadike', '2023-05-06', 'serangan jantung', 'LINUS PATI BOLI - Surat Ket - 1686209174.jpg', 'LINUS PATI BOLI - KTP Almarhum - 1686209174.', 'LINUS PATI BOLI - Akte - 1686209174.jpg', 'Selesai', '2023-06-08', 0, ''),
+(2, 21, 10, '2023-06-15', 23, 'No data', '2023-06-14', 'No data', '', 'Nol nol - KTP Almarhum - 1686795017.pdf', 'Nol nol - Akte - 1686795017.pdf', 'Menunggu Verifikasi RT', '0000-00-00', 1, '');
 
 -- --------------------------------------------------------
 
@@ -261,7 +288,8 @@ CREATE TABLE `rt` (
 INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
 (7, 'RW:003 / RT:006', 13),
 (8, 'RW:001 / RT:001', 15),
-(9, 'RW:002 / RT:004', 16);
+(9, 'RW:002 / RT:004', 16),
+(10, 'RW:009 / RT:009', 23);
 
 -- --------------------------------------------------------
 
@@ -319,147 +347,162 @@ INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `us
 (16, '5306131101900001', 'LAZARUS SAKA SINUN', 'LAMANELE', '1990-01-11', 9, 'Katolik', 'Laki-laki', 'WNI', 'Lamanele', 'Aktif', 'Tetap', 'Petani', 'Sudah Menikah', 'SLTA/SMA/SMK', 'lazarus@gmail.com', 'a4a6a33a3c5fb414fef69b653c591e0a'),
 (17, '5306130308950001', 'LINUS PATI BOLI', 'LAMANELE', '1995-08-31', 8, 'Katolik', 'Laki-laki', 'WNI', 'Lamanele', 'Aktif', 'Tetap', 'Petani', 'Sudah Menikah', 'SLTA/SMA/SMK', 'linus@gmail.com', '6cd71071ccd0edfe7500231c77eea572'),
 (18, '5306134202960002', 'MARIA MARIANA UBA DONI', 'BUNGALIO', '1996-02-02', 8, 'Katolik', 'Perempuan', 'WNI', 'Lamanele', 'Aktif', 'Tetap', 'Ibu Rumah Tangga', 'Sudah Menikah', 'SLTA/SMA/SMK', 'maria@gmail.com', '263bce650e68ab4e23f28263760b9fa5'),
-(20, '5306130307930001', 'YULIUS TARAN NUBI', 'LAMANELE', '1993-07-31', 8, 'Katolik', 'Laki-laki', 'WNI', 'Lamanele', 'Aktif', 'Tetap', 'Petani', 'Sudah Menikah', 'S1', 'yulius@gmail.com', 'fd8cdd1421c2ea02d7c277a8f2aae6ab');
+(20, '5306130307930001', 'YULIUS TARAN NUBI', 'LAMANELE', '1993-07-31', 8, 'Katolik', 'Laki-laki', 'WNI', 'Lamanele', 'Aktif', 'Tetap', 'Petani', 'Sudah Menikah', 'S1', 'yulius@gmail.com', 'fd8cdd1421c2ea02d7c277a8f2aae6ab'),
+(21, '0000000000000000', 'Nol nol', 'Nol', '1994-03-31', 10, 'Katolik', 'Laki-laki', 'WNI', 'New', 'Aktif', 'Tetap', 'sdsdas', 'Belum Menikah', 'S1', '999@mail.com', 'b706835de79a2b4e80506f582af3676a'),
+(22, '0000000000000009', 'xxxx', 'xxxx', '2005-10-18', 10, 'Islam', 'Laki-laki', 'WNI', 'asdasdfa', 'Aktif', 'Tetap', 'tytytryrty', 'Belum Menikah', 'S1', '', ''),
+(23, '6666666666666666', 'Enam', 'fdfsdf', '2023-06-06', 10, 'Katolik', 'Laki-laki', 'WNI', 'dfdsfdsf', 'Aktif', 'Tetap', 'dfdsfdsf', 'Belum Menikah', 'S1', '666@mail.com', 'fae0b27c451c728867a567e8c1bb4e53');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `administrasi`
+-- Indeks untuk tabel `administrasi`
 --
 ALTER TABLE `administrasi`
   ADD PRIMARY KEY (`administrasi_id`);
 
 --
--- Indexes for table `berita`
+-- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`berita_id`);
 
 --
--- Indexes for table `jenis`
+-- Indeks untuk tabel `izinusaha`
+--
+ALTER TABLE `izinusaha`
+  ADD PRIMARY KEY (`izinusaha_id`);
+
+--
+-- Indeks untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`jenis_id`);
 
 --
--- Indexes for table `kelahiran`
+-- Indeks untuk tabel `kelahiran`
 --
 ALTER TABLE `kelahiran`
   ADD PRIMARY KEY (`kelahiran_id`);
 
 --
--- Indexes for table `kematian`
+-- Indeks untuk tabel `kematian`
 --
 ALTER TABLE `kematian`
   ADD PRIMARY KEY (`kematian_id`);
 
 --
--- Indexes for table `kepala_desa`
+-- Indeks untuk tabel `kepala_desa`
 --
 ALTER TABLE `kepala_desa`
   ADD PRIMARY KEY (`kepala_desa_id`);
 
 --
--- Indexes for table `penduduk`
+-- Indeks untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
   ADD PRIMARY KEY (`penduduk_id`);
 
 --
--- Indexes for table `rt`
+-- Indeks untuk tabel `rt`
 --
 ALTER TABLE `rt`
   ADD PRIMARY KEY (`rt_id`);
 
 --
--- Indexes for table `rw`
+-- Indeks untuk tabel `rw`
 --
 ALTER TABLE `rw`
   ADD PRIMARY KEY (`rw_id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `administrasi`
+-- AUTO_INCREMENT untuk tabel `administrasi`
 --
 ALTER TABLE `administrasi`
   MODIFY `administrasi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `berita`
+-- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
   MODIFY `berita_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `jenis`
+-- AUTO_INCREMENT untuk tabel `izinusaha`
+--
+ALTER TABLE `izinusaha`
+  MODIFY `izinusaha_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   MODIFY `jenis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `kelahiran`
+-- AUTO_INCREMENT untuk tabel `kelahiran`
 --
 ALTER TABLE `kelahiran`
   MODIFY `kelahiran_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `kematian`
+-- AUTO_INCREMENT untuk tabel `kematian`
 --
 ALTER TABLE `kematian`
-  MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kematian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kepala_desa`
+-- AUTO_INCREMENT untuk tabel `kepala_desa`
 --
 ALTER TABLE `kepala_desa`
   MODIFY `kepala_desa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `penduduk`
+-- AUTO_INCREMENT untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
   MODIFY `penduduk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `rt`
+-- AUTO_INCREMENT untuk tabel `rt`
 --
 ALTER TABLE `rt`
-  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `rw`
+-- AUTO_INCREMENT untuk tabel `rw`
 --
 ALTER TABLE `rw`
   MODIFY `rw_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
