@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Jul 2023 pada 17.48
+-- Waktu pembuatan: 07 Jul 2023 pada 03.45
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -120,6 +120,14 @@ CREATE TABLE `izinusaha` (
   `izinusaha_notif` int(11) NOT NULL,
   `izinusaha_ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `izinusaha`
+--
+
+INSERT INTO `izinusaha` (`izinusaha_id`, `izinusaha_user`, `izinusaha_rt`, `izinusaha_tanggal`, `izinusaha_nama_pemilik`, `izinusaha_nik_pemilik`, `izinusaha_tempat_lahir_pemilik`, `izinusaha_tanggal_lahir_pemilik`, `izinusaha_jenis_kelamin_pemilik`, `izinusaha_alamat_pemilik`, `izinusaha_nama_usaha`, `izinusaha_jenis_usaha`, `izinusaha_alamat_usaha`, `izinusaha_status`, `izinusaha_tanggal_verifikasi`, `izinusaha_notif`, `izinusaha_ket`) VALUES
+(1, 21, 10, '2023-07-06', 'Tess izin usaha', '1234566766666666', 'fdfdsfd', '2023-07-04', 'Laki-laki', 'fdsfdsf', 'gfhgghjghjkh', 'CV', 'dfgdfhgfhgfj', 'Ditolak RT', '0000-00-00', 0, 'Salahhhhhh'),
+(2, 21, 10, '2023-07-06', 'Tes laggiiiiii', '1111111111111111', 'vcfgdfgdfg', '1994-06-14', 'Laki-laki', 'Tes laggiiiiii', 'Tes laggiiiiii', 'Firma', 'Tes laggiiiiii', 'Telah Dikonfirmasi RT', '2023-07-06', 0, '');
 
 -- --------------------------------------------------------
 
@@ -454,7 +462,7 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT untuk tabel `izinusaha`
 --
 ALTER TABLE `izinusaha`
-  MODIFY `izinusaha_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `izinusaha_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis`

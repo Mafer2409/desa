@@ -75,6 +75,7 @@ if (!isset($_SESSION['id_user'])) {
                         <a href="?page=kelahiran" class="dropdown-item">Kelahiran</a>
                         <a href="?page=kematian" class="dropdown-item">Kematian</a>
                         <a href="?page=pindah" class="dropdown-item">Pindah</a>
+                        <a href="?page=izinusaha" class="dropdown-item">Izin usaha</a>
                     </div>
                 </div>
                 <a href="?page=berita" class="nav-item nav-link">Berita</a>
@@ -132,6 +133,12 @@ if (!isset($_SESSION['id_user'])) {
             include "views/cari-kematian.php";
         } else if (@$_GET['page'] == 'cari-pindah') {
             include "views/cari-pindah.php";
+        } else if (@$_GET['page'] == 'izinusaha') {
+            include "views/izinusaha.php";
+        } else if (@$_GET['page'] == 'aksiizinusaha') {
+            include "views/aksiizinusaha.php";
+        } else if (@$_GET['page'] == 'cari-izinusaha') {
+            include "views/cari-izinusaha.php";
         }
         ?>
     </div>

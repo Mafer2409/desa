@@ -9,7 +9,7 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                 <a href="" class="btn btn-md btn-success" data-toggle="modal" data-target="#ModalTambah"><i class="fas fa-plus"></i> Tambah Data</a>
             </div>
         </div>
-        <h3 class="mb-2">Data Administrasi Kelahiran | <small><?= $namauser ?></small></h3>
+        <h3 class="mb-2">Data Administrasi izinusaha | <small><?= $namauser ?></small></h3>
         <table id="bootstrap-data-table" class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -47,19 +47,19 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                         </td>
                         <td>
                             <?php
-                            if ($data['kelahiran_status'] == 'Ditolak RT') {
-                                echo $data['kelahiran_status'] . "(" . $data['kelahiran_ket'] . ")";
+                            if ($data['izinusaha_status'] == 'Ditolak RT') {
+                                echo $data['izinusaha_status'] . "(" . $data['izinusaha_ket'] . ")";
                             } else {
-                                echo $data['kelahiran_status'];
+                                echo $data['izinusaha_status'];
                             }
                             ?>
                         </td>
-                        <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
+                        <td><?= $data['izinusaha_tanggal_verifikasi']; ?></td>
                         <td>
                             <?php
-                            if ($data['kelahiran_status'] == 'Selesai') {
+                            if ($data['izinusaha_status'] == 'Selesai') {
                             ?>
-                                <!-- <a href="../assets/report/report-kelahiran/report-kelahiran-user.php?id=<?= $data['kelahiran_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a> -->
+                                <!-- <a href="../assets/report/report-izinusaha/report-izinusaha-user.php?id=<?= $data['izinusaha_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a> -->
 
                                 <!-- PALSU -->
                                 <a href="" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a>
@@ -91,94 +91,56 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
             <form class="pt-3" action="" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Anak</label>
-                        <input type="text" name="kelahiran_nama_anak" class="form-control" placeholder="Nama Lengkap Anak" required>
+                        <label>Nama pemilik</label>
+                        <input type="text" name="izinusaha_nama_pemilik" class="form-control" placeholder="Nama pemilik" required>
+                    </div>
+                    <div class="form-group">
+                        <label>NIK pemilik</label>
+                        <input type="text" name="izinusaha_nik_pemilik" class="form-control" maxlength="16" minlength="16" placeholder="NIK pemilik" required>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Tempat lahir</label>
-                                <input type="text" name="kelahiran_tempat_lahir" class="form-control" placeholder="Tempat Lahir" required>
-                            </div>
+                            <label>Tempat lahir pemilik</label>
+                            <input type="text" name="izinusaha_tempat_lahir_pemilik" class="form-control" placeholder="Tempat lahir pemilik" required>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Tanggal lahir</label>
-                                <input type="date" name="kelahiran_tanggal_lahir" class="form-control" required>
-                            </div>
+                            <label>Tanggal lahir pemilik</label>
+                            <input type="date" name="izinusaha_tanggal_lahir_pemilik" class="form-control" placeholder="Tanggal lahir pemilik" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Jenis Kelamin</label>
-                        <select class="form-control" name="kelahiran_jk" required>
+                        <label>Jenis kelamin pemilik</label>
+                        <select class="form-control" name="izinusaha_jenis_kelamin_pemilik" required>
                             <option value="">- Pilih Jenis Kelamin -</option>
                             <option value="Laki-laki">Laki-laki</option>
                             <option value="Perempuan">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Agama</label>
-                        <select class="form-control" name="kelahiran_agama" required>
-                            <option value="">-- Pilih Agama --</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Protestan">Protestan</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
-                            <option value="Konghuchu">Konghuchu</option>
-                            <option value="Lainnya...">Lainnya...</option>
+                        <label>Alamat pemilik</label>
+                        <textarea name="izinusaha_alamat_pemilik" class="form-control" cols="10" rows="4" required placeholder="Alamat pemilik"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Nama usaha</label>
+                        <input type="text" name="izinusaha_nama_usaha" class="form-control" placeholder="Nama usaha" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bentuk usaha</label>
+                        <select class="form-control" name="izinusaha_jenis_usaha" required>
+                            <option value="">- Pilih Bentuk Usaha -</option>
+                            <option value="PT">PT</option>
+                            <option value="CV">CV</option>
+                            <option value="Firma">Firma</option>
+                            <option value="Koperasi">Koperasi</option>
+                            <option value="Perseorangan">Perseorangan</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Alamat</label>
-                        <textarea name="kelahiran_alamat" class="form-control" cols="10" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama ayah</label>
-                        <input type="text" name="kelahiran_nama_ayah" class="form-control" placeholder="Nama Lengkap Ayah">
-                    </div>
-                    <div class="form-group">
-                        <label>NIK ayah</label>
-                        <input type="text" name="kelahiran_nik_ayah" class="form-control" placeholder="NIK Ayah">
-                    </div>
-                    <div class="form-group">
-                        <label>Umur ayah</label>
-                        <input type="number" name="kelahiran_umur_ayah" class="form-control" placeholder="Umur Ayah">
-                    </div>
-                    <div class="form-group">
-                        <label>Pekerjaan ayah</label>
-                        <input type="text" name="kelahiran_pekerjaan_ayah" class="form-control" placeholder="Pekerjaan Ayah">
-                    </div>
-                    <div class="form-group">
-                        <label>KTP ayah (Pdf File)</label>
-                        <input type="file" name="kelahiran_ktp_ayah" accept="application/pdf" class="form-control">
-                    </div>
-
-                    <hr>
-
-                    <div class="form-group">
-                        <label>Nama ibu</label>
-                        <input type="text" name="kelahiran_nama_ibu" class="form-control" placeholder="Nama Lengkap Ibu">
-                    </div>
-                    <div class="form-group">
-                        <label>NIK Ibu</label>
-                        <input type="text" name="kelahiran_nik_ibu" class="form-control" placeholder="NIK Ibu">
-                    </div>
-                    <div class="form-group">
-                        <label>Umur ibu</label>
-                        <input type="number" name="kelahiran_umur_ibu" class="form-control" placeholder="Umur Ibu">
-                    </div>
-                    <div class="form-group">
-                        <label>Pekerjaan ibu</label>
-                        <input type="text" name="kelahiran_pekerjaan_ibu" class="form-control" placeholder="Pekerjaan Ibu">
-                    </div>
-                    <div class="form-group">
-                        <label>KTP ibu (Pdf File)</label>
-                        <input type="file" name="kelahiran_ktp_ibu" accept="application/pdf" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Surat ket. lahir (Pdf File)</label>
-                        <input type="file" name="kelahiran_sk_lahir" accept="application/pdf" class="form-control">
+                        <label>Alamat usaha</label>
+                        <textarea name="izinusaha_alamat_usaha" class="form-control" cols="10" rows="4" required placeholder="Alamat usaha"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -192,50 +154,31 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
 
 <?php
 if (isset($_POST['simpan'])) {
-    $kelahiran_user = $iduser;
-    $kelahiran_rt = $idrt;
-    $kelahiran_tanggal = date('Y-m-d');
-    $kelahiran_nama_anak = $_POST['kelahiran_nama_anak'];
-    $kelahiran_tempat_lahir = $_POST['kelahiran_tempat_lahir'];
-    $kelahiran_tanggal_lahir = $_POST['kelahiran_tanggal_lahir'];
-    $kelahiran_jk = $_POST['kelahiran_jk'];
-    $kelahiran_agama = $_POST['kelahiran_agama'];
-    $kelahiran_alamat = $_POST['kelahiran_alamat'];
-    $kelahiran_nama_ayah = $_POST['kelahiran_nama_ayah'];
-    $kelahiran_nik_ayah = $_POST['kelahiran_nik_ayah'];
-    $kelahiran_umur_ayah = $_POST['kelahiran_umur_ayah'];
-    $kelahiran_pekerjaan_ayah = $_POST['kelahiran_pekerjaan_ayah'];
+    $izinusaha_user = $iduser;
+    $izinusaha_rt = $idrt;
+    $izinusaha_tanggal = date('Y-m-d');
 
-    $extensi = explode(".", $_FILES['kelahiran_ktp_ayah']['name']);
-    $kelahiran_ktp_ayah = "$namauser - KTP Ayah - " . round(microtime(true)) . "." . end($extensi);
-    $sumber = $_FILES['kelahiran_ktp_ayah']['tmp_name'];
-    $upload = move_uploaded_file($sumber, "../assets/files/files-kelahiran/" . $kelahiran_ktp_ayah);
+    $izinusaha_nama_pemilik = $_POST['izinusaha_nama_pemilik'];
+    $izinusaha_nik_pemilik = $_POST['izinusaha_nik_pemilik'];
+    $izinusaha_tempat_lahir_pemilik = $_POST['izinusaha_tempat_lahir_pemilik'];
+    $izinusaha_tanggal_lahir_pemilik = $_POST['izinusaha_tanggal_lahir_pemilik'];
+    $izinusaha_jenis_kelamin_pemilik = $_POST['izinusaha_jenis_kelamin_pemilik'];
+    $izinusaha_alamat_pemilik = $_POST['izinusaha_alamat_pemilik'];
+    $izinusaha_nama_usaha = $_POST['izinusaha_nama_usaha'];
+    $izinusaha_jenis_usaha = $_POST['izinusaha_jenis_usaha'];
+    $izinusaha_alamat_usaha = $_POST['izinusaha_alamat_usaha'];
 
-    $kelahiran_nama_ibu = $_POST['kelahiran_nama_ibu'];
-    $kelahiran_nik_ibu = $_POST['kelahiran_nik_ibu'];
-    $kelahiran_umur_ibu = $_POST['kelahiran_umur_ibu'];
-    $kelahiran_pekerjaan_ibu = $_POST['kelahiran_pekerjaan_ibu'];
+    $izinusaha_status = 'Menunggu Verifikasi RT';
+    $izinusaha_tanggal_verifikasi = '';
+    $izinusaha_notif = '0';
+    $izinusaha_ket = '';
 
-    $extensi = explode(".", $_FILES['kelahiran_ktp_ibu']['name']);
-    $kelahiran_ktp_ibu = "$namauser - KTP Ibu - " . round(microtime(true)) . "." . end($extensi);
-    $sumber = $_FILES['kelahiran_ktp_ibu']['tmp_name'];
-    $upload = move_uploaded_file($sumber, "../assets/files/files-kelahiran/" . $kelahiran_ktp_ibu);
-
-    $extensi = explode(".", $_FILES['kelahiran_sk_lahir']['name']);
-    $kelahiran_sk_lahir = "$namauser - SK Lahir - " . round(microtime(true)) . "." . end($extensi);
-    $sumber = $_FILES['kelahiran_sk_lahir']['tmp_name'];
-    $upload = move_uploaded_file($sumber, "../assets/files/files-kelahiran/" . $kelahiran_sk_lahir);
-
-    $kelahiran_status = 'Menunggu Verifikasi RT';
-    $kelahiran_tanggal_verifikasi = '';
-    $kelahiran_ket = '';
-
-    $sql = mysqli_query($con, "INSERT INTO kelahiran VALUES('', '$kelahiran_user', '$kelahiran_rt', '$kelahiran_tanggal', '$kelahiran_nama_anak', '$kelahiran_tempat_lahir', '$kelahiran_tanggal_lahir', '$kelahiran_jk', '$kelahiran_agama', '$kelahiran_alamat', '$kelahiran_nama_ayah', '$kelahiran_nik_ayah', '$kelahiran_umur_ayah', '$kelahiran_pekerjaan_ayah', '$kelahiran_ktp_ayah', '$kelahiran_nama_ibu', '$kelahiran_nik_ibu', '$kelahiran_umur_ibu', '$kelahiran_pekerjaan_ibu', '$kelahiran_ktp_ibu', '$kelahiran_sk_lahir', '$kelahiran_status', '$kelahiran_tanggal_verifikasi', '0', '$kelahiran_ket')");
+    $sql = mysqli_query($con, "INSERT INTO izinusaha VALUES('', '$izinusaha_user', '$izinusaha_rt', '$izinusaha_tanggal', '$izinusaha_nama_pemilik', '$izinusaha_nik_pemilik', '$izinusaha_tempat_lahir_pemilik', '$izinusaha_tanggal_lahir_pemilik', '$izinusaha_jenis_kelamin_pemilik', '$izinusaha_alamat_pemilik', '$izinusaha_nama_usaha', '$izinusaha_jenis_usaha', '$izinusaha_alamat_usaha', '$izinusaha_status', '$izinusaha_tanggal_verifikasi', '$izinusaha_notif', '$izinusaha_ket')");
 
     if ($sql) {
-        echo "<script>alert('Berhasil !');window.location='?page=kelahiran';</script>";
+        echo "<script>alert('Berhasil !');window.location='?page=izinusaha';</script>";
     } else {
-        echo "<script>alert('Gagal !');window.location='?page=kelahiran';</script>";
+        echo "<script>alert('Gagal !');window.location='?page=izinusaha';</script>";
     }
 }
 ?>
