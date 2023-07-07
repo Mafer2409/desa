@@ -142,6 +142,7 @@ if (!isset($_SESSION['id_admin'])) {
                                 <li class="nav-item"> <a class="nav-link" href="?page=kelahiran">Kelahiran</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=kematian">Kematian</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=pindah">Pindah</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=izinusaha">Izin usaha</a></li>
                             </ul>
                         </div>
                     </li>
@@ -333,6 +334,12 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/penduduk-registrasi.php";
                     } else if (@$_GET['page'] == 'penduduk-belum-registrasi') {
                         include "views/penduduk-belum-registrasi.php";
+                    } else if (@$_GET['page'] == 'izinusaha') {
+                        include "views/izinusaha.php";
+                    } else if (@$_GET['page'] == 'aksiizinusaha') {
+                        include "views/aksiizinusaha.php";
+                    } else if (@$_GET['page'] == 'cari-izinusaha') {
+                        include "views/cari-izinusaha.php";
                     }
                     ?>
                 </div>
