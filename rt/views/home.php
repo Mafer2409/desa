@@ -8,10 +8,12 @@ $namart = $datart['rt'];
 $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_rt = '$idrt' AND kelahiran_status = 'Menunggu Verifikasi RT'");
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_rt = '$idrt' AND kematian_status = 'Menunggu Verifikasi RT'");
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_rt = '$idrt' AND administrasi_status = 'Menunggu Verifikasi RT'");
+$sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_rt = '$idrt' AND izinusaha_status = 'Menunggu Verifikasi RT'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
+$num_izinusaha = mysqli_num_rows($sqlizinusaha);
 
 
 $sqldaftar = mysqli_query($con, "SELECT * FROM user WHERE user_rt_id = '$idrt' AND user_status = 'Menunggu Verifikasi'");
@@ -72,6 +74,21 @@ $num_daftar = mysqli_num_rows($sqldaftar);
                             }
                             ?>
                             <!-- ALERT ADMINISTRASI -->
+                            <!-- ALERT IZIN USAHA -->
+                            <?php
+                            if ($num_izinusaha > 0) {
+                                $dataizinusaha = mysqli_fetch_assoc($sqlizinusaha);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_izinusaha ?> Pemberitahuan!!</strong> Status pengajuan keterangan izin usaha: <strong><?= $dataizinusaha['izinusaha_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT IZIN USAHA -->
                             <!-- ALERT DAFTAR -->
                             <?php
                             if ($num_daftar > 0) {

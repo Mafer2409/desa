@@ -9,10 +9,12 @@ $iduser = $_SESSION['id_user'];
 $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_user = '$iduser' AND kelahiran_notif = '0'");
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_user = '$iduser' AND kematian_notif = '0'");
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_user = '$iduser' AND administrasi_notif = '0'");
+$sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_user = '$iduser' AND izinusaha_notif = '0'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
+$num_izinusaha = mysqli_num_rows($sqlizinusaha);
 ?>
 
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -68,6 +70,21 @@ $num_administrasi = mysqli_num_rows($sqladministrasi);
                             }
                             ?>
                             <!-- ALERT ADMINISTRASI -->
+                            <!-- ALERT IZIN USAHA -->
+                            <?php
+                            if ($num_izinusaha > 0) {
+                                $dataizinusaha = mysqli_fetch_assoc($sqlizinusaha);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_izinusaha ?> Pemberitahuan!!</strong> Status pengajuan keterangan izin usaha: <strong><?= $dataizinusaha['izinusaha_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-izinusaha&status=<?= $dataizinusaha['izinusaha_status'] ?>&iduser=<?= $iduser ?>'">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT IZIN USAHA -->
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
                             <p class="text-light fs-5 mb-4 pb-3"><?= $namart ?></p>

@@ -124,6 +124,8 @@ if (!isset($_SESSION['id_user'])) {
             include "views/validasi-cari.php";
         } else if (@$_GET['page'] == 'izinusaha') {
             include "views/izinusaha.php";
+        } else if (@$_GET['page'] == 'read-izinusaha') {
+            include "views/read-izinusaha.php";
         }
         ?>
     </div>

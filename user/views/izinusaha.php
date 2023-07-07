@@ -59,10 +59,8 @@ $sqlcek = mysqli_query($con, "SELECT * FROM penduduk WHERE penduduk_nik = '$niku
                             <?php
                             if ($data['izinusaha_status'] == 'Selesai') {
                             ?>
-                                <!-- <a href="../assets/report/report-izinusaha/report-izinusaha-user.php?id=<?= $data['izinusaha_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a> -->
+                                <a href="../assets/report/report-izinusaha/report-izinusaha-user.php?id=<?= $data['izinusaha_id'] ?>" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a>
 
-                                <!-- PALSU -->
-                                <a href="" class="text-success" target="_blank"><i class="fas fa-print fa-md"></i></a>
                             <?php
                             }
                             ?>
