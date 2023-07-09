@@ -18,7 +18,7 @@ $data = mysqli_fetch_assoc($sql);
                         </div>
                         <div class="form-group">
                             <label>Ketua RT</label>
-                            <select class="form-control" name=" rt_ketua" id="rt_ketua">
+                            <select class="form-control select2" style="height: 40px;" name=" rt_ketua" id="rt_ketua">
                                 <option value="">- Pilih RT -</option>
                                 <?php
                                 $sqluser = mysqli_query($con, "SELECT * FROM user WHERE user_rt_id = '$id'");
@@ -28,7 +28,7 @@ $data = mysqli_fetch_assoc($sql);
                                         $s = 'selected';
                                     }
                                 ?>
-                                    <option value="<?= $datauser['user_id'] ?>" <?= $s ?> style="margin-top: -100px;"><?= $datauser['user_nama'] ?></option>
+                                    <option value="<?= $datauser['user_id'] ?>" <?= $s ?>><?= $datauser['user_nama'] ?></option>
                                 <?php
                                 }
                                 ?>

@@ -38,6 +38,8 @@ if (!isset($_SESSION['id_admin'])) {
     <!-- Chart -->
     <script type="text/javascript" src="chart/Chart.js"></script>
 
+    <link href="../assets/select2/dist/css/select2.min.css" rel="stylesheet" />
+
 
 </head>
 
@@ -390,17 +392,17 @@ if (!isset($_SESSION['id_admin'])) {
     <script src="js/dashboard.js"></script>
     <script src="js/Chart.roundedBarCharts.js"></script>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+    <script src="../assets/select2/dist/js/select2.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script> -->
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#rt_ketua').select2({
-                placeholder: 'Pilih RT',
-                selectOnClose: true
-            });
+            $('#rt_ketua').select2();
         });
     </script>
 
