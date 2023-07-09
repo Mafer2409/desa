@@ -16,6 +16,9 @@ if (!isset($_SESSION['id_admin'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin</title>
+
+    <link href="../assets/select2/dist/css/select2.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -38,7 +41,7 @@ if (!isset($_SESSION['id_admin'])) {
     <!-- Chart -->
     <script type="text/javascript" src="chart/Chart.js"></script>
 
-    <link href="../assets/select2/dist/css/select2.min.css" rel="stylesheet" />
+
 
 
 </head>
