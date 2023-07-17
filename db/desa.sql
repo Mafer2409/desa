@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jul 2023 pada 19.58
+-- Waktu pembuatan: 17 Jul 2023 pada 03.01
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -94,6 +94,31 @@ CREATE TABLE `berita` (
 
 INSERT INTO `berita` (`berita_id`, `berita_judul`, `berita_tanggal`, `berita_isi`, `berita_gambar`) VALUES
 (2, 'Pengungsi Banjir di Desa Nelelamadike Kesulitan Fasilitas MCK ', '2023-02-15', '<p>PARA pengungsi bencana banjir bandang yang menghantam Desa Nelelamadike, Pulau Adonara, Kabupaten Flores Timur, Nusa Tenggara Timur (NTT) kesulitan buang air karena tidak ada fasilitas MCK yang memadai di posko-posko pengusian. Kepala Desa Nelelamadike Pius Pedang Malai, saat ditemui mediaindonesia.com, Jumat (9/4), mengatakan, sejak bencana banjir bandang melanda warganya, beberapa waktu lalu, ada 645 orang yang berada di lokasi pengusian yang tersebar di beberapa posko.</p>\r\n\r\n<p>Beberapa posko yang banyak ditempati para pengungsi yakni posko SDN Nelelamadike ada 39 orang, posko balai Desa Nelelamadike ada 354 orang, dan posko rumah-rumah warga ada 182 orang. Sisanya mengungsi di desa-desa tetangga.</p>\r\n\r\n<p>&quot;Saat ini, kesulitan mandi cuci kakus (MCK) dihadapi para pengungsi yang menempati posko-posko pengungsian. Soal MCK ini sangat minim sekali. Di posko sekolah itu hanya ada dua MCK. Sementara di balai desa hanya satu saja. Jadi kita sekarang kesulitan MCK,&quot; tandas Pius Ia mengatakan warga terdampak ini bisa saja MCK di rumah mereka masing-masing. Namun, rumah mereka sudah hancur rata tanah dihantam banjir bandang, Minggu (4/4). &quot;Rata-rata para pengungsi rumahnya hancur, sehingga MCK yang ada tidak bisa digunakan lagi karena semua sudah rata dengan tanah,&quot; ujar dia Menurut dia, akibat tidak ada MCK, warga setempat akhirnya buang air di hutan-hutan kalau MCK di posko ada yang menggunakan. Untuk itu, ia berharap pemerintah bisa membantunya alat portabel untuk MCK bagi para pengungsian yang menempati posko tersebut. &quot;Harapan kami, pemerintah bisa membantu menyediakan fasilitas MCK di posko-posko pengungsian,&quot; jelas dia Dia juga akibat banjir bandang itu sebanyak 55 orang meninggal dunia dan seorang lagi belum ditemukan. Untuk warga yang luka-luka ada 34 orang yang terbagi luka berat ada 3 orang. Luka ringan ada 27 orang, dislokasi 1 orang, dan patang tulang ada 3 orang. &quot;Ada 50 rumah warga yang rusak berat berat dan ringan serta tertimbun longsor dari sebelum bencana itu ada 318 rumah,&quot; tutup dia. (OL-1).</p>\r\n', 'Pengungsi Banjir di Desa Nelelamadike Kesulitan Fasilitas MCK -1676466278.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `domisili`
+--
+
+CREATE TABLE `domisili` (
+  `domisili_id` int(11) NOT NULL,
+  `domisili_user` int(11) NOT NULL,
+  `domisili_rt` int(11) NOT NULL,
+  `domisili_tanggal` date NOT NULL,
+  `domsili_ktp` text NOT NULL,
+  `domisili_status` varchar(255) NOT NULL,
+  `domisili_tanggal_verifikasi` date NOT NULL,
+  `domisili_notif` int(11) NOT NULL,
+  `domisili_ket` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `domisili`
+--
+
+INSERT INTO `domisili` (`domisili_id`, `domisili_user`, `domisili_rt`, `domisili_tanggal`, `domsili_ktp`, `domisili_status`, `domisili_tanggal_verifikasi`, `domisili_notif`, `domisili_ket`) VALUES
+(1, 21, 10, '2023-07-16', 'Nol nol - KTP Ayah - 1689491196.pdf', 'Menunggu Verifikasi RT', '0000-00-00', 0, '');
 
 -- --------------------------------------------------------
 
@@ -383,6 +408,12 @@ ALTER TABLE `berita`
   ADD PRIMARY KEY (`berita_id`);
 
 --
+-- Indeks untuk tabel `domisili`
+--
+ALTER TABLE `domisili`
+  ADD PRIMARY KEY (`domisili_id`);
+
+--
 -- Indeks untuk tabel `izinusaha`
 --
 ALTER TABLE `izinusaha`
@@ -457,6 +488,12 @@ ALTER TABLE `administrasi`
 --
 ALTER TABLE `berita`
   MODIFY `berita_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `domisili`
+--
+ALTER TABLE `domisili`
+  MODIFY `domisili_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `izinusaha`

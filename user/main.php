@@ -75,6 +75,7 @@ if (!isset($_SESSION['id_user'])) {
                         <a href="?page=kematian" class="dropdown-item">Kematian</a>
                         <a href="?page=pindah" class="dropdown-item">Pindah</a>
                         <a href="?page=izinusaha" class="dropdown-item">Izin Usaha</a>
+                        <a href="?page=domisili" class="dropdown-item">Domisili</a>
                     </div>
                 </div>
                 <!-- <a href="?page=validasi" class="nav-item nav-link">Validasi</a> -->
@@ -126,6 +127,8 @@ if (!isset($_SESSION['id_user'])) {
             include "views/izinusaha.php";
         } else if (@$_GET['page'] == 'read-izinusaha') {
             include "views/read-izinusaha.php";
+        } else if (@$_GET['page'] == 'domisili') {
+            include "views/domisili.php";
         }
         ?>
     </div>
