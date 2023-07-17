@@ -9,11 +9,13 @@ $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_rt =
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_rt = '$idrt' AND kematian_status = 'Menunggu Verifikasi RT'");
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_rt = '$idrt' AND administrasi_status = 'Menunggu Verifikasi RT'");
 $sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_rt = '$idrt' AND izinusaha_status = 'Menunggu Verifikasi RT'");
+$sqldomisili = mysqli_query($con, "SELECT * FROM domisili WHERE domisili_rt = '$idrt' AND domisili_status = 'Menunggu Verifikasi RT'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
 $num_izinusaha = mysqli_num_rows($sqlizinusaha);
+$num_domisili = mysqli_num_rows($sqldomisili);
 
 
 $sqldaftar = mysqli_query($con, "SELECT * FROM user WHERE user_rt_id = '$idrt' AND user_status = 'Menunggu Verifikasi'");
@@ -89,6 +91,21 @@ $num_daftar = mysqli_num_rows($sqldaftar);
                             }
                             ?>
                             <!-- ALERT IZIN USAHA -->
+                            <!-- ALERT DOMISILI -->
+                            <?php
+                            if ($num_domisili > 0) {
+                                $datadomisili = mysqli_fetch_assoc($sqldomisili);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_domisili ?> Pemberitahuan!!</strong> Status pengajuan keterangan domisili: <strong><?= $datadomisili['domisili_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT DOMISILI -->
                             <!-- ALERT DAFTAR -->
                             <?php
                             if ($num_daftar > 0) {

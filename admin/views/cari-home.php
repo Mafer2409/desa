@@ -1,5 +1,5 @@
 <?php
-$tahun_now = date('Y');
+$tahun_now = $_GET['tahunnow'];
 
 $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_status = 'Telah Dikonfirmasi RT'");
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_status = 'Telah Dikonfirmasi RT'");
@@ -16,11 +16,11 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
-                <form action="" method="post">
+                <form action="">
                     <div class="row mt-4 mb-4 ml-4 mr-4">
                         <div class="col-lg-10">
                             <select name="tahunnow" class="form-control" required>
-                                <option value="<?= date('Y') ?>" selected><?= date('Y') ?></option>
+                                <option value="<?= $tahun_now ?>" selected><?= $tahun_now ?></option>
                                 <option value="2019">2019</option>
                                 <option value="2020">2020</option>
                                 <option value="2021">2021</option>

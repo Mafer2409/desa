@@ -150,6 +150,7 @@ if (!isset($_SESSION['id_admin'])) {
                                 <li class="nav-item"> <a class="nav-link" href="?page=kematian">Kematian</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=pindah">Pindah</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=izinusaha">Izin usaha</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=domisili">Domisili</a></li>
                             </ul>
                         </div>
                     </li>
@@ -347,6 +348,14 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/aksiizinusaha.php";
                     } else if (@$_GET['page'] == 'cari-izinusaha') {
                         include "views/cari-izinusaha.php";
+                    } else if (@$_GET['page'] == 'domisili') {
+                        include "views/domisili.php";
+                    } else if (@$_GET['page'] == 'aksidomisili') {
+                        include "views/aksidomisili.php";
+                    } else if (@$_GET['page'] == 'cari-domisili') {
+                        include "views/cari-domisili.php";
+                    } else if (@$_GET['page'] == 'cari-home') {
+                        include "views/cari-home.php";
                     }
                     ?>
                 </div>

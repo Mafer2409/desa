@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jul 2023 pada 03.01
+-- Waktu pembuatan: 17 Jul 2023 pada 16.26
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -106,7 +106,7 @@ CREATE TABLE `domisili` (
   `domisili_user` int(11) NOT NULL,
   `domisili_rt` int(11) NOT NULL,
   `domisili_tanggal` date NOT NULL,
-  `domsili_ktp` text NOT NULL,
+  `domisili_ktp` text NOT NULL,
   `domisili_status` varchar(255) NOT NULL,
   `domisili_tanggal_verifikasi` date NOT NULL,
   `domisili_notif` int(11) NOT NULL,
@@ -117,8 +117,9 @@ CREATE TABLE `domisili` (
 -- Dumping data untuk tabel `domisili`
 --
 
-INSERT INTO `domisili` (`domisili_id`, `domisili_user`, `domisili_rt`, `domisili_tanggal`, `domsili_ktp`, `domisili_status`, `domisili_tanggal_verifikasi`, `domisili_notif`, `domisili_ket`) VALUES
-(1, 21, 10, '2023-07-16', 'Nol nol - KTP Ayah - 1689491196.pdf', 'Menunggu Verifikasi RT', '0000-00-00', 0, '');
+INSERT INTO `domisili` (`domisili_id`, `domisili_user`, `domisili_rt`, `domisili_tanggal`, `domisili_ktp`, `domisili_status`, `domisili_tanggal_verifikasi`, `domisili_notif`, `domisili_ket`) VALUES
+(1, 21, 10, '2023-07-16', 'Nol nol - KTP Ayah - 1689491196.pdf', 'Ditolak RT', '0000-00-00', 1, 'Salahddd'),
+(2, 21, 10, '2023-07-17', 'Nol nol - KTP - 1689595056.pdf', 'Selesai', '2023-07-17', 0, '');
 
 -- --------------------------------------------------------
 
@@ -493,7 +494,7 @@ ALTER TABLE `berita`
 -- AUTO_INCREMENT untuk tabel `domisili`
 --
 ALTER TABLE `domisili`
-  MODIFY `domisili_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `domisili_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `izinusaha`

@@ -10,11 +10,13 @@ $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_user
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_user = '$iduser' AND kematian_notif = '0'");
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_user = '$iduser' AND administrasi_notif = '0'");
 $sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_user = '$iduser' AND izinusaha_notif = '0'");
+$sqldomisili = mysqli_query($con, "SELECT * FROM domisili WHERE domisili_user = '$iduser' AND domisili_notif = '0'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
 $num_izinusaha = mysqli_num_rows($sqlizinusaha);
+$num_domisili = mysqli_num_rows($sqldomisili);
 ?>
 
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -78,6 +80,21 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                     <strong><?= $num_izinusaha ?> Pemberitahuan!!</strong> Status pengajuan keterangan izin usaha: <strong><?= $dataizinusaha['izinusaha_status'] ?></strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-izinusaha&status=<?= $dataizinusaha['izinusaha_status'] ?>&iduser=<?= $iduser ?>'">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT IZIN USAHA -->
+                            <!-- ALERT DOMISILI -->
+                            <?php
+                            if ($num_domisili > 0) {
+                                $datadomisili = mysqli_fetch_assoc($sqldomisili);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_domisili ?> Pemberitahuan!!</strong> Status pengajuan keterangan domisili: <strong><?= $datadomisili['domisili_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-domisili&status=<?= $datadomisili['domisili_status'] ?>&iduser=<?= $iduser ?>'">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>

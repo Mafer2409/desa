@@ -129,6 +129,8 @@ if (!isset($_SESSION['id_user'])) {
             include "views/read-izinusaha.php";
         } else if (@$_GET['page'] == 'domisili') {
             include "views/domisili.php";
+        } else if (@$_GET['page'] == 'read-domisili') {
+            include "views/read-domisili.php";
         }
         ?>
     </div>
