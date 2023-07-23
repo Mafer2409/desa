@@ -8,7 +8,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Kepala Desa</th>
-                                <th>Tanda Tangan</th>
+                                <!-- <th>Tanda Tangan</th> -->
                                 <th>Opsi</th>
                             </tr>
                         </thead>
@@ -21,9 +21,9 @@
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['kepala_desa_nama']; ?></td>
-                                    <td>
+                                    <!-- <td>
                                         <img src="../assets/img/<?= $data['kepala_desa_ttd'] ?>" class="img-fluid" width="100px" height="100px">
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <a href="?page=edit_kepala_desa&id=<?= $data['kepala_desa_id'] ?>" class="btn btn-info">Edit</a>
                                     </td>
