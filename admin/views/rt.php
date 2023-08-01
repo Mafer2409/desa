@@ -177,3 +177,17 @@ if (isset($_POST['simpanRW'])) {
     }
 }
 ?>
+<?php
+if (isset($_POST['simpanRT'])) {
+    $rt_rw_id = $_POST['rt_rw_id'];
+    $rt = $_POST['rt'];
+
+    $sql = mysqli_query($con, "INSERT INTO rt VALUES('', '$rt_rw_id', '$rt', '')");
+
+    if ($sql) {
+        echo "<script>alert('Tambah Data Berhasil !');window.location='?page=rt';</script>";
+    } else {
+        echo "<script>alert('Tambah Data Gagal !');window.location='?page=rt';</script>";
+    }
+}
+?>
