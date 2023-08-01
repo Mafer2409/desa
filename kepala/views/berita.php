@@ -4,7 +4,7 @@
             <h3 class="mb-2">Berita</h3>
             <div class="card">
                 <div class="float-right">
-                    <a href="?page=tambah-berita" class="btn btn-success btn-sm ml-3 mt-3"><i class="fas fa-plus"></i> Tambah Data</a>
+                    <!-- <a href="?page=tambah-berita" class="btn btn-success btn-sm ml-3 mt-3"><i class="fas fa-plus"></i> Tambah Data</a> -->
                 </div>
                 <div class="card-body table-responsive">
                     <table id="bootstrap-data-table" class="table table-striped table-sm">
@@ -32,7 +32,7 @@
                                     </td>
                                     <td>
                                         <a href="?page=edit-berita&id=<?= $data['berita_id'] ?>" class="text-parimary"><i class="fas fa-edit fa-md"></i></a>
-                                        <a href="?page=hapus-berita&id=<?= $data['berita_id'] ?>" class="text-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fas fa-trash fa-md"></i></a>
+                                        <!-- <a href="?page=hapus-berita&id=<?= $data['berita_id'] ?>" class="text-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fas fa-trash fa-md"></i></a> -->
                                     </td>
                                 </tr>
                             <?php

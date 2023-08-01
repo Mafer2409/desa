@@ -19,7 +19,7 @@ $databerita = mysqli_fetch_assoc($sqlberita);
                             <div class="form-group">
                                 <label>Gambar Berita</label>
                                 <img src="../assets/img/berita/<?= $databerita['berita_gambar'] ?>" width="100px" height="100px">
-                                <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalGambar"> Ubah Gambar</a>
+                                <!-- <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalGambar"> Ubah Gambar</a> -->
                             </div>
                             <div class="form-group">
                                 <label>Isi Berita</label>
@@ -27,7 +27,7 @@ $databerita = mysqli_fetch_assoc($sqlberita);
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-success" name="simpan" value="Simpan">
+                            <!-- <input type="submit" class="btn btn-success" name="simpan" value="Simpan"> -->
                         </div>
                     </form>
                 </div>
