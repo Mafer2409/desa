@@ -46,15 +46,18 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_status = 'Belum registrasi'");
+                            $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND user.user_rt_id = rt.rt_id AND user.user_status = 'Belum registrasi'");
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nik']; ?></td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
 
                                     <td><?= $data['user_status']; ?></td>
                                     <td>

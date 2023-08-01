@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jul 2023 pada 16.26
+-- Waktu pembuatan: 01 Agu 2023 pada 10.34
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -258,15 +258,17 @@ INSERT INTO `kematian` (`kematian_id`, `kematian_user`, `kematian_rt`, `kematian
 CREATE TABLE `kepala_desa` (
   `kepala_desa_id` int(11) NOT NULL,
   `kepala_desa_nama` varchar(255) NOT NULL,
-  `kepala_desa_ttd` text NOT NULL
+  `kepala_desa_ttd` text NOT NULL,
+  `kepala_desa_username` varchar(255) NOT NULL,
+  `kepala_desa_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kepala_desa`
 --
 
-INSERT INTO `kepala_desa` (`kepala_desa_id`, `kepala_desa_nama`, `kepala_desa_ttd`) VALUES
-(1, 'Pius Pedang Melai', 'Mafer Leitex1666673690.jpeg');
+INSERT INTO `kepala_desa` (`kepala_desa_id`, `kepala_desa_nama`, `kepala_desa_ttd`, `kepala_desa_username`, `kepala_desa_password`) VALUES
+(1, 'Pius Pedang Melai', 'Mafer Leitex1666673690.jpeg', 'kepaladesa', '827ccb0eea8a706c4c34a16891f84e7b');
 
 -- --------------------------------------------------------
 
@@ -311,6 +313,7 @@ INSERT INTO `penduduk` (`penduduk_id`, `penduduk_nik`, `penduduk_nama`, `pendudu
 
 CREATE TABLE `rt` (
   `rt_id` int(11) NOT NULL,
+  `rt_rw_id` int(11) NOT NULL,
   `rt` varchar(255) NOT NULL,
   `rt_ketua` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -319,11 +322,11 @@ CREATE TABLE `rt` (
 -- Dumping data untuk tabel `rt`
 --
 
-INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
-(7, 'RW:003 / RT:006', 13),
-(8, 'RW:001 / RT:001', 15),
-(9, 'RW:002 / RT:004', 16),
-(10, 'RW:009 / RT:009', 23);
+INSERT INTO `rt` (`rt_id`, `rt_rw_id`, `rt`, `rt_ketua`) VALUES
+(7, 3, '006', 13),
+(8, 1, '001', 15),
+(9, 2, '004', 16),
+(10, 4, '009', 23);
 
 -- --------------------------------------------------------
 
@@ -333,16 +336,22 @@ INSERT INTO `rt` (`rt_id`, `rt`, `rt_ketua`) VALUES
 
 CREATE TABLE `rw` (
   `rw_id` int(11) NOT NULL,
-  `rw_nama` varchar(255) NOT NULL
+  `rw_nama` varchar(255) NOT NULL,
+  `rw_ketua` varchar(255) NOT NULL,
+  `rw_email` varchar(255) NOT NULL,
+  `rw_password` varchar(255) NOT NULL,
+  `rw_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `rw`
 --
 
-INSERT INTO `rw` (`rw_id`, `rw_nama`) VALUES
-(1, '001'),
-(2, '002');
+INSERT INTO `rw` (`rw_id`, `rw_nama`, `rw_ketua`, `rw_email`, `rw_password`, `rw_status`) VALUES
+(1, '001', 'xxxx', 'ketuarw001@mail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Aktif'),
+(2, '002', 'xx', 'ketuarw002@mail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Aktif'),
+(3, '003', 'x', 'ketuarw003@mail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Aktif'),
+(4, '009', 'Ketuaaaaaa', 'ketuarw009@mail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -542,7 +551,7 @@ ALTER TABLE `rt`
 -- AUTO_INCREMENT untuk tabel `rw`
 --
 ALTER TABLE `rw`
-  MODIFY `rw_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rw_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

@@ -166,12 +166,12 @@ if (!isset($_SESSION['id_admin'])) {
                             <span class="menu-title">Laporan</span>
                         </a>
                     </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="?page=kepala_desa">
                             <i class="icon-head menu-icon"></i>
                             <span class="menu-title">Kepala Desa</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="icon-columns menu-icon"></i>
@@ -356,6 +356,10 @@ if (!isset($_SESSION['id_admin'])) {
                         include "views/cari-domisili.php";
                     } else if (@$_GET['page'] == 'cari-home') {
                         include "views/cari-home.php";
+                    } else if (@$_GET['page'] == 'edit_rw') {
+                        include "views/edit_rw.php";
+                    } else if (@$_GET['page'] == 'hapus_rw') {
+                        include "views/hapus_rw.php";
                     }
                     ?>
                 </div>

@@ -75,14 +75,17 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt WHERE domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id");
+                            $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
                                     <td><?= $data['user_tempat_lahir']; ?>, <?= date('d-m-Y', strtotime($data['user_tgl_lahir'])); ?></td>
                                     <td><?= $data['user_jk']; ?></td>
                                     <td><?= $data['user_agama']; ?></td>

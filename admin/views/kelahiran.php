@@ -77,14 +77,17 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE kelahiran.kelahiran_user = user.user_id AND kelahiran.kelahiran_rt = rt.rt_id");
+                            $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND kelahiran.kelahiran_user = user.user_id AND kelahiran.kelahiran_rt = rt.rt_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
                                     <td><?= $data['kelahiran_nama_anak']; ?></td>
                                     <td><?= $data['kelahiran_tempat_lahir']; ?>, <?= $data['kelahiran_tanggal_lahir']; ?></td>
                                     <td><?= $data['kelahiran_jk']; ?></td>

@@ -13,6 +13,24 @@ $data = mysqli_fetch_assoc($sql);
                     <h4 class="card-title">Edit Data RT</h4>
                     <form class="forms-sample" action="" method="post">
                         <div class="form-group">
+                            <label for="">RW</label>
+                            <select name="rt_rw_id" class="form-control" required>
+                                <option value="">-- Pilih RW --</option>
+                                <?php
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw ORDER BY rw_nama ASC");
+                                while ($datarw = mysqli_fetch_assoc($sqlrw)) {
+                                    $sel = "";
+                                    if ($data['rt_rw_id'] == $datarw['rw_id']) {
+                                        $sel = 'selected';
+                                    }
+                                ?>
+                                    <option value="<?= $datarw['rw_id'] ?>" <?= $sel ?>><?= $datarw['rw_nama'] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Nama RT</label>
                             <input type="text" class="form-control" name="rt" placeholder="RT" value="<?= $data['rt'] ?>" required>
                         </div>
@@ -47,8 +65,9 @@ $data = mysqli_fetch_assoc($sql);
 if (isset($_POST['simpan'])) {
     $rt = $_POST['rt'];
     $rt_ketua = $_POST['rt_ketua'];
+    $rt_rw_id = $_POST['rt_rw_id'];
 
-    $sql = mysqli_query($con, "UPDATE rt SET rt = '$rt', rt_ketua = '$rt_ketua' WHERE rt_id = '$id'");
+    $sql = mysqli_query($con, "UPDATE rt SET rt_rw_id = '$rt_rw_id', rt = '$rt', rt_ketua = '$rt_ketua' WHERE rt_id = '$id'");
 
     if ($sql) {
         echo "<script>alert('Ubah Data Berhasil !');window.location='?page=rt';</script>";

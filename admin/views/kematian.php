@@ -77,9 +77,13 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt WHERE kematian.kematian_user = user.user_id AND kematian.kematian_rt = rt.rt_id");
+                            $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND kematian.kematian_user = user.user_id AND kematian.kematian_rt = rt.rt_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
+
                                 $iduserm = $data['kematian_user_meninggal'];
                                 $sqluserm = mysqli_query($con, "SELECT * FROM user WHERE user_id = '$iduserm'");
                                 $datam = mysqli_fetch_assoc($sqluserm);
@@ -87,7 +91,7 @@
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
                                     <td><?= $datam['user_nama']; ?></td>
                                     <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
                                     <td><?= $data['kematian_sebab_meninggal']; ?></td>

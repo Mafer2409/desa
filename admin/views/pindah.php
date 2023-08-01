@@ -88,15 +88,18 @@
                         </thead>
                         <tbody>
                             <?php
-                            $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id");
+                            $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td><?= $data['administrasi_ket']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
                                     <td><?= $data['administrasi_dari']; ?></td>
                                     <td><?= $data['administrasi_tujuan']; ?></td>
                                     <td><?= $data['administrasi_alasan']; ?></td>

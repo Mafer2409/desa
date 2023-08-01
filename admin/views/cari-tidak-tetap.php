@@ -10,7 +10,7 @@ $datart = mysqli_fetch_assoc($sqlrt);
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3>Data warga - Penduduk Tidak Tetap | <small><?= $datart['rt'] ?></small></h3>
+            <h3>Data warga - Penduduk Tidak Tetap </h3>
             <div class="card">
                 <form class="mx-3" action="" method="post">
                     <div class="row">
@@ -22,8 +22,11 @@ $datart = mysqli_fetch_assoc($sqlrt);
                                     <?php
                                     $sqlrt = mysqli_query($con, "SELECT * FROM rt");
                                     while ($datart = mysqli_fetch_assoc($sqlrt)) {
+                                        $idrw = $datart['rt_rw_id'];
+                                        $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                        $datarw = mysqli_fetch_assoc($sqlrw);
                                     ?>
-                                        <option value="<?= $datart['rt_id'] ?>"><?= $datart['rt'] ?></option>
+                                        <option value="<?= $datart['rt_id'] ?>">RW:<?= $datarw['rw_nama'] ?> / RT:<?= $datart['rt'] ?></option>
                                     <?php
                                     }
                                     ?>
@@ -55,14 +58,17 @@ $datart = mysqli_fetch_assoc($sqlrt);
                         <tbody>
                             <?php
                             $no = 1;
-                            $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt' AND user.user_status_tinggal = 'Tidak Tetap'");
+                            $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt' AND user.user_status_tinggal = 'Tidak Tetap'");
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
                                     <td><?= $data['user_jk']; ?></td>
                                     <td><?= $data['user_status_tinggal']; ?></td>
                                     <td><?= $data['user_status']; ?></td>

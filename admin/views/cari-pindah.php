@@ -97,27 +97,30 @@ $thn = $_GET['thn'];
                             $sql = '';
                             if ($bln == 0) {
                                 if ($pin == 0) {
-                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn'");
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn'");
                                 } else {
-                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND administrasi.administrasi_ket = '$pin'");
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND administrasi.administrasi_ket = '$pin'");
                                 }
                             } else {
                                 if ($pin == 0) {
-                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln'");
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln'");
                                 } else {
-                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' AND administrasi.administrasi_ket = '$pin'");
+                                    $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' AND administrasi.administrasi_ket = '$pin'");
                                 }
                             }
 
                             //$sql = mysqli_query($con, "SELECT * FROM administrasi, user WHERE administrasi.administrasi_user = user.user_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
+                                $idrw = $data['rt_rw_id'];
+                                $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
+                                $datarw = mysqli_fetch_assoc($sqlrw);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td><?= $data['administrasi_ket']; ?></td>
-                                    <td><?= $data['rt']; ?></td>
+                                    <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
                                     <td><?= $data['administrasi_dari']; ?></td>
                                     <td><?= $data['administrasi_tujuan']; ?></td>
                                     <td>
