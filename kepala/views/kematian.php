@@ -1,12 +1,7 @@
-<?php
-$bln = $_GET['bln'];
-$thn = $_GET['thn'];
-?>
-
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="mb-2">Filter Domisili</h3>
+            <h3 class="mb-2">Kematian</h3>
             <div class="card">
 
                 <div class="card-header">
@@ -55,7 +50,7 @@ $thn = $_GET['thn'];
                             <div class="col-lg-4">
                                 <div class="row">
                                     <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                    <a href="../assets/report/report-admin/report-domisili.php?bln=<?= $bln ?>&thn=<?= $thn ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                    <!-- <a href="../assets/report/report-admin/dom-kematian.php?bln=0&thn=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
                                 </div>
                             </div>
                         </div>
@@ -69,10 +64,12 @@ $thn = $_GET['thn'];
                                 <th>No.</th>
                                 <th>Pelapor</th>
                                 <th>RW/RT</th>
-                                <th>TTL</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Agama</th>
-                                <th>KTP</th>
+                                <th>Yang Meninggal</th>
+                                <th>TTM</th>
+                                <th>Sebab Meninggal</th>
+                                <th>Surat Ket. Meninggal</th>
+                                <th>KTP Almarhum</th>
+                                <th>Akte</th>
                                 <th>Status</th>
                                 <th>Tgl Verifikasi</th>
                                 <th>Opsi</th>
@@ -80,35 +77,47 @@ $thn = $_GET['thn'];
                         </thead>
                         <tbody>
                             <?php
-                            if ($bln == '0') {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
-                            } else {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND MONTH(domisili.domisili_tanggal_verifikasi) = '$bln' AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
-                            }
+                            $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND kematian.kematian_user = user.user_id AND kematian.kematian_rt = rt.rt_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
                                 $idrw = $data['rt_rw_id'];
                                 $sqlrw = mysqli_query($con, "SELECT * FROM rw WHERE rw_id = '$idrw'");
                                 $datarw = mysqli_fetch_assoc($sqlrw);
+
+                                $iduserm = $data['kematian_user_meninggal'];
+                                $sqluserm = mysqli_query($con, "SELECT * FROM user WHERE user_id = '$iduserm'");
+                                $datam = mysqli_fetch_assoc($sqluserm);
                             ?>
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
-                                    <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
-                                    <td><?= $data['user_jk']; ?></td>
-                                    <td><?= $data['user_agama']; ?></td>
-                                    <td>
-                                        <a href="../assets/files/files-domisili/<?= $data['domisili_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
-                                    </td>
-                                    <td><?= $data['domisili_status']; ?></td>
-                                    <td><?= $data['domisili_tanggal_verifikasi']; ?></td>
+                                    <td><?= $datam['user_nama']; ?></td>
+                                    <td><?= $data['kematian_tempat_meninggal']; ?>, <?= $data['kematian_tanggal_meninggal']; ?></td>
+                                    <td><?= $data['kematian_sebab_meninggal']; ?></td>
                                     <td>
                                         <?php
-                                        if ($data['domisili_status'] == 'Telah Dikonfirmasi RT') {
+                                        if ($data['kematian_sk_dokter'] != '') {
                                         ?>
-                                            <a href="?page=aksidomisili&id=<?= $data['domisili_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                            <a href="?page=aksidomisili&id=<?= $data['domisili_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                            <a href="../assets/files/files-kematian/<?= $data['kematian_sk_dokter']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="../assets/files/files-kematian/<?= $data['kematian_ktp_almarhum']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="../assets/files/files-kematian/<?= $data['kematian_akte']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td>
+                                    <td><?= $data['kematian_status']; ?></td>
+                                    <td><?= $data['kematian_tanggal_verifikasi']; ?></td>
+                                    <td>
+                                        <?php
+                                        if ($data['kematian_status'] == 'Telah Dikonfirmasi RT') {
+                                        ?>
+                                            <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Konfirmasi&iduserm=<?= $iduserm ?>" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
+                                            <a href="?page=aksikematian&id=<?= $data['kematian_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
                                         <?php
                                         }
                                         ?>
@@ -132,8 +141,8 @@ if (isset($_POST['cari'])) {
     $thn = $_POST['thn'];
 
     if ($bln == '') {
-        echo "<script>window.location='?page=cari-domisili&bln=0&thn=$thn';</script>";
+        echo "<script>window.location='?page=cari-kematian&bln=0&thn=$thn';</script>";
     } else {
-        echo "<script>window.location='?page=cari-domisili&bln=$bln&thn=$thn';</script>";
+        echo "<script>window.location='?page=cari-kematian&bln=$bln&thn=$thn';</script>";
     }
 }

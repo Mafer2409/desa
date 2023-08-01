@@ -6,7 +6,7 @@ $thn = $_GET['thn'];
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="mb-2">Filter Domisili</h3>
+            <h3 class="mb-2">Filter Kelahiran</h3>
             <div class="card">
 
                 <div class="card-header">
@@ -55,7 +55,7 @@ $thn = $_GET['thn'];
                             <div class="col-lg-4">
                                 <div class="row">
                                     <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                    <a href="../assets/report/report-admin/report-domisili.php?bln=<?= $bln ?>&thn=<?= $thn ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                    <!-- <a href="../assets/report/report-admin/dom-kelahiran.php?bln=<?= $bln ?>&thn=<?= $thn ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
                                 </div>
                             </div>
                         </div>
@@ -69,10 +69,14 @@ $thn = $_GET['thn'];
                                 <th>No.</th>
                                 <th>Pelapor</th>
                                 <th>RW/RT</th>
+                                <th>Nama Anak</th>
                                 <th>TTL</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Agama</th>
-                                <th>KTP</th>
+                                <th>Nama Ayah</th>
+                                <th>KTP Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>KTP Ibu</th>
+                                <th>Surat Ket.</th>
                                 <th>Status</th>
                                 <th>Tgl Verifikasi</th>
                                 <th>Opsi</th>
@@ -81,9 +85,9 @@ $thn = $_GET['thn'];
                         <tbody>
                             <?php
                             if ($bln == '0') {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
+                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND kelahiran.kelahiran_user = user.user_id AND kelahiran.kelahiran_rt = rt.rt_id AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
                             } else {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND MONTH(domisili.domisili_tanggal_verifikasi) = '$bln' AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
+                                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND kelahiran.kelahiran_user = user.user_id AND kelahiran.kelahiran_rt = rt.rt_id AND MONTH(kelahiran.kelahiran_tanggal_verifikasi) = '$bln' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn'");
                             }
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
@@ -95,20 +99,28 @@ $thn = $_GET['thn'];
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
-                                    <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
-                                    <td><?= $data['user_jk']; ?></td>
-                                    <td><?= $data['user_agama']; ?></td>
+                                    <td><?= $data['kelahiran_nama_anak']; ?></td>
+                                    <td><?= $data['kelahiran_tempat_lahir']; ?>, <?= $data['kelahiran_tanggal_lahir']; ?></td>
+                                    <td><?= $data['kelahiran_jk']; ?></td>
+                                    <td><?= $data['kelahiran_nama_ayah']; ?></td>
                                     <td>
-                                        <a href="../assets/files/files-domisili/<?= $data['domisili_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ayah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
-                                    <td><?= $data['domisili_status']; ?></td>
-                                    <td><?= $data['domisili_tanggal_verifikasi']; ?></td>
+                                    <td><?= $data['kelahiran_nama_ibu']; ?></td>
+                                    <td>
+                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_ktp_ibu']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="../assets/files/files-kelahiran/<?= $data['kelahiran_sk_lahir']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td>
+                                    <td><?= $data['kelahiran_status']; ?></td>
+                                    <td><?= $data['kelahiran_tanggal_verifikasi']; ?></td>
                                     <td>
                                         <?php
-                                        if ($data['domisili_status'] == 'Telah Dikonfirmasi RT') {
+                                        if ($data['kelahiran_status'] == 'Telah Dikonfirmasi RT') {
                                         ?>
-                                            <a href="?page=aksidomisili&id=<?= $data['domisili_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                            <a href="?page=aksidomisili&id=<?= $data['domisili_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                            <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
+                                            <a href="?page=aksikelahiran&id=<?= $data['kelahiran_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
                                         <?php
                                         }
                                         ?>
@@ -132,8 +144,8 @@ if (isset($_POST['cari'])) {
     $thn = $_POST['thn'];
 
     if ($bln == '') {
-        echo "<script>window.location='?page=cari-domisili&bln=0&thn=$thn';</script>";
+        echo "<script>window.location='?page=cari-kelahiran&bln=0&thn=$thn';</script>";
     } else {
-        echo "<script>window.location='?page=cari-domisili&bln=$bln&thn=$thn';</script>";
+        echo "<script>window.location='?page=cari-kelahiran&bln=$bln&thn=$thn';</script>";
     }
 }

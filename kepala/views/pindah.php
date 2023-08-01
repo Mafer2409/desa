@@ -1,18 +1,23 @@
-<?php
-$bln = $_GET['bln'];
-$thn = $_GET['thn'];
-?>
-
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="mb-2">Filter Domisili</h3>
+            <h3 class="mb-2">Pindah</h3>
             <div class="card">
 
                 <div class="card-header">
                     <form class="mx-3" action="" method="post">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="mt-3">Pilih Pindah</label>
+                                    <select name="pin" class="form-control">
+                                        <option value="">- Pilih Pindah -</option>
+                                        <option value="Masuk">Masuk</option>
+                                        <option value="Keluar">Keluar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="mt-3">Pilih Bulan</label>
                                     <select name="bln" class="form-control">
@@ -32,7 +37,7 @@ $thn = $_GET['thn'];
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label class="mt-3">Pilih Tahun</label>
                                     <select name="thn" class="form-control" required>
@@ -52,10 +57,10 @@ $thn = $_GET['thn'];
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="row">
                                     <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                    <a href="../assets/report/report-admin/report-domisili.php?bln=<?= $bln ?>&thn=<?= $thn ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                    <!-- <a href="../assets/report/report-admin/report-pindah.php?bln=0&thn=0&pin=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
                                 </div>
                             </div>
                         </div>
@@ -67,12 +72,15 @@ $thn = $_GET['thn'];
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Pelapor</th>
+                                <th>Nama</th>
+                                <th>Ket</th>
                                 <th>RW/RT</th>
-                                <th>TTL</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Agama</th>
+                                <th>Dari</th>
+                                <th>Tujuan</th>
+                                <th>Alasan</th>
                                 <th>KTP</th>
+                                <th>KK</th>
+                                <!-- <th>Surat Ket.</th> -->
                                 <th>Status</th>
                                 <th>Tgl Verifikasi</th>
                                 <th>Opsi</th>
@@ -80,11 +88,7 @@ $thn = $_GET['thn'];
                         </thead>
                         <tbody>
                             <?php
-                            if ($bln == '0') {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
-                            } else {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND MONTH(domisili.domisili_tanggal_verifikasi) = '$bln' AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
-                            }
+                            $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND administrasi.administrasi_rt = rt.rt_id AND administrasi.administrasi_user = user.user_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
                                 $idrw = $data['rt_rw_id'];
@@ -94,21 +98,28 @@ $thn = $_GET['thn'];
                                 <tr>
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
+                                    <td><?= $data['administrasi_ket']; ?></td>
                                     <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
-                                    <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
-                                    <td><?= $data['user_jk']; ?></td>
-                                    <td><?= $data['user_agama']; ?></td>
+                                    <td><?= $data['administrasi_dari']; ?></td>
+                                    <td><?= $data['administrasi_tujuan']; ?></td>
+                                    <td><?= $data['administrasi_alasan']; ?></td>
                                     <td>
-                                        <a href="../assets/files/files-domisili/<?= $data['domisili_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                        <a href="../assets/files/files-pindah/<?= $data['administrasi_ktp']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
                                     </td>
-                                    <td><?= $data['domisili_status']; ?></td>
-                                    <td><?= $data['domisili_tanggal_verifikasi']; ?></td>
+                                    <td>
+                                        <a href="../assets/files/files-pindah/<?= $data['administrasi_kk']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td>
+                                    <!-- <td>
+                                        <a href="../assets/files/files-pindah/<?= $data['administrasi_sk_pindah']; ?>" class="text-primary" target="_blank"><i class="fas fa-image fa-sm"></i></a>
+                                    </td> -->
+                                    <td><?= $data['administrasi_status']; ?></td>
+                                    <td><?= $data['administrasi_tanggal_verifikasi']; ?></td>
                                     <td>
                                         <?php
-                                        if ($data['domisili_status'] == 'Telah Dikonfirmasi RT') {
+                                        if ($data['administrasi_status'] == 'Telah Dikonfirmasi RT') {
                                         ?>
-                                            <a href="?page=aksidomisili&id=<?= $data['domisili_id'] ?>&aksi=Konfirmasi" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
-                                            <a href="?page=aksidomisili&id=<?= $data['domisili_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
+                                            <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Konfirmasi&ket=<?= $data['administrasi_ket'] ?>&uid=<?= $data['user_id'] ?>" class="text-success" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-check fa-md"></i></a>
+                                            <a href="?page=aksipindah&id=<?= $data['administrasi_id'] ?>&aksi=Ditolak" class="text-danger" onclick="return confirm('Apakah anda yakin ingin mengubah data ini?')"><i class="fas fa-times fa-md"></i></a>
                                         <?php
                                         }
                                         ?>
@@ -128,12 +139,21 @@ $thn = $_GET['thn'];
 
 <?php
 if (isset($_POST['cari'])) {
+    $pin = $_POST['pin'];
     $bln = $_POST['bln'];
     $thn = $_POST['thn'];
 
     if ($bln == '') {
-        echo "<script>window.location='?page=cari-domisili&bln=0&thn=$thn';</script>";
+        if ($pin == '') {
+            echo "<script>window.location='?page=cari-pindah&bln=0&thn=$thn&pin=0';</script>";
+        } else {
+            echo "<script>window.location='?page=cari-pindah&bln=0&thn=$thn&pin=$pin';</script>";
+        }
     } else {
-        echo "<script>window.location='?page=cari-domisili&bln=$bln&thn=$thn';</script>";
+        if ($pin == '') {
+            echo "<script>window.location='?page=cari-pindah&bln=$bln&thn=$thn&pin=0';</script>";
+        } else {
+            echo "<script>window.location='?page=cari-pindah&bln=$bln&thn=$thn&pin=$pin';</script>";
+        }
     }
 }

@@ -10,7 +10,7 @@ $tglnow = date('d - m - Y');
 $idrt = $_GET['idrt'];
 $s = $_GET['s'];
 
-$sqlrt = mysqli_query($con, "SELECT * FROM rt WHERE rt_id = '$idrt'");
+$sqlrt = mysqli_query($con, "SELECT * FROM rt, rw WHERE rt.rt_rw_id = rw.rw_id AND rt.rt_id = '$idrt'");
 $datart = mysqli_fetch_assoc($sqlrt);
 
 
@@ -27,10 +27,10 @@ $html = '<center><img src="../../img/lanscape.jpg" width="1000px"></center>';
 if ($idrt == '0') {
 
     if ($s == '0') {
-        $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id");
+        $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND user.user_rt_id = rt.rt_id");
         $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN DATA SEMUA WARGA</h3></center>';
     } else {
-        $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_status_tinggal = '$s'");
+        $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND user.user_rt_id = rt.rt_id AND user.user_status_tinggal = '$s'");
         $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">Laporan Data Warga - ' . $s . '</h3></center>';
     }
 
@@ -56,7 +56,7 @@ if ($idrt == '0') {
  <td>" . $no . ".</td>
  <td>" . $data['user_nama'] . "</td>
  <td>" . $data['user_tempat_lahir'] . ", " . date('d-m-Y', strtotime($data['user_tgl_lahir'])) . "</td>
- <td>" . $data['rt'] . "</td>
+ <td>" . $data['rw_nama'] . " / " . $data['rt'] . "</td>
  <td>" . $data['user_jk'] . "</td>
  <td>" . $data['user_wn'] . "</td>
  <td>" . $data['user_alamat'] . "</td>
@@ -77,15 +77,15 @@ if ($idrt == '0') {
 
 else {
     if ($s == '0') {
-        $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN DATA WARGA RT : ' . $datart['rt'] . '</h3></center>';
+        $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN DATA WARGA RW:' . $datart['rw_nama'] . ' / RT:' . $datart['rt'] . '</h3></center>';
     } else {
-        $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">Laporan Data Warga - ' . $s . ' - ' . $datart['rt'] . '</h3></center>';
+        $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">Laporan Data Warga - ' . $s . ' - RW:' . $datart['rw_nama'] . ' / RT:' . $datart['rt'] . '</h3></center>';
     }
 
     if ($s == '0') {
-        $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt'");
+        $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt'");
     } else {
-        $sql = mysqli_query($con, "SELECT * FROM user, rt WHERE user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt' AND user.user_status_tinggal = '$s'");
+        $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND user.user_rt_id = rt.rt_id AND user.user_rt_id = '$idrt' AND user.user_status_tinggal = '$s'");
     }
 
     // $html .= '<center><h5 style="font-family: Arial, Helvetica, sans-serif;">Dari : ' . $dari . ' - Hingga : ' . $hingga . '</h5></center><hr/><br/>';
@@ -110,7 +110,7 @@ else {
  <td>" . $no . ".</td>
  <td>" . $data['user_nama'] . "</td>
  <td>" . $data['user_tempat_lahir'] . ", " . date('d-m-Y', strtotime($data['user_tgl_lahir'])) . "</td>
- <td>" . $data['rt'] . "</td>
+ <td>" . $data['rw_nama'] . " / " . $data['rt'] . "</td>
  <td>" . $data['user_jk'] . "</td>
  <td>" . $data['user_wn'] . "</td>
  <td>" . $data['user_alamat'] . "</td>

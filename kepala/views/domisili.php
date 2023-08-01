@@ -1,12 +1,7 @@
-<?php
-$bln = $_GET['bln'];
-$thn = $_GET['thn'];
-?>
-
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="mb-2">Filter Domisili</h3>
+            <h3 class="mb-2">Domisili</h3>
             <div class="card">
 
                 <div class="card-header">
@@ -55,7 +50,7 @@ $thn = $_GET['thn'];
                             <div class="col-lg-4">
                                 <div class="row">
                                     <input type="submit" name="cari" class="btn btn-success mt-5" value="Cari">
-                                    <a href="../assets/report/report-admin/report-domisili.php?bln=<?= $bln ?>&thn=<?= $thn ?>" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a>
+                                    <!-- <a href="../assets/report/report-admin/report-domisili.php?bln=0&thn=0" class="btn btn-primary ml-2 mt-5" target="_blank">Cetak</a> -->
                                 </div>
                             </div>
                         </div>
@@ -80,11 +75,7 @@ $thn = $_GET['thn'];
                         </thead>
                         <tbody>
                             <?php
-                            if ($bln == '0') {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
-                            } else {
-                                $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id AND MONTH(domisili.domisili_tanggal_verifikasi) = '$bln' AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
-                            }
+                            $sql = mysqli_query($con, "SELECT * FROM domisili, user, rt, rw WHERE rt.rt_rw_id = rw.rw_id AND domisili.domisili_user = user.user_id AND domisili.domisili_rt = rt.rt_id");
                             $no = 1;
                             while ($data = mysqli_fetch_assoc($sql)) {
                                 $idrw = $data['rt_rw_id'];
@@ -95,7 +86,7 @@ $thn = $_GET['thn'];
                                     <td><?= $no++; ?>.</td>
                                     <td><?= $data['user_nama']; ?></td>
                                     <td>RW:<?= $datarw['rw_nama']; ?> / RT:<?= $data['rt']; ?></td>
-                                    <td><?= $data['user_tempat_lahir']; ?>, <?= $data['user_tgl_lahir']; ?></td>
+                                    <td><?= $data['user_tempat_lahir']; ?>, <?= date('d-m-Y', strtotime($data['user_tgl_lahir'])); ?></td>
                                     <td><?= $data['user_jk']; ?></td>
                                     <td><?= $data['user_agama']; ?></td>
                                     <td>
