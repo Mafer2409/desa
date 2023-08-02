@@ -5,11 +5,13 @@ $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_stat
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_status = 'Telah Dikonfirmasi RT'");
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_status = 'Telah Dikonfirmasi RT'");
 $sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_status = 'Telah Dikonfirmasi RT'");
+$sqldomisili = mysqli_query($con, "SELECT * FROM domisili WHERE domisili_status = 'Telah Dikonfirmasi RT'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
 $num_izinusaha = mysqli_num_rows($sqlizinusaha);
+$num_domisili = mysqli_num_rows($sqldomisili);
 ?>
 
 <div class="content-wrapper">
@@ -111,6 +113,21 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
         }
         ?>
         <!-- ALERT IZIN USAHA -->
+        <!-- ALERT DOMISILI -->
+        <?php
+        if ($num_domisili > 0) {
+            $datadomisili = mysqli_fetch_assoc($sqldomisili);
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?= $num_domisili ?> Pemberitahuan!!</strong> Status pengajuan domisili: <strong><?= $datadomisili['domisili_status'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
+        <!-- ALERT DOMISILI -->
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
