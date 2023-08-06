@@ -17,7 +17,7 @@
             </thead>
             <tbody>
                 <?php
-                $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' GROUP BY rt.rt_rw_id");
+                $sql = mysqli_query($con, "SELECT * FROM user, rt, rw WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' GROUP BY user.user_id");
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($sql)) {
                 ?>

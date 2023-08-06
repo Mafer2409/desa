@@ -100,15 +100,15 @@ $pin = $_GET['pin'];
                 <?php
                 if ($bln == 0) {
                     if ($pin == '0') {
-                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' GROUP BY rt.rt_rw_id");
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' GROUP BY user.user_id");
                     } else {
-                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND administrasi.administrasi_ket = '$pin' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' GROUP BY rt.rt_rw_id");
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND administrasi.administrasi_ket = '$pin' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' GROUP BY user.user_id");
                     }
                 } else {
                     if ($pin == '0') {
-                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' GROUP BY rt.rt_rw_id");
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' GROUP BY user.user_id");
                     } else {
-                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND administrasi.administrasi_ket = '$pin' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' GROUP BY rt.rt_rw_id");
+                        $sql = mysqli_query($con, "SELECT * FROM administrasi, user, rt WHERE user.user_rt_id = rt.rt_id AND rt.rt_rw_id = '$idrw' AND administrasi.administrasi_user = user.user_id AND administrasi.administrasi_ket = '$pin' AND YEAR(administrasi.administrasi_tanggal_verifikasi) = '$thn' AND MONTH(administrasi.administrasi_tanggal_verifikasi) = '$bln' GROUP BY user.user_id");
                     }
                 }
                 $no = 1;

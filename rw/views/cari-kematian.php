@@ -93,9 +93,9 @@ $idrt = $_GET['idrt'];
                 <?php
 
                 if ($bln == 0) {
-                    $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt WHERE user.user_rt_id = rt.rt_id AND kematian.kematian_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn' GROUP BY rt.rt_rw_id");
+                    $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt WHERE user.user_rt_id = rt.rt_id AND kematian.kematian_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn' GROUP BY user.user_id");
                 } else {
-                    $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt WHERE user.user_rt_id = rt.rt_id AND kematian.kematian_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn' AND MONTH(kematian.kematian_tanggal_verifikasi) = '$bln' GROUP BY rt.rt_rw_id");
+                    $sql = mysqli_query($con, "SELECT * FROM kematian, user, rt WHERE user.user_rt_id = rt.rt_id AND kematian.kematian_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kematian.kematian_tanggal_verifikasi) = '$thn' AND MONTH(kematian.kematian_tanggal_verifikasi) = '$bln' GROUP BY user.user_id");
                 }
 
                 $no = 1;

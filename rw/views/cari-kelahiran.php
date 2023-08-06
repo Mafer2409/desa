@@ -93,9 +93,9 @@ $idrt = $_GET['idrt'];
                 <?php
 
                 if ($bln == 0) {
-                    $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn' GROUP BY rt.rt_rw_id");
+                    $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn' GROUP BY user.user_id");
                 } else {
-                    $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn' AND MONTH(kelahiran.kelahiran_tanggal_verifikasi) = '$bln' GROUP BY rt.rt_rw_id");
+                    $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' AND YEAR(kelahiran.kelahiran_tanggal_verifikasi) = '$thn' AND MONTH(kelahiran.kelahiran_tanggal_verifikasi) = '$bln' GROUP BY user.user_id");
                 }
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($sql)) {

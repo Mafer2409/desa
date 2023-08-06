@@ -242,7 +242,7 @@ if (isset($_POST['daftar'])) {
     $datacekrt = mysqli_fetch_assoc($sqlcekrt);
 
     if ($datacekrt['rt_ketua'] == '0') {
-        $user_status = 'Aktif';
+        $user_status = 'Belum registrasi';
     } else {
         $user_status = 'Belum registrasi';
     }

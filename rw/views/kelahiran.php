@@ -76,7 +76,7 @@
             </thead>
             <tbody>
                 <?php
-                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' AND kelahiran.kelahiran_status = 'Menunggu Verifikasi RT' GROUP BY rt.rt_rw_id");
+                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' AND kelahiran.kelahiran_status = 'Menunggu Verifikasi RT' GROUP BY user.user_id");
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($sql)) {
                 ?>
@@ -190,7 +190,7 @@
             </thead>
             <tbody>
                 <?php
-                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' GROUP BY rt.rt_rw_id");
+                $sql = mysqli_query($con, "SELECT * FROM kelahiran, user, rt WHERE user.user_rt_id = rt.rt_id AND kelahiran.kelahiran_user = user.user_id AND rt.rt_rw_id = '$idrw' GROUP BY user.user_id");
                 $no = 1;
                 while ($data = mysqli_fetch_assoc($sql)) {
                 ?>
