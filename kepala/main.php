@@ -151,6 +151,8 @@ if (!isset($_SESSION['id_kepala_desa'])) {
                                 <li class="nav-item"> <a class="nav-link" href="?page=pindah">Pindah</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=izinusaha">Izin usaha</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="?page=domisili">Domisili</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=kk">KK</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="?page=ktp">KTP</a></li>
                             </ul>
                         </div>
                     </li>
@@ -360,6 +362,18 @@ if (!isset($_SESSION['id_kepala_desa'])) {
                         include "views/edit_rw.php";
                     } else if (@$_GET['page'] == 'hapus_rw') {
                         include "views/hapus_rw.php";
+                    } else if (@$_GET['page'] == 'kk') {
+                        include "views/kk.php";
+                    } else if (@$_GET['page'] == 'aksikk') {
+                        include "views/aksikk.php";
+                    } else if (@$_GET['page'] == 'cari-kk') {
+                        include "views/cari-kk.php";
+                    } else if (@$_GET['page'] == 'ktp') {
+                        include "views/ktp.php";
+                    } else if (@$_GET['page'] == 'aksiktp') {
+                        include "views/aksiktp.php";
+                    } else if (@$_GET['page'] == 'cari-ktp') {
+                        include "views/cari-ktp.php";
                     }
                     ?>
                 </div>

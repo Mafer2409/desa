@@ -11,12 +11,16 @@ $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_user = 
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_user = '$iduser' AND administrasi_notif = '0'");
 $sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_user = '$iduser' AND izinusaha_notif = '0'");
 $sqldomisili = mysqli_query($con, "SELECT * FROM domisili WHERE domisili_user = '$iduser' AND domisili_notif = '0'");
+$sqlkk = mysqli_query($con, "SELECT * FROM kk WHERE kk_user = '$iduser' AND kk_notif = '0'");
+$sqlktp = mysqli_query($con, "SELECT * FROM ktp WHERE ktp_user = '$iduser' AND ktp_notif = '0'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
 $num_izinusaha = mysqli_num_rows($sqlizinusaha);
 $num_domisili = mysqli_num_rows($sqldomisili);
+$num_kk = mysqli_num_rows($sqlkk);
+$num_ktp = mysqli_num_rows($sqlktp);
 ?>
 
 <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -101,7 +105,37 @@ $num_domisili = mysqli_num_rows($sqldomisili);
                             <?php
                             }
                             ?>
-                            <!-- ALERT IZIN USAHA -->
+                            <!-- ALERT DOMISILI -->
+                            <!-- ALERT KK -->
+                            <?php
+                            if ($num_kk > 0) {
+                                $datakk = mysqli_fetch_assoc($sqlkk);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_kk ?> Pemberitahuan!!</strong> Status pengajuan keterangan kk: <strong><?= $datakk['kk_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-kk&status=<?= $datakk['kk_status'] ?>&iduser=<?= $iduser ?>'">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT KK -->
+                            <!-- ALERT KTP -->
+                            <?php
+                            if ($num_ktp > 0) {
+                                $dataktp = mysqli_fetch_assoc($sqlktp);
+                            ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?= $num_ktp ?> Pemberitahuan!!</strong> Status pengajuan keterangan ktp: <strong><?= $dataktp['ktp_status'] ?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="location.href='?page=read-ktp&status=<?= $dataktp['ktp_status'] ?>&iduser=<?= $iduser ?>'">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                            <!-- ALERT KTP -->
                             <p class="text-primary text-uppercase fw-bold mb-2">Hallo, <?= $_SESSION['nama_user'] ?></p>
                             <h1 class="display-1 text-light mb-4 animated slideInDown">Sistem Kependudukan Desa Nelelamadike</h1>
                             <p class="text-light fs-5 mb-4 pb-3"><?= $namart ?></p>

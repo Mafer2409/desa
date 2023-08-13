@@ -51,19 +51,19 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 $html = '<center><img src="../../img/lanscape.jpg" width="1000px"></center>';
 
 if ($bln == '0' && $thn == '0') {
-    $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN DOMISILI</h3></center>';
+    $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN KK</h3></center>';
 } elseif ($bln == '0' && $thn != '0') {
-    $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN DOMISILI TAHUN ' . $thn . '</h3></center>';
+    $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN KK TAHUN ' . $thn . '</h3></center>';
 } else {
-    $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN DOMISILI BULAN ' . $bulan . ' TAHUN ' . $thn . '</h3></center>';
+    $html .= '<center><h3 style="font-family:sans-serif; margin-bottom: 10px; margin-top: -25px;">LAPORAN KK BULAN ' . $bulan . ' TAHUN ' . $thn . '</h3></center>';
 }
 
 if ($bln == '0' && $thn == '0') {
-    $sql = mysqli_query($con, "SELECT * FROM user, rt, domisili WHERE user.user_rt_id = rt.rt_id AND domisili.domisili_rt = '$idrt' AND user.user_id = domisili.domisili_user");
+    $sql = mysqli_query($con, "SELECT * FROM user, rt, kk WHERE user.user_rt_id = rt.rt_id AND kk.kk_rt = '$idrt' AND user.user_id = kk.kk_user");
 } elseif ($bln == '0' && $thn != '0') {
-    $sql = mysqli_query($con, "SELECT * FROM user, rt, domisili WHERE user.user_rt_id = rt.rt_id AND domisili.domisili_rt = '$idrt' AND user.user_id = domisili.domisili_user AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
+    $sql = mysqli_query($con, "SELECT * FROM user, rt, kk WHERE user.user_rt_id = rt.rt_id AND kk.kk_rt = '$idrt' AND user.user_id = kk.kk_user AND YEAR(kk.kk_tanggal_verifikasi) = '$thn'");
 } else {
-    $sql = mysqli_query($con, "SELECT * FROM user, rt, domisili WHERE user.user_rt_id = rt.rt_id AND domisili.domisili_rt = '$idrt' AND user.user_id = domisili.domisili_user AND MONTH(domisili.domisili_tanggal_verifikasi) = '$bln' AND YEAR(domisili.domisili_tanggal_verifikasi) = '$thn'");
+    $sql = mysqli_query($con, "SELECT * FROM user, rt, kk WHERE user.user_rt_id = rt.rt_id AND kk.kk_rt = '$idrt' AND user.user_id = kk.kk_user AND MONTH(kk.kk_tanggal_verifikasi) = '$bln' AND YEAR(kk.kk_tanggal_verifikasi) = '$thn'");
 }
 
 // $html .= '<center><h5 style="font-family: Arial, Helvetica, sans-serif;">Dari : ' . $dari . ' - Hingga : ' . $hingga . '</h5></center><hr/><br/>';
@@ -83,9 +83,9 @@ while ($data = mysqli_fetch_array($sql)) {
  <td>" . $no . ".</td>
  <td>" . $data['user_nama'] . "</td>
  <td>" . $data['rt'] . "</td>
- <td>" . date('d-m-Y', strtotime($data['domisili_tanggal'])) . "</td>
- <td>" . $data['domisili_status'] . "</td>
- <td>" . $data['domisili_tanggal_verifikasi'] . "</td>
+ <td>" . date('d-m-Y', strtotime($data['kk_tanggal'])) . "</td>
+ <td>" . $data['kk_status'] . "</td>
+ <td>" . $data['kk_tanggal_verifikasi'] . "</td>
  </tr>";
     $no++;
 }

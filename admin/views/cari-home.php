@@ -5,18 +5,24 @@ $sqlkelahiran = mysqli_query($con, "SELECT * FROM kelahiran WHERE kelahiran_stat
 $sqlkematian = mysqli_query($con, "SELECT * FROM kematian WHERE kematian_status = 'Telah Dikonfirmasi RT'");
 $sqladministrasi = mysqli_query($con, "SELECT * FROM administrasi WHERE administrasi_status = 'Telah Dikonfirmasi RT'");
 $sqlizinusaha = mysqli_query($con, "SELECT * FROM izinusaha WHERE izinusaha_status = 'Telah Dikonfirmasi RT'");
+$sqldomisili = mysqli_query($con, "SELECT * FROM domisili WHERE domisili_status = 'Telah Dikonfirmasi RT'");
+$sqlkk = mysqli_query($con, "SELECT * FROM kk WHERE kk_status = 'Telah Dikonfirmasi RT'");
+$sqlktp = mysqli_query($con, "SELECT * FROM ktp WHERE ktp_status = 'Telah Dikonfirmasi RT'");
 
 $num_kelahiran = mysqli_num_rows($sqlkelahiran);
 $num_kematian = mysqli_num_rows($sqlkematian);
 $num_administrasi = mysqli_num_rows($sqladministrasi);
 $num_izinusaha = mysqli_num_rows($sqlizinusaha);
+$num_domisili = mysqli_num_rows($sqldomisili);
+$num_kk = mysqli_num_rows($sqlkk);
+$num_ktp = mysqli_num_rows($sqlktp);
 ?>
 
 <div class="content-wrapper">
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
-                <form action="">
+                <form action="" method="post">
                     <div class="row mt-4 mb-4 ml-4 mr-4">
                         <div class="col-lg-10">
                             <select name="tahunnow" class="form-control" required>
@@ -111,6 +117,51 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
         }
         ?>
         <!-- ALERT IZIN USAHA -->
+        <!-- ALERT DOMISILI -->
+        <?php
+        if ($num_domisili > 0) {
+            $datadomisili = mysqli_fetch_assoc($sqldomisili);
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?= $num_domisili ?> Pemberitahuan!!</strong> Status pengajuan domisili: <strong><?= $datadomisili['domisili_status'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
+        <!-- ALERT DOMISILI -->
+        <!-- ALERT KK -->
+        <?php
+        if ($num_kk > 0) {
+            $datakk = mysqli_fetch_assoc($sqlkk);
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?= $num_kk ?> Pemberitahuan!!</strong> Status pengajuan kk: <strong><?= $datakk['kk_status'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
+        <!-- ALERT KK -->
+        <!-- ALERT KTP -->
+        <?php
+        if ($num_ktp > 0) {
+            $dataktp = mysqli_fetch_assoc($sqlktp);
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?= $num_ktp ?> Pemberitahuan!!</strong> Status pengajuan ktp: <strong><?= $dataktp['ktp_status'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
+        <!-- ALERT KTP -->
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -215,6 +266,36 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
                 </div>
             </div>
         </div>
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Grafik KK</h6>
+                        <div class="dropdown no-arrow">
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <canvas id="kk"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Grafik KTP</h6>
+                        <div class="dropdown no-arrow">
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <canvas id="ktp"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -226,7 +307,7 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
     var kependudukan = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Kelahiran", "Kematian", "Pindah (Keluar)", "Pindah (Masuk)", "Izin usaha", "Domisili", "Penduduk Tetap", "Penduduk Tidak Tetap"],
+            labels: ["Kelahiran", "Kematian", "Pindah (Keluar)", "Pindah (Masuk)", "Izin usaha", "Domisili", "KK", "KTP", "Penduduk Tetap", "Penduduk Tidak Tetap"],
             datasets: [{
                 label: '',
                 data: [
@@ -255,6 +336,14 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
                     echo mysqli_num_rows($kep_domisili);
                     ?>,
                     <?php
+                    $kep_kk = mysqli_query($con, "SELECT * FROM kk WHERE YEAR(kk_tanggal_verifikasi) = '$tahun_now'");
+                    echo mysqli_num_rows($kep_kk);
+                    ?>,
+                    <?php
+                    $kep_ktp = mysqli_query($con, "SELECT * FROM ktp WHERE YEAR(ktp_tanggal_verifikasi) = '$tahun_now'");
+                    echo mysqli_num_rows($kep_ktp);
+                    ?>,
+                    <?php
                     $kep_tetap = mysqli_query($con, "SELECT * FROM user WHERE user_status_tinggal = 'Tetap'");
                     echo mysqli_num_rows($kep_tetap);
                     ?>,
@@ -270,6 +359,8 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
                     'rgba(45, 115, 12, 0.2)',
                     'rgba(124, 37, 133, 0.2)',
                     'rgba(175, 192, 192, 0.2)',
+                    'rgba(65, 132, 110, 0.2)',
+                    'rgba(132, 30, 93, 0.2)',
                     'rgba(75, 192, 152, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                 ],
@@ -280,6 +371,8 @@ $num_izinusaha = mysqli_num_rows($sqlizinusaha);
                     'rgba(45, 115, 12, 0.2)',
                     'rgba(124, 37, 133, 0.2)',
                     'rgba(175, 192, 192, 0.2)',
+                    'rgba(65, 132, 110, 0.2)',
+                    'rgba(132, 30, 93, 0.2)',
                     'rgba(75, 192, 152, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                 ],
@@ -692,6 +785,138 @@ while ($rowdomisili = mysqli_fetch_array($domisili)) {
             datasets: [{
                 label: 'Grafik domisili Per-Bulan <?= $tahun_now ?>',
                 data: <?php echo json_encode($jumlah_domisili); ?>,
+                backgroundColor: ["white"],
+                borderColor: 'purple',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+<?php
+$kk = mysqli_query($con, "SELECT MONTH(kk_tanggal_verifikasi) as bulan FROM kk WHERE YEAR(kk_tanggal_verifikasi) = '$tahun_now' AND kk_status = 'Selesai' GROUP BY MONTH(kk_tanggal_verifikasi)");
+while ($rowkk = mysqli_fetch_array($kk)) {
+    // $nama_bulan[] = $rowkk['bulan'];
+
+    if ($rowkk['bulan'] == '01') {
+        $bulan = 'Jan';
+    } elseif ($rowkk['bulan'] == '02') {
+        $bulan = 'Feb';
+    } elseif ($rowkk['bulan'] == '03') {
+        $bulan = 'Mar';
+    } elseif ($rowkk['bulan'] == '04') {
+        $bulan = 'Apr';
+    } elseif ($rowkk['bulan'] == '05') {
+        $bulan = 'Mei';
+    } elseif ($rowkk['bulan'] == '06') {
+        $bulan = 'Jun';
+    } elseif ($rowkk['bulan'] == '07') {
+        $bulan = 'Jul';
+    } elseif ($rowkk['bulan'] == '08') {
+        $bulan = 'Agu';
+    } elseif ($rowkk['bulan'] == '09') {
+        $bulan = 'Sep';
+    } elseif ($rowkk['bulan'] == '10') {
+        $bulan = 'Okt';
+    } elseif ($rowkk['bulan'] == '11') {
+        $bulan = 'Nov';
+    } else {
+        $bulan = 'Des';
+    }
+
+    $nama_bulan_kk[] = $bulan;
+
+    $kk2 = mysqli_query($con, "SELECT * FROM kk WHERE MONTH(kk_tanggal_verifikasi) = '" . $rowkk['bulan'] . "' AND YEAR(kk_tanggal_verifikasi) = '$tahun_now' AND kk_status = 'Selesai'");
+    $jumlah_kk[] = mysqli_num_rows($kk2);
+}
+?>
+
+<script>
+    var ctx = document.getElementById("kk").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($nama_bulan_kk); ?>,
+            datasets: [{
+                label: 'Grafik kk Per-Bulan <?= $tahun_now ?>',
+                data: <?php echo json_encode($jumlah_kk); ?>,
+                backgroundColor: ["white"],
+                borderColor: 'purple',
+                borderWidth: 4
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+
+
+<?php
+$ktp = mysqli_query($con, "SELECT MONTH(ktp_tanggal_verifikasi) as bulan FROM ktp WHERE YEAR(ktp_tanggal_verifikasi) = '$tahun_now' AND ktp_status = 'Selesai' GROUP BY MONTH(ktp_tanggal_verifikasi)");
+while ($rowktp = mysqli_fetch_array($ktp)) {
+    // $nama_bulan[] = $rowktp['bulan'];
+
+    if ($rowktp['bulan'] == '01') {
+        $bulan = 'Jan';
+    } elseif ($rowktp['bulan'] == '02') {
+        $bulan = 'Feb';
+    } elseif ($rowktp['bulan'] == '03') {
+        $bulan = 'Mar';
+    } elseif ($rowktp['bulan'] == '04') {
+        $bulan = 'Apr';
+    } elseif ($rowktp['bulan'] == '05') {
+        $bulan = 'Mei';
+    } elseif ($rowktp['bulan'] == '06') {
+        $bulan = 'Jun';
+    } elseif ($rowktp['bulan'] == '07') {
+        $bulan = 'Jul';
+    } elseif ($rowktp['bulan'] == '08') {
+        $bulan = 'Agu';
+    } elseif ($rowktp['bulan'] == '09') {
+        $bulan = 'Sep';
+    } elseif ($rowktp['bulan'] == '10') {
+        $bulan = 'Okt';
+    } elseif ($rowktp['bulan'] == '11') {
+        $bulan = 'Nov';
+    } else {
+        $bulan = 'Des';
+    }
+
+    $nama_bulan_ktp[] = $bulan;
+
+    $ktp2 = mysqli_query($con, "SELECT * FROM ktp WHERE MONTH(ktp_tanggal_verifikasi) = '" . $rowktp['bulan'] . "' AND YEAR(ktp_tanggal_verifikasi) = '$tahun_now' AND ktp_status = 'Selesai'");
+    $jumlah_ktp[] = mysqli_num_rows($ktp2);
+}
+?>
+
+<script>
+    var ctx = document.getElementById("ktp").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($nama_bulan_ktp); ?>,
+            datasets: [{
+                label: 'Grafik ktp Per-Bulan <?= $tahun_now ?>',
+                data: <?php echo json_encode($jumlah_ktp); ?>,
                 backgroundColor: ["white"],
                 borderColor: 'purple',
                 borderWidth: 4

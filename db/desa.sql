@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Agu 2023 pada 17.47
+-- Waktu pembuatan: 13 Agu 2023 pada 16.34
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -273,6 +273,42 @@ INSERT INTO `kepala_desa` (`kepala_desa_id`, `kepala_desa_nama`, `kepala_desa_tt
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `kk`
+--
+
+CREATE TABLE `kk` (
+  `kk_id` int(11) NOT NULL,
+  `kk_user` int(11) NOT NULL,
+  `kk_rt` int(11) NOT NULL,
+  `kk_tanggal` date NOT NULL,
+  `kk_akta` text NOT NULL,
+  `kk_status` varchar(255) NOT NULL,
+  `kk_tanggal_verifikasi` date NOT NULL,
+  `kk_notif` int(11) NOT NULL,
+  `kk_ket` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ktp`
+--
+
+CREATE TABLE `ktp` (
+  `ktp_id` int(11) NOT NULL,
+  `ktp_user` int(11) NOT NULL,
+  `ktp_rt` int(11) NOT NULL,
+  `ktp_tanggal` date NOT NULL,
+  `ktp_kk` text NOT NULL,
+  `ktp_status` varchar(255) NOT NULL,
+  `ktp_tanggal_verifikasi` date NOT NULL,
+  `ktp_notif` int(11) NOT NULL,
+  `ktp_ket` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `penduduk`
 --
 
@@ -326,7 +362,8 @@ INSERT INTO `rt` (`rt_id`, `rt_rw_id`, `rt`, `rt_ketua`) VALUES
 (7, 3, '006', 13),
 (8, 1, '001', 15),
 (9, 2, '004', 16),
-(10, 4, '009', 23);
+(10, 4, '009', 23),
+(12, 2, '008', 24);
 
 -- --------------------------------------------------------
 
@@ -393,7 +430,10 @@ INSERT INTO `user` (`user_id`, `user_nik`, `user_nama`, `user_tempat_lahir`, `us
 (20, '5306130307930001', 'YULIUS TARAN NUBI', 'LAMANELE', '1993-07-31', 8, 'Katolik', 'Laki-laki', 'WNI', 'Lamanele', 'Aktif', 'Tetap', 'Petani', 'Sudah Menikah', 'S1', 'yulius@gmail.com', 'fd8cdd1421c2ea02d7c277a8f2aae6ab'),
 (21, '0000000000000000', 'Nol nol', 'Nol', '1994-03-31', 10, 'Katolik', 'Laki-laki', 'WNI', 'New', 'Aktif', 'Tetap', 'sdsdas', 'Belum Menikah', 'S1', '999@mail.com', 'b706835de79a2b4e80506f582af3676a'),
 (22, '0000000000000009', 'xxxx', 'xxxx', '2005-10-18', 10, 'Islam', 'Laki-laki', 'WNI', 'asdasdfa', 'Aktif', 'Tetap', 'tytytryrty', 'Belum Menikah', 'S1', '', ''),
-(23, '6666666666666666', 'Enam', 'fdfsdf', '2023-06-06', 10, 'Katolik', 'Laki-laki', 'WNI', 'dfdsfdsf', 'Aktif', 'Tetap', 'dfdsfdsf', 'Belum Menikah', 'S1', '666@mail.com', 'fae0b27c451c728867a567e8c1bb4e53');
+(23, '6666666666666666', 'Enam', 'fdfsdf', '2023-06-06', 10, 'Katolik', 'Laki-laki', 'WNI', 'dfdsfdsf', 'Aktif', 'Tetap', 'dfdsfdsf', 'Belum Menikah', 'S1', '666@mail.com', 'fae0b27c451c728867a567e8c1bb4e53'),
+(24, '1234565432112344', 'JibranTol', 'Tol', '2023-03-15', 12, 'Protestan', 'Laki-laki', 'WNI', 'Tsgasbdasds', 'Aktif', 'Tetap', 'Tidak menetap', 'Belum Menikah', 'S1', 'jibran@mail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(25, '2121231211212121', 'Dua satu', 'Satu dan dua', '2023-08-01', 12, 'Protestan', 'Laki-laki', 'WNI', 'HZDjzhdjsad', 'Aktif', 'Tetap', 'sfhdjsfhksdjhf', 'Sudah Menikah', 'SLTA/SMA/SMK', 'duasatu@mail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(26, '1231231231231231', 'Anggota RW 002 RT 008 ', 'adasas', '2023-05-22', 12, 'Protestan', 'Laki-laki', 'WNI', 'fgdfgdg', 'Aktif', 'Tetap', 'sfsds', 'Belum Menikah', 'S1', 'anggota@mail.com', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Indexes for dumped tables
@@ -452,6 +492,18 @@ ALTER TABLE `kematian`
 --
 ALTER TABLE `kepala_desa`
   ADD PRIMARY KEY (`kepala_desa_id`);
+
+--
+-- Indeks untuk tabel `kk`
+--
+ALTER TABLE `kk`
+  ADD PRIMARY KEY (`kk_id`);
+
+--
+-- Indeks untuk tabel `ktp`
+--
+ALTER TABLE `ktp`
+  ADD PRIMARY KEY (`ktp_id`);
 
 --
 -- Indeks untuk tabel `penduduk`
@@ -536,6 +588,18 @@ ALTER TABLE `kepala_desa`
   MODIFY `kepala_desa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `kk`
+--
+ALTER TABLE `kk`
+  MODIFY `kk_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ktp`
+--
+ALTER TABLE `ktp`
+  MODIFY `ktp_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
@@ -545,7 +609,7 @@ ALTER TABLE `penduduk`
 -- AUTO_INCREMENT untuk tabel `rt`
 --
 ALTER TABLE `rt`
-  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `rw`
@@ -557,7 +621,7 @@ ALTER TABLE `rw`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

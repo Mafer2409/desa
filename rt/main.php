@@ -77,6 +77,8 @@ if (!isset($_SESSION['id_user'])) {
                         <a href="?page=pindah" class="dropdown-item">Pindah</a>
                         <a href="?page=izinusaha" class="dropdown-item">Izin usaha</a>
                         <a href="?page=domisili" class="dropdown-item">Domisili</a>
+                        <a href="?page=kk" class="dropdown-item">KK</a>
+                        <a href="?page=ktp" class="dropdown-item">KTP</a>
                     </div>
                 </div>
                 <a href="?page=berita" class="nav-item nav-link">Berita</a>
@@ -146,6 +148,18 @@ if (!isset($_SESSION['id_user'])) {
             include "views/aksidomisili.php";
         } else if (@$_GET['page'] == 'cari-domisili') {
             include "views/cari-domisili.php";
+        } else if (@$_GET['page'] == 'kk') {
+            include "views/kk.php";
+        } else if (@$_GET['page'] == 'aksikk') {
+            include "views/aksikk.php";
+        } else if (@$_GET['page'] == 'cari-kk') {
+            include "views/cari-kk.php";
+        } else if (@$_GET['page'] == 'ktp') {
+            include "views/ktp.php";
+        } else if (@$_GET['page'] == 'aksiktp') {
+            include "views/aksiktp.php";
+        } else if (@$_GET['page'] == 'cari-ktp') {
+            include "views/cari-ktp.php";
         }
         ?>
     </div>

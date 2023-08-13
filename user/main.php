@@ -76,6 +76,8 @@ if (!isset($_SESSION['id_user'])) {
                         <a href="?page=pindah" class="dropdown-item">Pindah</a>
                         <a href="?page=izinusaha" class="dropdown-item">Izin Usaha</a>
                         <a href="?page=domisili" class="dropdown-item">Domisili</a>
+                        <a href="?page=ktp" class="dropdown-item">KTP</a>
+                        <a href="?page=kk" class="dropdown-item">KK</a>
                     </div>
                 </div>
                 <!-- <a href="?page=validasi" class="nav-item nav-link">Validasi</a> -->
@@ -131,6 +133,14 @@ if (!isset($_SESSION['id_user'])) {
             include "views/domisili.php";
         } else if (@$_GET['page'] == 'read-domisili') {
             include "views/read-domisili.php";
+        } else if (@$_GET['page'] == 'kk') {
+            include "views/kk.php";
+        } else if (@$_GET['page'] == 'read-kk') {
+            include "views/read-kk.php";
+        } else if (@$_GET['page'] == 'ktp') {
+            include "views/ktp.php";
+        } else if (@$_GET['page'] == 'read-ktp') {
+            include "views/read-ktp.php";
         }
         ?>
     </div>
